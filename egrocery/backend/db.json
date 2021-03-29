@@ -1,0 +1,58 @@
+{
+  "users": [
+    {
+      "email": "nhi.pham@swe.com",
+      "password": "pass1",
+      "id": 1
+    },
+    {
+      "email": "vince.nguyen@swe.com",
+      "password": "pass2",
+      "id": 2
+    },
+    {
+      "email": "jakubp@swe.com",
+      "password": "pass3",
+      "id": 3
+    },
+    {
+      "email": "jakubn@swe.com",
+      "password": "pass4",
+      "id": 4
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "apple",
+      "stock": 10,
+      "price": 399.99,
+      "shortDesc": "Nulla facilisi. Curabitur at lacus ac velit ornare lobortis.",
+      "description": "Cras sagittis. Praesent nec nisl a purus blandit viverra. Ut leo. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Fusce a quam."
+    },
+    {
+      "id": 2,
+      "name": "pear",
+      "stock": 20,
+      "price": 299.99,
+      "shortDesc": "Nulla facilisi. Curabitur at lacus ac velit ornare lobortis.",
+      "description": "Cras sagittis. Praesent nec nisl a purus blandit viverra. Ut leo. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Fusce a quam."
+    },
+    {
+      "id": 3,
+      "name": "orange",
+      "stock": 15,
+      "price": 149.99,
+      "shortDesc": "Nulla facilisi. Curabitur at lacus ac velit ornare lobortis.",
+      "description": "Cras sagittis. Praesent nec nisl a purus blandit viverra. Ut leo. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Fusce a quam."
+    },
+    {
+      "id": 4,
+      "name": "strawberry",
+      "stock": 5,
+      "price": 109.99,
+      "shortDesc": "Nulla facilisi. Curabitur at lacus ac velit ornare lobortis.",
+      "description": "Cras sagittis. Praesent nec nisl a purus blandit viverra. Ut leo. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Fusce a quam."
+    }
+  ]
+}
