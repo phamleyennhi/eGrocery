@@ -26,33 +26,37 @@
       "id": 1,
       "name": "apple",
       "stock": 10,
-      "price": 399.99,
-      "shortDesc": "Nulla facilisi. Curabitur at lacus ac velit ornare lobortis.",
-      "description": "Cras sagittis. Praesent nec nisl a purus blandit viverra. Ut leo. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Fusce a quam."
+      "price": 8,
+      "shortDesc": "New Zealand",
+      "description": "Cras sagittis. Praesent nec nisl a purus blandit viverra. Ut leo. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Fusce a quam.",
+      "url": "https://usapple.org/wp-content/uploads/2019/10/apple-golden-delicious.png"
     },
     {
       "id": 2,
       "name": "pear",
       "stock": 20,
-      "price": 299.99,
-      "shortDesc": "Nulla facilisi. Curabitur at lacus ac velit ornare lobortis.",
-      "description": "Cras sagittis. Praesent nec nisl a purus blandit viverra. Ut leo. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Fusce a quam."
+      "price": 15,
+      "shortDesc": "Vietnam",
+      "description": "Cras sagittis. Praesent nec nisl a purus blandit viverra. Ut leo. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Fusce a quam.",
+      "url": "https://lh3.googleusercontent.com/proxy/U-Q8P1EmSvb3SyAWLcW6HAG2DgX2SvKs4gOP6XlJpA3u-WnWD_XA7OtTxQLqe-PXrYYWw7k9OSTW4UJFghAFIfRdXjpts2ge4-kZ4mP58EcNyneg4bC0-YVvzKN3NUly"
     },
     {
       "id": 3,
       "name": "orange",
-      "stock": 15,
+      "stock": 10,
       "price": 149.99,
-      "shortDesc": "Nulla facilisi. Curabitur at lacus ac velit ornare lobortis.",
-      "description": "Cras sagittis. Praesent nec nisl a purus blandit viverra. Ut leo. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Fusce a quam."
+      "shortDesc": "Poland",
+      "description": "Cras sagittis. Praesent nec nisl a purus blandit viverra. Ut leo. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Fusce a quam.",
+      "url": "https://www.quanta.org/orange/orange.jpg"
     },
     {
       "id": 4,
       "name": "strawberry",
-      "stock": 5,
+      "stock": 25,
       "price": 109.99,
-      "shortDesc": "Nulla facilisi. Curabitur at lacus ac velit ornare lobortis.",
-      "description": "Cras sagittis. Praesent nec nisl a purus blandit viverra. Ut leo. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Fusce a quam."
+      "shortDesc": "United States",
+      "description": "Cras sagittis. Praesent nec nisl a purus blandit viverra. Ut leo. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Fusce a quam.",
+      "url": "https://befreshcorp.net/wp-content/uploads/2017/07/product-packshot-strawberrie-558x600.jpg"
     }
   ]
 }

@@ -22,8 +22,12 @@ class Login extends Component {
     }
     this.props.context.login(username, password)
       .then((loggedIn) => {
+        console.log(loggedIn);
         if (!loggedIn) {
           this.setState({ error: "Invalid Credentails" });
+        }
+        else{
+          this.setState({error: "Valid Credentails...Keep waiting!"});
         }
       })
   };
