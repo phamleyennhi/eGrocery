@@ -35,13 +35,15 @@ class Login extends Component {
   render() {
     return !this.props.context.user ? (
       <>
-        <div className="hero is-primary ">
+        <div className="hero is-primary">
           <div className="hero-body container">
             <h4 className="title">Login</h4>
           </div>
         </div>
         <br />
         <br />
+
+        <div className=" container is-max-desktop">
         <form onSubmit={this.login}>
           <div className="columns is-mobile is-centered">
             <div className="column is-one-third">
@@ -76,6 +78,7 @@ class Login extends Component {
             </div>
           </div>
         </form>
+        </div>
       </>
     ) : (
       <Redirect to="/products" />

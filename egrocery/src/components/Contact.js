@@ -26,6 +26,7 @@ class Contact extends Component {
         </div>
         <br />
         <br />
+        <div className="container is-max-desktop">
         <form onSubmit={this.login}>
           <div className="columns is-mobile is-centered">
             <div className="column is-one-third">
@@ -44,7 +45,7 @@ class Contact extends Component {
                   />
                   {/* Message */}
                   <label className="label">Message: </label>
-                  <textarea rows="12" cols="64"
+                  <textarea rows="12" cols="64" style={{width: '100%'}}
                     onChange={(event) => this.updateField('message', event.target.value)}
                   />
                 </div>
@@ -60,6 +61,7 @@ class Contact extends Component {
             </div>
           </div>
         </form>
+        </div>
       </>
     );
   }
