@@ -19,7 +19,7 @@ const CartItem = props => {
           <div className="media-content">
             <b style={{ textTransform: "capitalize" }}>
               {product.name}{" "}
-              <span className="tag is-primary">${product.price}</span>
+              <span className="tag is-primary">{"AED " + product.price + "/kg"}</span>
             </b>
             <div>{product.shortDesc}</div>
             <small>{`${amount} in cart`}</small>
