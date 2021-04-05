@@ -6,6 +6,7 @@ import jwt_decode from 'jwt-decode';
 import AddProduct from './components/AddProduct';
 import Cart from './components/Cart';
 import Login from './components/Login';
+import Register from './components/Register';
 import ProductList from './components/ProductList';
 
 import Context from "./Context";
@@ -34,7 +35,7 @@ export default class App extends Component {
 
   login = async (email, password) => {
     const res = await axios.post(
-      'http://localhost:3001/login',
+      'https://se-egrocery.herokuapp.com/api/auth/signin',
       { email, password },
     ).catch((res) => {
       return { status: 401, message: 'Unauthorized' }
@@ -55,6 +56,23 @@ export default class App extends Component {
       return false;
     }
   }
+
+  register = async (email, password) => {
+    const res = await axios.post(
+      'https://se-egrocery.herokuapp.com/api/auth/signup',
+      { email, password, roles:["user"] },
+    ).catch((res) => {
+      return { status: 401, message: 'Unauthorized' }
+    })
+
+    if(res.status === 200) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+
 
   logout = e => {
     e.preventDefault();
@@ -127,6 +145,7 @@ export default class App extends Component {
           removeFromCart: this.removeFromCart,
           addToCart: this.addToCart,
           login: this.login,
+          register: this.register,
           addProduct: this.addProduct,
           clearCart: this.clearCart,
           checkout: this.checkout
@@ -178,9 +197,12 @@ export default class App extends Component {
                   </span>
                 </Link>
                 {!this.state.user ? (
-                  <Link to="/login" className="navbar-item">
+                  <><Link to="/login" className="navbar-item">
                     Login
                   </Link>
+                  <Link to="/register" className="navbar-item">
+                    Register
+                  </Link></>
                 ) : (
                   <Link to="/" onClick={this.logout} className="navbar-item">
                     Logout
@@ -191,6 +213,7 @@ export default class App extends Component {
             <Switch>
               <Route exact path="/" component={ProductList} />
               <Route exact path="/login" component={Login} />
+              <Route exact path="/register" component={Register} />
               <Route exact path="/cart" component={Cart} />
               <Route exact path="/add-product" component={AddProduct} />
               <Route exact path="/products" component={ProductList} />
