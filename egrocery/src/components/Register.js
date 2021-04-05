@@ -48,7 +48,7 @@ class Register extends Component {
 
         <form onSubmit={this.register}>
           <div className="columns is-mobile is-centered">
-            <div className="column is-one-third">
+            <div className="column is-half">
               <div className="field">
                 <label className="label">Email: </label>
                 <input

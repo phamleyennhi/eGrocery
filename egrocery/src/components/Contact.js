@@ -29,7 +29,7 @@ class Contact extends Component {
         <div className="container is-max-desktop">
         <form onSubmit={this.login}>
           <div className="columns is-mobile is-centered">
-            <div className="column is-one-third">
+            <div className="column is-half">
               <div className="field">
                   {/* Name */}
                   <label className="label">Name: </label>

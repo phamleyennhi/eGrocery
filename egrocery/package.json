@@ -16,9 +16,7 @@
         "react-scripts": "^4.0.3"
     },
     "scripts": {
-        "css-build": "node-sass --omit-source-map-url sass/mystyles.scss css/mystyles.css",
-        "css-watch": "npm run css-build -- --watch",
-        "start": "npm run css-watch && react-scripts start ",
+        "start": "react-scripts start ",
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject"
