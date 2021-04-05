@@ -8,7 +8,7 @@ import Cart from './components/Cart';
 import Login from './components/Login';
 import Register from './components/Register';
 import ProductList from './components/ProductList';
-
+import Contact from './components/Contact';
 import Context from "./Context";
 
 export default class App extends Component {
@@ -208,6 +208,9 @@ export default class App extends Component {
                     Logout
                   </Link>
                 )}
+                <Link to="/contact" className="navbar-item">
+                  Contact
+                </Link>
               </div>
             </nav>
             <Switch>
@@ -217,6 +220,7 @@ export default class App extends Component {
               <Route exact path="/cart" component={Cart} />
               <Route exact path="/add-product" component={AddProduct} />
               <Route exact path="/products" component={ProductList} />
+              <Route exact path="/contact" component={Contact} />
             </Switch>
           </div>
         </Router>
