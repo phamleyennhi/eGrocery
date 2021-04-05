@@ -29,7 +29,7 @@ class Register extends Component {
         }
         else{
           this.setState({error: "Registering in progress!"});
-          this.setState({registered: true});
+          this.setState({registered: true})
         }
       })
   };
