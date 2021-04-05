@@ -16,12 +16,12 @@
         "react-scripts": "^4.0.3"
     },
     "scripts": {
-        "start": "react-scripts start && npm run css-watch",
+        "css-build": "node-sass --omit-source-map-url sass/mystyles.scss css/mystyles.css",
+        "css-watch": "npm run css-build -- --watch",
+        "start": "npm run css-watch && react-scripts start ",
         "build": "react-scripts build",
         "test": "react-scripts test",
-        "eject": "react-scripts eject",
-        "css-build": "node-sass --omit-source-map-url sass/mystyles.scss css/mystyles.css",
-        "css-watch": "npm run css-build -- --watch"
+        "eject": "react-scripts eject"
 
     },
     "eslintConfig": {
