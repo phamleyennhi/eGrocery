@@ -41,12 +41,18 @@ export default class App extends Component {
       return { status: 401, message: 'Unauthorized' }
     })
 
-    if(res.status === 200) {
+      if(res.status === 200) {
       const { email } = jwt_decode(res.data.accessToken)
+
+      const isAdmin = res.data.roles.includes("ROLE_ADMIN")
+
+      console.log(isAdmin)
+
       const user = {
         email,
+        email: res.data.email,
         token: res.data.accessToken,
-        accessLevel: email === 'admin@example.com' ? 0 : 1
+        accessLevel: isAdmin ? 0 : 1
       }
 
       this.setState({ user });
