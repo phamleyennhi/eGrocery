@@ -16,12 +16,13 @@
         "react-scripts": "^4.0.3"
     },
     "scripts": {
-        "start": "npm run css-watch",
+        "start": "react-scripts start && npm run css-watch",
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject",
-        "css-build": "node-sass --omit-source-map-url sass/mystyles.scss src/mystyles.css",
+        "css-build": "node-sass --omit-source-map-url sass/mystyles.scss css/mystyles.css",
         "css-watch": "npm run css-build -- --watch"
+
     },
     "eslintConfig": {
         "extends": "react-app"
@@ -40,7 +41,6 @@
     },
     "devDependencies": {
         "json-server": "^0.16.3",
-        "json-server-auth": "^2.0.2",
-        "node-sass": "^5.0.0"
+        "json-server-auth": "^2.0.2"
     }
 }
