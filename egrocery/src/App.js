@@ -159,7 +159,9 @@ export default class App extends Component {
             aria-label="main navigation"
           >
             <div className="navbar-brand">
-              <b className="navbar-item is-size-4 ">eGROCERY</b>
+            <div style={{height: "100px"}}>
+              <img style={{width: "300px"}} src="eGROCERY.png"/>
+              </div>
               <label
                 role="button"
                 class="navbar-burger burger"
