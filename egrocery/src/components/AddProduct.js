@@ -22,11 +22,10 @@ class AddProduct extends Component {
     const { name, price, stock, shortDesc, description } = this.state;
 
     if (name && price) {
-      const id = Math.random().toString(36).substring(2) + Date.now().toString(36);
 
       await axios.post(
         'http://localhost:3001/products',
-        { id, name, price, stock, shortDesc, description },
+        { name, price, stock, shortDesc, description },
       )
 
       this.props.context.addProduct(
@@ -67,6 +66,7 @@ class AddProduct extends Component {
         </div>
         <br />
         <br />
+        <div className="container is-max-desktop">
         <form onSubmit={this.save}>
           <div className="columns is-mobile is-centered">
             <div className="column is-one-third">
@@ -141,6 +141,7 @@ class AddProduct extends Component {
             </div>
           </div>
         </form>
+        </div>
       </>
     );
   }

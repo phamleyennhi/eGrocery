@@ -44,6 +44,8 @@ class Register extends Component {
         </div>
         <br />
         <br />
+                <div className="container is-max-desktop">
+
         <form onSubmit={this.register}>
           <div className="columns is-mobile is-centered">
             <div className="column is-one-third">
@@ -78,6 +80,7 @@ class Register extends Component {
             </div>
           </div>
         </form>
+        </div>
       </>
     ) : (
       <Redirect to="/login" />
