@@ -16,7 +16,6 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLogginActive: true,
       user: null,
       cart: {},
       products: []
@@ -48,8 +47,6 @@ export default class App extends Component {
       const { email } = jwt_decode(res.data.accessToken)
 
       const isAdmin = res.data.roles.includes("ROLE_ADMIN")
-      console.log(email)
-      console.log(password)
       console.log(isAdmin)
 
       const user = {
@@ -147,23 +144,8 @@ export default class App extends Component {
     this.clearCart();
   };
 
-  changeState() {
-    const { isLogginActive } = this.state;
-
-    if (isLogginActive) {
-      this.rightSide.classList.remove("right");
-      this.rightSide.classList.add("left");
-    } else {
-      this.rightSide.classList.remove("left");
-      this.rightSide.classList.add("right");
-    }
-    this.setState(prevState => ({ isLogginActive: !prevState.isLogginActive }));
-  }
 
   render() {
-    const { isLogginActive } = this.state;
-    const current = isLogginActive ? "Register" : "Login";
-    const currentActive = isLogginActive ? "login" : "register";
     return (
       <Context.Provider
         value={{

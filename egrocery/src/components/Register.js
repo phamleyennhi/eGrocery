@@ -42,7 +42,7 @@ class Register extends Component {
     return !this.state.registered ? (
       <>
         <div className="hero is-primary ">
-          <div className="hero-body container" ref={this.props.containerRef}>
+          <div className="hero-body container">
             <h4 className="title">Register</h4>
           </div>
         </div>
