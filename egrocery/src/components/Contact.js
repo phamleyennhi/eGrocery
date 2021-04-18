@@ -41,17 +41,20 @@ class Contact extends Component {
                   <label className="label">Name: </label>
                   <input
                     className="input"
+                    placeholder="enter your name"
                     onChange={(event) => this.updateField('name', event.target.value)}
                   />
                   {/* Email */}
                   <label className="label">Email: </label>
                   <input
                     className="input"
+                    placeholder="enter your email"
                     onChange={(event) => this.updateField('email', event.target.value)}
                   />
                   {/* Message */}
                   <label className="label">Message: </label>
                   <textarea rows="12" cols="64" style={{width: '100%'}}
+                    placeholder="Your message starts here..."
                     onChange={(event) => this.updateField('message', event.target.value)}
                   />
                 </div>
