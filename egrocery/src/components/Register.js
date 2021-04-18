@@ -23,6 +23,8 @@ class Register extends Component {
     if (!username || !password) {
       return this.setState({ error: "Fill all fields!" });
     }
+    if (password != password2)
+      return this.setState({error: "Password does not match!"});
     this.props.context.register(username, password)
       .then((registered) => {
         console.log(registered);
@@ -30,8 +32,6 @@ class Register extends Component {
           this.setState({ error: "Email already in use!" });
         }
         else{
-          if (password != password2)
-            return this.setState({error: "Password does not match!"})
           this.setState({error: "Registering in progress!"});
           this.setState({registered: true})
         }
