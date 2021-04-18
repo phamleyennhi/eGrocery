@@ -32,6 +32,7 @@ export default class App extends Component {
     cart = cart? JSON.parse(cart) : {};
 
     this.setState({ user,  products: products.data, cart });
+    console.log(this.state.user);
   }
 
   login = async (email, password) => {
@@ -191,15 +192,7 @@ export default class App extends Component {
                 <Link to="/products" className="navbar-item">
                   Products
                 </Link>
-                {this.state.user && this.state.user.accessLevel < 1 && (
-                  <Link to="/add-product" className="navbar-item">
-                    Add Product
-                  </Link>
-                )}
-                {!this.state.user &&
-                (<Link to="/contact" className="navbar-item">
-                  Contact
-                </Link>) && 
+                {(!this.state.user||(this.state.user && this.state.user.accessLevel > 0)) &&
                 (<Link to="/cart" className="navbar-item">
                   Cart
                   <span
@@ -208,6 +201,16 @@ export default class App extends Component {
                   >
                     { Object.keys(this.state.cart).length }
                   </span>
+                </Link>)
+                }
+                {this.state.user && this.state.user.accessLevel < 1 && (
+                  <Link to="/add-product" className="navbar-item">
+                    Add Product
+                  </Link>
+                )}
+                {(!this.state.user||(this.state.user && this.state.user.accessLevel > 0)) &&
+                (<Link to="/contact" className="navbar-item">
+                  Contact
                 </Link>)
                 }
                 {!this.state.user ? (
