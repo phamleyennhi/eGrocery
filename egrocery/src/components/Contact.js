@@ -16,6 +16,12 @@ class Contact extends Component {
     this.setState({ [field]: value });
   }
 
+  handleSubmit(event) {
+    console.log('A contact form was submitted');
+    event.preventDefault();
+    this.props.history.push("/thankyou");
+  }
+
   render() {
     return (
       <>
@@ -27,7 +33,7 @@ class Contact extends Component {
         <br />
         <br />
         <div className="container is-max-desktop">
-        <form onSubmit={this.login}>
+        <form onSubmit={this.handleSubmit.bind(this)}>
           <div className="columns is-mobile is-centered">
             <div className="column is-half">
               <div className="field">
@@ -51,10 +57,8 @@ class Contact extends Component {
                 </div>
                 {/* Submit*/}
                 <div className="field is-clearfix">
-                <button
-                  className="button is-primary is-outlined is-pulled-right"
-                  email="nhi.pham@nyu.edu"
-                >
+                <button 
+                  className="button is-primary is-outlined is-pulled-right">
                   Submit
                 </button>
               </div>
@@ -63,7 +67,7 @@ class Contact extends Component {
         </form>
         </div>
       </>
-    );
+    )
   }
 }
 

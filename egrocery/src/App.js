@@ -10,6 +10,7 @@ import Register from './components/Register';
 import ProductList from './components/ProductList';
 import Contact from './components/Contact';
 import Context from "./Context";
+import ThankYou from "./components/ThankYou";
 
 export default class App extends Component {
   constructor(props) {
@@ -195,7 +196,11 @@ export default class App extends Component {
                     Add Product
                   </Link>
                 )}
-                <Link to="/cart" className="navbar-item">
+                {!this.state.user &&
+                (<Link to="/contact" className="navbar-item">
+                  Contact
+                </Link>) && 
+                (<Link to="/cart" className="navbar-item">
                   Cart
                   <span
                     className="tag is-primary"
@@ -203,7 +208,8 @@ export default class App extends Component {
                   >
                     { Object.keys(this.state.cart).length }
                   </span>
-                </Link>
+                </Link>)
+                }
                 {!this.state.user ? (
                   <><Link to="/login" className="navbar-item">
                     Login
@@ -216,9 +222,6 @@ export default class App extends Component {
                     Logout
                   </Link>
                 )}
-                <Link to="/contact" className="navbar-item">
-                  Contact
-                </Link>
               </div>
             </nav>
             <Switch>
@@ -229,6 +232,7 @@ export default class App extends Component {
               <Route exact path="/add-product" component={AddProduct} />
               <Route exact path="/products" component={ProductList} />
               <Route exact path="/contact" component={Contact} />
+              <Route exact path="/thankyou" component={ThankYou} />
             </Switch>
           </div>
         </Router>

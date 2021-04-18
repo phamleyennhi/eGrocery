@@ -52,7 +52,7 @@ class AddProduct extends Component {
   handleChange = e => this.setState({ [e.target.name]: e.target.value, error: "" });
 
   render() {
-    const { name, price, stock, shortDesc, description } = this.state;
+    const { name, price, stock, shortDesc, description, url } = this.state;
     const { user } = this.props.context;
 
     return !(user && user.accessLevel < 1) ? (
@@ -103,7 +103,7 @@ class AddProduct extends Component {
                 />
               </div>
               <div className="field">
-                <label className="label">Short Description: </label>
+                <label className="label">Country of Origin: </label>
                 <input
                   className="input"
                   type="text"
@@ -113,7 +113,7 @@ class AddProduct extends Component {
                 />
               </div>
               <div className="field">
-                <label className="label">Description: </label>
+                <label className="label">Short Description: </label>
                 <textarea
                   className="textarea"
                   type="text"
@@ -121,6 +121,18 @@ class AddProduct extends Component {
                   style={{ resize: "none" }}
                   name="description"
                   value={description}
+                  onChange={this.handleChange}
+                />
+              </div>
+              <div className="field">
+                <label className="label">Image URL: </label>
+                <input
+                  className="input"
+                  type="text"
+                  rows="2"
+                  style={{ resize: "none" }}
+                  name="url"
+                  value={url}
                   onChange={this.handleChange}
                 />
               </div>
