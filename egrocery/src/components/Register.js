@@ -8,6 +8,7 @@ class Register extends Component {
     this.state = {
       username: "",
       password: "",
+      password2:"",
       registered: false
     };
   }
@@ -15,9 +16,10 @@ class Register extends Component {
   handleChange = e => this.setState({ [e.target.name]: e.target.value, error: "" });
 
   register = (e) => {
+    console.log(this.state);
     e.preventDefault();
 
-    const { username, password } = this.state;
+    const { username, password, password2 } = this.state;
     if (!username || !password) {
       return this.setState({ error: "Fill all fields!" });
     }
@@ -28,6 +30,8 @@ class Register extends Component {
           this.setState({ error: "Email already in use!" });
         }
         else{
+          if (password != password2)
+            return this.setState({error: "Password does not match!"})
           this.setState({error: "Registering in progress!"});
           this.setState({registered: true})
         }
@@ -38,7 +42,7 @@ class Register extends Component {
     return !this.state.registered ? (
       <>
         <div className="hero is-primary ">
-          <div className="hero-body container">
+          <div className="hero-body container" ref={this.props.containerRef}>
             <h4 className="title">Register</h4>
           </div>
         </div>
@@ -55,6 +59,7 @@ class Register extends Component {
                   className="input"
                   type="email"
                   name="username"
+                  placeholder="enter your email"
                   onChange={this.handleChange}
                 />
               </div>
@@ -64,6 +69,17 @@ class Register extends Component {
                   className="input"
                   type="password"
                   name="password"
+                  placeholder="enter your password"
+                  onChange={this.handleChange}
+                />
+              </div>
+              <div className="field">
+                <label className="label">Confirm Password: </label>
+                <input
+                  className="input"
+                  type="password"
+                  name="password2"
+                  placeholder="re-enter your password"
                   onChange={this.handleChange}
                 />
               </div>

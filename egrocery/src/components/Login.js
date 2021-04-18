@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import withContext from "../withContext";
 
 class Login extends Component {
@@ -68,6 +68,7 @@ class Login extends Component {
               {this.state.error && (
                 <div className="has-text-danger">{this.state.error}</div>
               )}
+              <Link to="/register"> Don't have an account? Sign up now! </Link>
               <div className="field is-clearfix">
                 <button
                   className="button is-primary is-outlined is-pulled-right"
