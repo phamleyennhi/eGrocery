@@ -50,7 +50,6 @@ export default class App extends Component {
       console.log(isAdmin)
 
       const user = {
-        email,
         email: res.data.email,
         token: res.data.accessToken,
         accessLevel: isAdmin ? 0 : 1
@@ -168,7 +167,7 @@ export default class App extends Component {
           >
             <div className="navbar-brand">
             <div style={{height: "100px"}}>
-              <img style={{width: "300px"}} src="eGROCERY.png"/>
+              <img style={{width: "300px"}} src="eGROCERY.png" alt=""/>
               </div>
               <label
                 role="button"

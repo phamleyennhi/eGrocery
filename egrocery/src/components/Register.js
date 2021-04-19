@@ -23,7 +23,7 @@ class Register extends Component {
     if (!username || !password) {
       return this.setState({ error: "Fill all fields!" });
     }
-    if (password != password2)
+    if (password !== password2)
       return this.setState({error: "Password does not match!"});
     this.props.context.register(username, password)
       .then((registered) => {

@@ -9,7 +9,7 @@ const ProductItem = props => {
           <div className="media-left">
             <figure className="image is-64x64">
               <img
-                src={product.url}
+                src={product.url} alt=""
               />
             </figure>
           </div>
