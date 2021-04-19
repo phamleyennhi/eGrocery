@@ -1,11 +1,25 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import { Switch, Route, Link, BrowserRouter as Router } from "react-router-dom";
 import axios from 'axios';
 import jwt_decode from 'jwt-decode';
 
 
 import 'bootstrap/dist/css/bootstrap.min.css'; //bootstrap
-import { Container, Row, Col} from 'reactstrap';
+import { Container, Row, Col, Button} from 'reactstrap';
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+  NavbarText
+} from 'reactstrap';
 
 import AddProduct from './components/AddProduct';
 import Cart from './components/Cart';
@@ -147,6 +161,9 @@ export default class App extends Component {
     this.clearCart();
   };
 
+  // Navbar burger collapse button
+  // const [isOpen, setIsOpen] = useState(false);
+  // const toggle = () => setIsOpen(!isOpen);
 
   render() {
     return (
@@ -164,71 +181,78 @@ export default class App extends Component {
       >
         <Router ref={this.routerRef}>
         <div className="App">
-          <nav
-            className="navbar container"
+          <Navbar
+            className="border-bottom mb-5 bg-white"
             role="navigation"
             aria-label="main navigation"
+
           >
-            <div className="navbar-brand">
-            <div style={{height: "100px"}}>
-              <img style={{width: "300px"}} src="eGROCERY.png" alt=""/>
-              </div>
-              <label
-                role="button"
-                className="navbar-burger burger"
-                aria-label="menu"
-                aria-expanded="false"
-                data-target="navbarBasicExample"
-                onClick={e => {
-                  e.preventDefault();
-                  this.setState({ showMenu: !this.state.showMenu });
-                }}
-              >
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-              </label>
-            </div>
-              <div className={`navbar-menu ${
+            <NavbarBrand href="/" style={{height: "10vh"}}>
+              <img style={{height: "100%", width: "auto"}} src="eGROCERY.png" alt=""/>
+            </NavbarBrand>
+            
+            <Nav navbar className={`flex-row ${
                   this.state.showMenu ? "is-active" : ""
                 }`}>
-                <Link to="/products" className="navbar-item">
-                  Products
-                </Link>
-                {(!this.state.user||(this.state.user && this.state.user.accessLevel > 0)) &&
-                (<Link to="/cart" className="navbar-item">
+              <NavItem>
+                <NavLink href="/products">Products</NavLink>
+              </NavItem>
+
+              {(!this.state.user||(this.state.user && this.state.user.accessLevel > 0)) &&
+                (<NavItem>
+                <NavLink href="/cart">
                   Cart
                   <span
-                    className="tag is-primary"
-                    style={{ marginLeft: "5px" }}
+                    className="bg-secondary pl-2 pr-2"
+                    style={{ marginLeft: "5px", borderRadius: "3px" }}
                   >
+                  <small>
                     { Object.keys(this.state.cart).length }
+                  </small>
                   </span>
-                </Link>)
-                }
-                {this.state.user && this.state.user.accessLevel < 1 && (
-                  <Link to="/add-product" className="navbar-item">
+                </NavLink>
+                </NavItem>)
+              }
+
+              {this.state.user && this.state.user.accessLevel < 1 && (
+                <NavItem>
+                  <NavLink href="/add-product">
                     Add Product
-                  </Link>
-                )}
-                {(!this.state.user||(this.state.user && this.state.user.accessLevel > 0)) &&
-                (<Link to="/contact" className="navbar-item">
+                  </NavLink>
+                </NavItem>
+              )}
+
+              {(!this.state.user||(this.state.user && this.state.user.accessLevel > 0)) &&
+                (
+                <NavItem>
+                <NavLink href="/contact">
                   Contact
-                </Link>)
+                </NavLink>
+                </NavItem>
+                )
                 }
+             
                 {!this.state.user ? (
-                  <>
-                  <Link to="/login" className="navbar-item">
+                  <NavItem>
+                  <NavLink href="/login">
+                  <Button className="bg-main">
                     Login
-                  </Link>
-                  </>
+                  </Button>
+                    
+                  </NavLink>
+                  </NavItem>
                 ) : (
-                  <Link to="/" onClick={this.logout} className="navbar-item">
+                <NavItem>
+                  <NavLink href="/" onClick={this.logout}>
+                    <Button className="bg-main">
                     Logout
-                  </Link>
+                  </Button>
+                  </NavLink>
+                  </NavItem>
                 )}
-              </div>
-            </nav>
+
+            </Nav>
+            </Navbar>
             <Switch>
               <Route exact path="/" component={ProductList} />
               <Route exact path="/login" component={Login} />

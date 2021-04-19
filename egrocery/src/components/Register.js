@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import withContext from "../withContext";
 
+import 'bootstrap/dist/css/bootstrap.min.css'; //bootstrap
+
+import { Container, Row, Col, Button } from 'reactstrap';
+
 class Register extends Component {
   constructor(props) {
     super(props);
@@ -41,62 +45,83 @@ class Register extends Component {
   render() {
     return !this.state.registered ? (
       <>
-        <div className="hero is-primary ">
-          <div className="hero-body container">
-            <h4 className="title">Register</h4>
-          </div>
-        </div>
-        <br />
-        <br />
-                <div className="container is-max-desktop">
+        <Container>
+            <Row>
+            <Col lg="6" className="mx-auto border rounded p-4">
+            <Row className="mx-auto pt-3 pb-3">
+              <Col lg="10" className="mx-auto">
+                <h1 className="mb-4">Register</h1>
 
         <form onSubmit={this.register}>
-          <div className="columns is-mobile is-centered">
-            <div className="column is-half">
-              <div className="field">
-                <label className="label">Email: </label>
+          <div className="form-group"> 
                 <input
-                  className="input"
+                  className="form-control"
                   type="email"
                   name="username"
-                  placeholder="enter your email"
+                  placeholder="Enter your email"
                   onChange={this.handleChange}
                 />
               </div>
-              <div className="field">
-                <label className="label">Password: </label>
+
+              <div className="form-group">
+              <div className="form-row" style={{alignItems: "center"}}>
+              <div className="col-2">
+              <img 
+              className="rounded img-fluid"
+              src="https://cdn.countryflags.com/thumbs/united-arab-emirates/flag-square-500.png" 
+              style={{maxHeight: "38px",height: "auto", width: "auto"}} />
+              </div>
+              <div className="col-10">
+              <input
+                  className="form-control"
+                  type="phone"
+                  name="phone"
+                  placeholder="Mobile phone (+971)"
+
+                />
+              </div>
+              </div>
+              </div>
+
+              <div className="form-group">
                 <input
-                  className="input"
+                  className="form-control"
                   type="password"
                   name="password"
-                  placeholder="enter your password"
+                  placeholder="Enter new password"
                   onChange={this.handleChange}
                 />
               </div>
-              <div className="field">
-                <label className="label">Confirm Password: </label>
+
+              <div className="form-group">
                 <input
-                  className="input"
+                  className="form-control"
                   type="password"
                   name="password2"
-                  placeholder="re-enter your password"
+                  placeholder="Repeat password"
                   onChange={this.handleChange}
                 />
               </div>
               {this.state.error && (
-                <div className="has-text-danger">{this.state.error}</div>
+                <div className="text-danger">{this.state.error}</div>
               )}
-              <div className="field is-clearfix">
-                <button
-                  className="button is-primary is-outlined is-pulled-right"
+              <div className="form-group">
+                <Button
+                  className="bg-main form-control"
                 >
-                  Register
-                </button>
+                  REGISTER
+                </Button>
               </div>
-            </div>
-          </div>
+
         </form>
-        </div>
+        </Col>
+            </Row>
+              
+
+            </Col>
+          </Row>
+
+        </Container>
       </>
     ) : (
       <Redirect to="/login" />

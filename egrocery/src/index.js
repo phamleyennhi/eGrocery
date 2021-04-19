@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 
 
 import 'bootstrap/dist/css/bootstrap.min.css';//bootstrap
-import { Container, Row, Col} from 'reactstrap';
 
 import './mystyles.css';
 // import './index.css';

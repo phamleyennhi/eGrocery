@@ -1,3 +1,9 @@
+/* #92CD28: primary
+#B6EE56: primary-alt
+
+#de7a10: secondary
+#ffab52: secondary-alt */
+
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;1,400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:ital,wght@0,300;0,700;1,300&display=swap');
 body * {
@@ -14,26 +20,48 @@ h3,
 h4,
 h5 {}
 
+.row {
+    margin: auto 0;
+}
+
+nav {
+    box-shadow: 0px 0px 5px #aaa;
+}
+
+nav ul li {
+    margin: auto 1rem;
+}
+
 .bg-main {
     background-color: #92CD28;
     color: white;
     border: none;
 }
 
-.bg-main:hover {
-    background-color: #FFA33F;
+.bg-main:hover,
+.bg-main:focus {
+    background-color: #B6EE56 !important;
 }
 
 a,
 a * {
-    color: #FFA33F;
+    color: #de7a10;
 }
 
 a:hover,
 a *:hover {
-    color: #FFA33F;
+    color: #ffab52;
 }
 
 .rounded {
     border-radius: 7px !important;
+}
+
+
+/* Small devices (landscape phones, 576px and up) */
+
+@media (max-width: 576px) {
+    .navbar {
+        justify-content: center;
+    }
 }
