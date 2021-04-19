@@ -1,7 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+
+import 'bootstrap/dist/css/bootstrap.min.css';//bootstrap
+import { Container, Row, Col} from 'reactstrap';
+
 import './mystyles.css';
-import './index.css';
+// import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 //import "bulma/css/bulma.css";

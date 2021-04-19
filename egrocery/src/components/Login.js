@@ -2,89 +2,106 @@ import React, { Component } from "react";
 import { Redirect, Link } from "react-router-dom";
 import withContext from "../withContext";
 
+import 'bootstrap/dist/css/bootstrap.min.css'; //bootstrap
+
+import { Container, Row, Col, Button } from 'reactstrap';
+
 class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      username: "",
-      password: ""
-    };
-  }
-
-  handleChange = e => this.setState({ [e.target.name]: e.target.value, error: "" });
-
-  login = (e) => {
-    e.preventDefault();
-
-    const { username, password } = this.state;
-    if (!username || !password) {
-      return this.setState({ error: "Fill all fields!" });
+    constructor(props) {
+        super(props);
+        this.state = {
+            username: "",
+            password: ""
+        };
     }
-    this.props.context.login(username, password)
-      .then((loggedIn) => {
-        console.log(loggedIn);
-        if (!loggedIn) {
-          this.setState({ error: "Invalid Credentails" });
-        }
-        else{
-          this.setState({error: "Valid Credentails...Keep waiting!"});
-        }
-      })
-  };
 
-  render() {
-    return !this.props.context.user ? (
-      <>
-        <div className="hero is-primary">
-          <div className="hero-body container">
-            <h4 className="title">Login</h4>
-          </div>
-        </div>
-        <br />
-        <br />
+    handleChange = e => this.setState({
+        [e.target.name]: e.target.value,
+        error: ""
+    });
 
-        <div className=" container is-max-desktop">
-        <form onSubmit={this.login}>
-          <div className="columns is-mobile is-centered">
-            <div className="column is-half">
-              <div className="field">
-                <label className="label">Email: </label>
-                <input
-                  className="input"
-                  type="email"
-                  name="username"
-                  onChange={this.handleChange}
-                />
-              </div>
-              <div className="field">
-                <label className="label">Password: </label>
-                <input
-                  className="input"
-                  type="password"
-                  name="password"
-                  onChange={this.handleChange}
-                />
-              </div>
-              {this.state.error && (
-                <div className="has-text-danger">{this.state.error}</div>
-              )}
-              <Link to="/register"> Don't have an account? Sign up now! </Link>
-              <div className="field is-clearfix">
-                <button
-                  className="button is-primary is-outlined is-pulled-right"
-                >
-                  Submit
-                </button>
-              </div>
-            </div>
-          </div>
+    login = (e) => {
+        e.preventDefault();
+
+        const { username, password } = this.state;
+        if (!username || !password) {
+            return this.setState({ error: "Fill all fields!" });
+        }
+        this.props.context.login(username, password)
+            .then((loggedIn) => {
+                console.log(loggedIn);
+                if (!loggedIn) {
+                    this.setState({ error: "Invalid Credentails" });
+                } else {
+                    this.setState({ error: "Valid Credentails...Keep waiting!" });
+                }
+            })
+    };
+
+    render() {
+        return !this.props.context.user ? ( <
+            >
+            <Container>
+          <Row>
+            <Col lg="6" className="mx-auto border rounded p-4">
+            <Row className="mx-auto pt-3 pb-3">
+              <Col lg="10" className="mx-auto">
+                <h1 className="mb-4">Login</h1>
+              <form onSubmit={this.login}>
+                <div className="form-group">
+
+                      <input
+                        className="form-control rounded pl-2 pr-2 pt-1 pb-1 "
+                        type="email"
+                        name="username"
+                        onChange={this.handleChange}
+                        placeholder="Enter your email"
+                      />
+                    </div>
+                    <div className="form-group">
+                    
+                      
+                      <input
+                        className="form-control rounded pl-2 pr-2 pt-1 pb-1"
+                        type="password"
+                        name="password"
+                        onChange={this.handleChange}
+                        placeholder="Enter your password"
+                      />
+                    </div>
+                    {this.state.error && (
+                      <div className="text-danger">{this.state.error}</div>
+                    )}
+                    
+                        <div className="form-group">
+                        <Link to="/register"><small><i>Don't have an account? Sign up!</i></small></Link>
+                        </div>
+                        <div className="form-group">
+                      <Button
+                        className="bg-main mx-auto d-block w-100"
+                      >
+                        LOGIN
+                      </Button>
+                    </div>
+
         </form>
-        </div>
-      </>
-    ) : (
-      <Redirect to="/products" />
-    );
-  }
+              </Col>
+            </Row>
+              
+
+            </Col>
+          </Row>
+
+        </Container>
+
+
+
+            <
+            />
+        ) : (
+            <Redirect to="/products" />
+        );
+    }
 }
 
 export default withContext(Login);

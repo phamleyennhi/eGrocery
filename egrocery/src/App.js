@@ -3,6 +3,10 @@ import { Switch, Route, Link, BrowserRouter as Router } from "react-router-dom";
 import axios from 'axios';
 import jwt_decode from 'jwt-decode';
 
+
+import 'bootstrap/dist/css/bootstrap.min.css'; //bootstrap
+import { Container, Row, Col} from 'reactstrap';
+
 import AddProduct from './components/AddProduct';
 import Cart from './components/Cart';
 import Login from './components/Login';
@@ -171,7 +175,7 @@ export default class App extends Component {
               </div>
               <label
                 role="button"
-                class="navbar-burger burger"
+                className="navbar-burger burger"
                 aria-label="menu"
                 aria-expanded="false"
                 data-target="navbarBasicExample"
