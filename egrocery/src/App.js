@@ -183,12 +183,14 @@ export default class App extends Component {
       >
         <Router ref={this.routerRef}>
         <div className="App">
+        
           <Navbar
             className="border-bottom mb-5 bg-white"
             role="navigation"
             aria-label="main navigation"
 
           >
+          <Container>
             <NavbarBrand href="/" style={{height: "10vh"}}>
               <img style={{height: "100%", width: "auto"}} src="eGROCERY.png" alt=""/>
             </NavbarBrand>
@@ -254,6 +256,8 @@ export default class App extends Component {
                 )}
 
             </Nav>
+            </Container>
+
             </Navbar>
             <Switch>
               <Route exact path="/" component={ProductList} />
