@@ -126,7 +126,7 @@ export default class App extends Component {
     if (cart[cartItem.id].amount > cart[cartItem.id].product.stock) {
       cart[cartItem.id].amount = cart[cartItem.id].product.stock;
     }
-    this.state.quantity_in_cart += 1;
+    else this.state.quantity_in_cart += 1;
     localStorage.setItem("cart", JSON.stringify(cart));
     localStorage.removeItem("quantity_in_cart");
     localStorage.setItem("quantity_in_cart", JSON.stringify(this.state.quantity_in_cart));
