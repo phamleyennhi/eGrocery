@@ -35,6 +35,7 @@ export default class App extends Component {
     super(props);
     this.state = {
       user: null,
+      quantity_in_cart: 0,
       cart: {},
       products: []
     };
@@ -120,6 +121,7 @@ export default class App extends Component {
     if (cart[cartItem.id].amount > cart[cartItem.id].product.stock) {
       cart[cartItem.id].amount = cart[cartItem.id].product.stock;
     }
+    this.state.quantity_in_cart += 1;
     localStorage.setItem("cart", JSON.stringify(cart));
     this.setState({ cart });
   };
@@ -207,7 +209,7 @@ export default class App extends Component {
                     style={{ marginLeft: "5px", borderRadius: "3px" }}
                   >
                   <small>
-                    { Object.keys(this.state.cart).length }
+                    { this.state.quantity_in_cart }
                   </small>
                   </span>
                 </NavLink>
