@@ -49,6 +49,7 @@ export default class App extends Component {
     if (quantity_in_cart == null){
       quantity_in_cart = 0;
     }
+    else quantity_in_cart = parseInt(quantity_in_cart);
 
     const products = await axios.get('https://se-egrocery.herokuapp.com/api/products');
     user = user ? JSON.parse(user) : null;
@@ -118,6 +119,10 @@ export default class App extends Component {
 
   addToCart = cartItem => {
     let cart = this.state.cart;
+    let products = this.state.products;
+    console.log(products);
+    console.log(cartItem.id)
+    
     if (cart[cartItem.id]) {
       cart[cartItem.id].amount += cartItem.amount;
     } else {
@@ -127,6 +132,8 @@ export default class App extends Component {
       cart[cartItem.id].amount = cart[cartItem.id].product.stock;
     }
     else this.state.quantity_in_cart += 1;
+    console.log("cartItem.amount:", cartItem.amount);
+    console.log("cartItem:", cartItem);
     localStorage.setItem("cart", JSON.stringify(cart));
     localStorage.removeItem("quantity_in_cart");
     localStorage.setItem("quantity_in_cart", JSON.stringify(this.state.quantity_in_cart));
