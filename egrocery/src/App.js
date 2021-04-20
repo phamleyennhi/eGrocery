@@ -280,6 +280,25 @@ export default class App extends Component {
               <Route exact path="/contact" component={Contact} />
               <Route exact path="/thankyou" component={ThankYou} />
             </Switch>
+
+
+            <footer className="mt-5">
+              <Container fluid className="bg-dark text-light text-center">
+                <Container>
+                  <Row className="mx-auto">
+                    <Col className="lg-6 pt-4 pb-4">
+                      <NavbarBrand className="m-0 p-0" href="/" style={{height: "10vh"}}>
+                        <img style={{height: "100%", width: "auto"}} src="eGROCERY.png" alt=""/>
+                      </NavbarBrand>
+                      <br/>
+                      All rights reserved
+                      <br/>
+                      <b>© 2021 eGrocery</b>
+                    </Col>
+                  </Row>
+                </Container>
+              </Container>
+            </footer>
           </div>
         </Router>
       </Context.Provider>
