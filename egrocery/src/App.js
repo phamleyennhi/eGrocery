@@ -45,13 +45,18 @@ export default class App extends Component {
   async componentDidMount() {
     let user = localStorage.getItem("user");
     let cart = localStorage.getItem("cart");
+    let quantity_in_cart = localStorage.getItem("quantity_in_cart");
+    if (quantity_in_cart == null){
+      quantity_in_cart = 0;
+    }
 
     const products = await axios.get('https://se-egrocery.herokuapp.com/api/products');
     user = user ? JSON.parse(user) : null;
     cart = cart? JSON.parse(cart) : {};
 
-    this.setState({ user,  products: products.data, cart });
+    this.setState({ user,  products: products.data, cart, quantity_in_cart});
     console.log(this.state.user);
+    console.log(quantity_in_cart)
   }
 
   login = async (email, password) => {
@@ -123,6 +128,8 @@ export default class App extends Component {
     }
     this.state.quantity_in_cart += 1;
     localStorage.setItem("cart", JSON.stringify(cart));
+    localStorage.removeItem("quantity_in_cart");
+    localStorage.setItem("quantity_in_cart", JSON.stringify(this.state.quantity_in_cart));
     this.setState({ cart });
   };
 
@@ -135,8 +142,12 @@ export default class App extends Component {
 
   clearCart = () => {
     let cart = {};
+    let quantity_in_cart = 0;
     localStorage.removeItem("cart");
+    localStorage.removeItem("quantity_in_cart");
+    // localStorage.setItem("quantity_in_cart", 0);
     this.setState({ cart });
+    this.setState({quantity_in_cart: 0});
   };
 
   checkout = () => {
