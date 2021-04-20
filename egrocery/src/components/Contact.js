@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css'; //bootstrap
+
+import { Container, Row, Col, Button } from 'reactstrap';
 
 class Contact extends Component {
   constructor(props) {
@@ -25,50 +28,55 @@ class Contact extends Component {
   render() {
     return (
       <>
-        <div className="hero is-primary ">
-          <div className="hero-body container">
-            <h4 className="title">Contact</h4>
-          </div>
-        </div>
-        <br />
-        <br />
-        <div className="container is-max-desktop">
+      <Container fluid className="p-0 mt-n5 mb-5">
+      <div
+        style={{height: "50vh", background: "url('/location-map.png')", backgroundSize: "cover", backgroundPosition:"center center", backgroundRepeat: "no-repeat"}}
+      ></div>
+      </Container>
+        <Container>
+            <Row>
+            <Col lg="6" className="mx-auto border rounded p-4">
+            <Row className="mx-auto pt-3 pb-3">
+              <Col lg="10" className="mx-auto">
+                <h1 className="mb-4">Contact Us</h1>
+                <p className="pb-3">Got a question? A suggestion? A complaint? Let us know in the form below and we will get back to you within 24 business hours. We hope you enjoy your shopping with us ❤️</p>
         <form onSubmit={this.handleSubmit.bind(this)}>
-          <div className="columns is-mobile is-centered">
-            <div className="column is-half">
-              <div className="field">
-                  {/* Name */}
-                  <label className="label">Name: </label>
+          <div className="form-group">
                   <input
-                    className="input"
-                    placeholder="enter your name"
+                    className="form-control"
+                    placeholder="Enter your name"
                     onChange={(event) => this.updateField('name', event.target.value)}
                   />
-                  {/* Email */}
-                  <label className="label">Email: </label>
+                  </div>
+                  <div className="form-group">
                   <input
-                    className="input"
-                    placeholder="enter your email"
+                    className="form-control"
+                    placeholder="Enter your email"
                     onChange={(event) => this.updateField('email', event.target.value)}
                   />
-                  {/* Message */}
-                  <label className="label">Message: </label>
-                  <textarea rows="12" cols="64" style={{width: '100%'}}
+                  </div>
+                  <div className="form-group">
+                  <textarea className="form-control"
                     placeholder="Your message starts here..."
+                    style={{minHeight: "30vh"}}
                     onChange={(event) => this.updateField('message', event.target.value)}
                   />
                 </div>
-                {/* Submit*/}
-                <div className="field is-clearfix">
-                <button 
-                  className="button is-primary is-outlined is-pulled-right">
-                  Submit
-                </button>
-              </div>
-            </div>
+                <div className="form-group">
+                <Button 
+                  className="form-control bg-main">
+                  SUBMIT
+                </Button>
           </div>
         </form>
-        </div>
+        </Col>
+            </Row>
+              
+
+            </Col>
+          </Row>
+
+        </Container>
       </>
     )
   }
