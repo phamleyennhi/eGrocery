@@ -29,6 +29,8 @@ import ProductList from './components/ProductList';
 import Contact from './components/Contact';
 import Context from "./Context";
 import ThankYou from "./components/ThankYou";
+import Checkout from "./components/Checkout";
+import Feedback from "./components/Feedback";
 
 export default class App extends Component {
   constructor(props) {
@@ -37,7 +39,8 @@ export default class App extends Component {
       user: null,
       quantity_in_cart: 0,
       cart: {},
-      products: []
+      products: [],
+      feedback_database: []
     };
     this.routerRef = React.createRef();
   }
@@ -52,12 +55,11 @@ export default class App extends Component {
     else quantity_in_cart = parseInt(quantity_in_cart);
 
     const products = await axios.get('https://se-egrocery.herokuapp.com/api/products');
+    const feedback_database = await axios.get('https://se-egrocery.herokuapp.com/api/products');
     user = user ? JSON.parse(user) : null;
     cart = cart? JSON.parse(cart) : {};
 
-    this.setState({ user,  products: products.data, cart, quantity_in_cart});
-    console.log(this.state.user);
-    console.log(quantity_in_cart)
+    this.setState({ user,  products: products.data, cart, quantity_in_cart, feedback_database: feedback_database.data});
   }
 
   login = async (email, password) => {
@@ -104,7 +106,6 @@ export default class App extends Component {
   }
 
 
-
   logout = e => {
     e.preventDefault();
     this.setState({ user: null });
@@ -140,11 +141,34 @@ export default class App extends Component {
     this.setState({ cart });
   };
 
+  editCartQuantity = (cartItem, cartItemId, change) => {
+    let cart = this.state.cart;
+    let quantity_in_cart = localStorage.getItem("quantity_in_cart");
+
+    quantity_in_cart = parseInt(quantity_in_cart) + change;
+    cart[cartItem.id].amount += change;
+
+    if(cart[cartItem.id].amount <= 0){
+      this.removeFromCart(cartItemId);
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    localStorage.setItem("quantity_in_cart", JSON.stringify(quantity_in_cart));
+    this.setState({ cart });
+    this.setState({ quantity_in_cart });
+  }
+
+
   removeFromCart = cartItemId => {
     let cart = this.state.cart;
+    let quantity_in_cart = localStorage.getItem("quantity_in_cart");
+    quantity_in_cart = parseInt(quantity_in_cart) - cart[cartItemId].amount;
+    localStorage.setItem("quantity_in_cart", JSON.stringify(quantity_in_cart));
+
     delete cart[cartItemId];
     localStorage.setItem("cart", JSON.stringify(cart));
     this.setState({ cart });
+    this.setState({ quantity_in_cart });
   };
 
   clearCart = () => {
@@ -181,6 +205,25 @@ export default class App extends Component {
     this.clearCart();
   };
 
+
+  feedback = async (name, email, message) => {
+    const res = await axios.post(
+      'https://se-egrocery.herokuapp.com/api/feedback',
+      { name, email, message },
+    ).catch((res) => {
+      return { status: 401, message: 'Unauthorized' }
+    })
+
+    if(res.status === 200) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+
+
+
   // Navbar burger collapse button
   // const [isOpen, setIsOpen] = useState(false);
   // const toggle = () => setIsOpen(!isOpen);
@@ -196,7 +239,9 @@ export default class App extends Component {
           register: this.register,
           addProduct: this.addProduct,
           clearCart: this.clearCart,
-          checkout: this.checkout
+          checkout: this.checkout,
+          editCartQuantity: this.editCartQuantity,
+          feedback: this.feedback
         }}
       >
         <Router ref={this.routerRef}>
@@ -220,8 +265,26 @@ export default class App extends Component {
                 <NavLink className="text-secondary" href="/products">Products</NavLink>
               </NavItem>
 
+
+              {this.state.user && this.state.user.accessLevel < 1 && (
+                <>
+                <NavItem>
+                  <NavLink className="text-secondary" href="/add-product">
+                    Add Product
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink className="text-secondary" href="/feedback">
+                    Feedback
+                  </NavLink>
+                </NavItem>
+                </>
+              )}
+
               {(!this.state.user||(this.state.user && this.state.user.accessLevel > 0)) &&
-                (<NavItem>
+                (
+                <>
+                <NavItem>
                 <NavLink className="text-secondary" href="/cart">
                   Cart
                   <span
@@ -233,45 +296,34 @@ export default class App extends Component {
                   </small>
                   </span>
                 </NavLink>
-                </NavItem>)
-              }
-
-              {this.state.user && this.state.user.accessLevel < 1 && (
-                <NavItem>
-                  <NavLink className="text-secondary" href="/add-product">
-                    Add Product
-                  </NavLink>
                 </NavItem>
-              )}
-
-              {(!this.state.user||(this.state.user && this.state.user.accessLevel > 0)) &&
-                (
                 <NavItem>
                 <NavLink className="text-secondary" href="/contact">
                   Contact
                 </NavLink>
                 </NavItem>
+                </>
                 )
-                }
+              }
              
-                {!this.state.user ? (
-                  <NavItem>
-                  <NavLink className="text-secondary" href="/login">
-                  <Button className="btn-main">
-                    Login
-                  </Button>
-                    
-                  </NavLink>
-                  </NavItem>
-                ) : (
+              {!this.state.user ? (
                 <NavItem>
-                  <NavLink className="text-secondary" href="/" onClick={this.logout}>
-                    <Button className="btn-main">
-                    Logout
-                  </Button>
-                  </NavLink>
-                  </NavItem>
-                )}
+                <NavLink className="text-secondary" href="/login">
+                <Button className="btn-main">
+                  Login
+                </Button>
+                  
+                </NavLink>
+                </NavItem>
+              ) : (
+              <NavItem>
+                <NavLink className="text-secondary" href="/" onClick={this.logout}>
+                  <Button className="btn-main">
+                  Logout
+                </Button>
+                </NavLink>
+                </NavItem>
+              )}
 
             </Nav>
             </Container>
@@ -286,6 +338,8 @@ export default class App extends Component {
               <Route exact path="/products" component={ProductList} />
               <Route exact path="/contact" component={Contact} />
               <Route exact path="/thankyou" component={ThankYou} />
+              <Route exact path="/feedback" component={Feedback} />
+              <Route exact path="/checkout" component={Checkout} />
             </Switch>
 
 

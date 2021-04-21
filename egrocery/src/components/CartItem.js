@@ -7,7 +7,7 @@ const CartItem = props => {
 
   const { product, amount } = cartItem;
   return (
-      <Row className="mx-auto align-items-center shadow-custom rounded">
+      <Row className="mb-3 mx-auto align-items-center shadow-custom rounded">
         <Col md="3" className="border-right p-0">
           <img className="img-fluid mx-auto p-5" src={product.url} alt="" />
         </Col>
@@ -25,13 +25,17 @@ const CartItem = props => {
             <div>
               <h1 className="d-inline product-price">{product.price}&nbsp;</h1><h6 className="d-inline">AED/kg</h6>
             </div>
-            <p className="m-0">{`${amount} in cart`}</p>
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+              <button type="button" class="btn btn-main" onClick={() => props.editCartQuantity(cartItem, cartKey, -1)}>-</button>
+              <button type="button" class="btn btn-outline-main" disabled>{amount}</button>
+              <button type="button" class="btn btn-main" onClick={() => props.editCartQuantity(cartItem, cartKey, 1)}>+</button>
+            </div>
               <a
                 href="#"
                 className="text-danger"
                 onClick={() => props.removeFromCart(cartKey)}
               >
-                <small>Remove item</small>
+                <small>Remove items</small>
               </a>
           </Col>
           </Row>
