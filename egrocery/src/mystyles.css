@@ -55,6 +55,11 @@ nav ul li {
     background-color: #B6EE56 !important;
 }
 
+.btn-outline-main {
+    border: 2px solid #92CD28 !important;
+}
+
+
 .bg-secondary-custom{
     background: #de7a10;
 }

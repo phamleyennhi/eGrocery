@@ -25,13 +25,17 @@ const CartItem = props => {
             <div>
               <h1 className="d-inline product-price">{product.price}&nbsp;</h1><h6 className="d-inline">AED/kg</h6>
             </div>
-            <p className="m-0">{`${amount} in cart`}</p>
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+              <button type="button" class="btn btn-main" onClick={() => props.editCartQuantity(cartItem, cartKey, -1)}>-</button>
+              <button type="button" class="btn btn-outline-main" disabled>{amount}</button>
+              <button type="button" class="btn btn-main" onClick={() => props.editCartQuantity(cartItem, cartKey, 1)}>+</button>
+            </div>
               <a
                 href="#"
                 className="text-danger"
                 onClick={() => props.removeFromCart(cartKey)}
               >
-                <small>Remove item</small>
+                <small>Remove items</small>
               </a>
           </Col>
           </Row>

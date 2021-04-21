@@ -23,6 +23,7 @@ const Cart = props => {
                 cartKey={key}
                 key={key}
                 cartItem={cart[key]}
+                editCartQuantity={props.context.editCartQuantity}
                 removeFromCart={props.context.removeFromCart}
               />
             ))}
