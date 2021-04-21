@@ -7,7 +7,7 @@ const CartItem = props => {
 
   const { product, amount } = cartItem;
   return (
-      <Row className="mx-auto align-items-center shadow-custom rounded">
+      <Row className="mb-3 mx-auto align-items-center shadow-custom rounded">
         <Col md="3" className="border-right p-0">
           <img className="img-fluid mx-auto p-5" src={product.url} alt="" />
         </Col>
