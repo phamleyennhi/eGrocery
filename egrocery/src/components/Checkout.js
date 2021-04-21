@@ -227,7 +227,9 @@ class Checkout extends Component {
 
 
         <hr className="mb-4"/>
-        <button className="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+        <Button className="btn-main mx-auto d-block w-100">
+							Continue to checkout
+							</Button>
       </form>
 
 
