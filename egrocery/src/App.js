@@ -142,9 +142,14 @@ export default class App extends Component {
 
   removeFromCart = cartItemId => {
     let cart = this.state.cart;
+    let quantity_in_cart = localStorage.getItem("quantity_in_cart");
+    quantity_in_cart = parseInt(quantity_in_cart) - cart[cartItemId].amount;
+    localStorage.setItem("quantity_in_cart", JSON.stringify(quantity_in_cart));
+
     delete cart[cartItemId];
     localStorage.setItem("cart", JSON.stringify(cart));
     this.setState({ cart });
+    this.setState({ quantity_in_cart });
   };
 
   clearCart = () => {
