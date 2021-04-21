@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'; //bootstrap
+import withContext from "../withContext";
+
 
 import { Container, Row, Col, Button } from 'reactstrap';
 
@@ -22,7 +24,14 @@ class Contact extends Component {
   handleSubmit(event) {
     console.log('A contact form was submitted');
     event.preventDefault();
-    this.props.history.push("/thankyou");
+    this.props.context.feedback(this.state.name, this.state.email, this.state.message)
+      .then( submitted => {
+        console.log(this.state.message);
+        console.log(submitted);
+        this.props.history.push("/thankyou");
+      }
+      )
+    
   }
 
   render() {
@@ -93,4 +102,4 @@ class Contact extends Component {
   }
 }
 
-export default Contact;
+export default withContext(Contact);

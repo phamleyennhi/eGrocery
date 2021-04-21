@@ -104,7 +104,6 @@ export default class App extends Component {
   }
 
 
-
   logout = e => {
     e.preventDefault();
     this.setState({ user: null });
@@ -204,6 +203,25 @@ export default class App extends Component {
     this.clearCart();
   };
 
+
+  feedback = async (name, email, message) => {
+    const res = await axios.post(
+      'https://se-egrocery.herokuapp.com/api/feedback',
+      { name, email, message },
+    ).catch((res) => {
+      return { status: 401, message: 'Unauthorized' }
+    })
+
+    if(res.status === 200) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+
+
+
   // Navbar burger collapse button
   // const [isOpen, setIsOpen] = useState(false);
   // const toggle = () => setIsOpen(!isOpen);
@@ -220,7 +238,8 @@ export default class App extends Component {
           addProduct: this.addProduct,
           clearCart: this.clearCart,
           checkout: this.checkout,
-          editCartQuantity: this.editCartQuantity
+          editCartQuantity: this.editCartQuantity,
+          feedback: this.feedback
         }}
       >
         <Router ref={this.routerRef}>
