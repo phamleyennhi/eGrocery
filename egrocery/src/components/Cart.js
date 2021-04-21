@@ -7,6 +7,12 @@ import { Container, Row, Col, Button } from 'reactstrap';
 const Cart = props => {
   const { cart } = props.context;
   const cartKeys = Object.keys(cart || {});
+  var total_price = 0;
+  for (var item of cartKeys){
+    var amount = cart[item].amount;
+    var price = cart[item]["product"]["price"];
+    total_price += amount*price;
+  }
   return (
     <>
       <Container>
@@ -27,6 +33,9 @@ const Cart = props => {
                 removeFromCart={props.context.removeFromCart}
               />
             ))}
+            <div> Total Price: {total_price} AED
+
+            </div>
             <div className="column is-12 is-clearfix">
               <br />
               <div className="is-pulled-right">
