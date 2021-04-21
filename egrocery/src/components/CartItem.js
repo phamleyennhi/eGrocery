@@ -23,12 +23,12 @@ const CartItem = props => {
           </Col>
           <Col md="4" className="text-right">
             <div>
-              <h1 className="d-inline product-price">{product.price}&nbsp;</h1><h6 className="d-inline">AED/kg</h6>
+              <h3 className="d-inline product-price">{product.price}&nbsp;</h3><h6 className="d-inline">AED/kg</h6>
             </div>
-            <div class="btn-group btn-group-toggle" data-toggle="buttons">
-              <button type="button" class="btn btn-main" onClick={() => props.editCartQuantity(cartItem, cartKey, -1)}>-</button>
-              <button type="button" class="btn btn-outline-main" disabled>{amount}</button>
-              <button type="button" class="btn btn-main" onClick={() => props.editCartQuantity(cartItem, cartKey, 1)}>+</button>
+            <div className="btn-group btn-group-toggle" data-toggle="buttons">
+              <button type="button" className="btn btn-main" onClick={() => props.editCartQuantity(cartItem, cartKey, -1)}>-</button>
+              <button type="button" className="btn btn-outline-main" disabled>{amount}</button>
+              <button type="button" className="btn btn-main" onClick={() => props.editCartQuantity(cartItem, cartKey, 1)}>+</button>
             </div>
               <a
                 href="#"

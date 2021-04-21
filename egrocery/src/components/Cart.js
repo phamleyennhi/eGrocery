@@ -14,6 +14,10 @@ const Cart = props => {
     var price = cart[item]["product"]["price"];
     total_price += amount*price;
   }
+  //Check for free shipping
+  if (total_price > 100){
+    console.log("yay");
+  }
   return (
     <>
       <Container>
@@ -24,30 +28,20 @@ const Cart = props => {
         {cartKeys.length ? (
 
         <Row>
-
-          <Col lg={{ size: 4, order: 2}}>
           
-            <div className="p-3 mb-5 align-items-left shadow-custom rounded">
-
+          <Col lg={{ size: 4, order: 2}} >
+          <div className="p-3 mb-5 align-items-left shadow-custom rounded">
             <h4 className="text-capitalize font-weight-bold mb-0">
-              Total Price: {total_price} AED
+              Total: {total_price} AED
             </h4>
               
             <Link to="/products" className="mt-2 ">
-             <i> Add more products for free shipping! </i>
+             <i>Add more products for free shipping on order over AED 100!</i>
             </Link>
 
-            <div className="column is-12 is-clearfix">
-              <br />
-              <div className="is-pulled-right">
-                <button
-                  onClick={props.context.clearCart}
-                  className="btn-main mt-4"
-                >
-                  Clear cart
-                </button>{" "}
-                <button
-                  className="btn-main mt-4"
+            <Row className="mt-4">
+                <Button
+                  className="btn-main btn-block mb-4"
                   onClick={() => {
                       if(!props.context.user){
                         props.history.push("/login");
@@ -56,11 +50,17 @@ const Cart = props => {
                       }
                     }}
                 >
-                  Checkout
-                </button>
-              </div>
-            </div>
+                  CHECKOUT
+                </Button>
 
+                <Button
+                  onClick={props.context.clearCart}
+                  className="btn-sm btn-outline-danger ml-auto"
+                >
+                  Clear cart
+                </Button>
+
+            </Row>
             </div>
           </Col>
 

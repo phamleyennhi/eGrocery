@@ -64,6 +64,10 @@ nav ul li {
     background: #de7a10;
 }
 
+.btn-outline-danger{
+    background: white;
+}
+
 a,
 a * {
     color: #de7a10;
