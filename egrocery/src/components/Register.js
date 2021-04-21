@@ -47,7 +47,7 @@ class Register extends Component {
       <>
         <Container>
             <Row>
-            <Col lg="6" className="mx-auto border rounded p-4">
+            <Col lg="6" className="mx-auto shadow-custom rounded p-4">
             <Row className="mx-auto pt-3 pb-3">
               <Col lg="10" className="mx-auto">
                 <h1 className="mb-4">Register</h1>
@@ -58,7 +58,7 @@ class Register extends Component {
                   className="form-control"
                   type="email"
                   name="username"
-                  placeholder="Enter your email"
+                  placeholder="Email"
                   onChange={this.handleChange}
                 />
               </div>
@@ -88,7 +88,7 @@ class Register extends Component {
                   className="form-control"
                   type="password"
                   name="password"
-                  placeholder="Enter new password"
+                  placeholder="New password"
                   onChange={this.handleChange}
                 />
               </div>
@@ -107,7 +107,7 @@ class Register extends Component {
               )}
               <div className="form-group">
                 <Button
-                  className="bg-main form-control"
+                  className="btn-main form-control"
                 >
                   REGISTER
                 </Button>

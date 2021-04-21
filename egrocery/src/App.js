@@ -185,7 +185,7 @@ export default class App extends Component {
         <div className="App">
         
           <Navbar
-            className="border-bottom mb-5 bg-white"
+            className="mb-5 bg-white"
             role="navigation"
             aria-label="main navigation"
 
@@ -199,19 +199,19 @@ export default class App extends Component {
                   this.state.showMenu ? "is-active" : ""
                 }`}>
               <NavItem>
-                <NavLink href="/products">Products</NavLink>
+                <NavLink className="text-secondary" href="/products">Products</NavLink>
               </NavItem>
 
               {(!this.state.user||(this.state.user && this.state.user.accessLevel > 0)) &&
                 (<NavItem>
-                <NavLink href="/cart">
+                <NavLink className="text-secondary" href="/cart">
                   Cart
                   <span
-                    className="bg-secondary pl-2 pr-2"
+                    className="bg-secondary-custom pl-2 pr-2"
                     style={{ marginLeft: "5px", borderRadius: "3px" }}
                   >
-                  <small>
-                    { this.state.quantity_in_cart }
+                  <small >
+                    <b className="text-white">{ this.state.quantity_in_cart }</b> 
                   </small>
                   </span>
                 </NavLink>
@@ -220,7 +220,7 @@ export default class App extends Component {
 
               {this.state.user && this.state.user.accessLevel < 1 && (
                 <NavItem>
-                  <NavLink href="/add-product">
+                  <NavLink className="text-secondary" href="/add-product">
                     Add Product
                   </NavLink>
                 </NavItem>
@@ -229,7 +229,7 @@ export default class App extends Component {
               {(!this.state.user||(this.state.user && this.state.user.accessLevel > 0)) &&
                 (
                 <NavItem>
-                <NavLink href="/contact">
+                <NavLink className="text-secondary" href="/contact">
                   Contact
                 </NavLink>
                 </NavItem>
@@ -238,8 +238,8 @@ export default class App extends Component {
              
                 {!this.state.user ? (
                   <NavItem>
-                  <NavLink href="/login">
-                  <Button className="bg-main">
+                  <NavLink className="text-secondary" href="/login">
+                  <Button className="btn-main">
                     Login
                   </Button>
                     
@@ -247,8 +247,8 @@ export default class App extends Component {
                   </NavItem>
                 ) : (
                 <NavItem>
-                  <NavLink href="/" onClick={this.logout}>
-                    <Button className="bg-main">
+                  <NavLink className="text-secondary" href="/" onClick={this.logout}>
+                    <Button className="btn-main">
                     Logout
                   </Button>
                   </NavLink>

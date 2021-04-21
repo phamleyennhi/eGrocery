@@ -42,8 +42,8 @@ class Login extends Component {
         return !this.props.context.user ? ( <
             >
             <Container>
-          <Row>
-            <Col lg="6" className="mx-auto border rounded p-4">
+            <Row>
+            <Col lg="6" className="mx-auto shadow-custom rounded p-4">
             <Row className="mx-auto pt-3 pb-3">
               <Col lg="10" className="mx-auto">
                 <h1 className="mb-4">Login</h1>
@@ -78,7 +78,7 @@ class Login extends Component {
                         </div>
                         <div className="form-group">
                       <Button
-                        className="bg-main mx-auto d-block w-100"
+                        className="btn-main mx-auto d-block w-100"
                       >
                         LOGIN
                       </Button>

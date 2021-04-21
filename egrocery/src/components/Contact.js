@@ -36,7 +36,7 @@ class Contact extends Component {
         <Container>
         <Row className="pt-5 pb-5 align-items-center">
         <Col md="7" >
-        <h4>eGrocery Warehouse Address:</h4>
+        <h3>eGrocery Warehouse:</h3>
         <p>Sheikh Khalifa Bin Zayed Al Nahyan Highway (Exit 11)<br/>Saadiyat Island, Abu Dhabi<br/>United Arab Emirates</p>
         <p>Customer Service: contact@egrocery.com<br/>Hotline: +971 69 69 69 69</p>
         
@@ -46,7 +46,7 @@ class Contact extends Component {
         </Col>
         </Row>
             <Row>
-            <Col lg="6" className="mx-auto border rounded p-4">
+            <Col lg="6" className="mx-auto shadow-custom rounded p-4">
             <Row className="mx-auto pt-3 pb-3">
               <Col lg="10" className="mx-auto">
                 <h1 className="mb-4">Contact Us</h1>

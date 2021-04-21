@@ -1,38 +1,47 @@
 import React from "react";
+import 'bootstrap/dist/css/bootstrap.min.css'; //bootstrap
 
+import { Container, Row, Col, Button } from 'reactstrap';
 const CartItem = props => {
   const { cartItem, cartKey } = props;
 
   const { product, amount } = cartItem;
   return (
-    <div className=" column is-half">
-      <div className="box">
-        <div className="media">
-          <div className="media-left">
-            <figure className="image is-64x64">
-              <img
-                src={product.url}
-                alt={product.shortDesc}
-              />
-            </figure>
-          </div>
-          <div className="media-content">
-            <b style={{ textTransform: "capitalize" }}>
-              {product.name}{" "}
-              <span className="tag is-primary">{"AED " + product.price + "/kg"}</span>
-            </b>
-            <div>{product.shortDesc}</div>
-            <small>{`${amount} in cart`}</small>
-          </div>
-          <div
-            className="media-right"
-            onClick={() => props.removeFromCart(cartKey)}
-          >
-            <span className="delete is-large"></span>
-          </div>
-        </div>
-      </div>
-    </div>
+      <Row className="mx-auto align-items-center shadow-custom rounded">
+        <Col md="3" className="border-right p-0">
+          <img className="img-fluid mx-auto p-5" src={product.url} alt="" />
+        </Col>
+        <Col md="9">
+          <Row>
+            <Col md="8">
+            <h4 className="text-capitalize font-weight-bold mb-0">
+              {product.name}
+            </h4>
+            <h6 className="text-secondary">
+              {product.shortDesc}
+            </h6>
+          </Col>
+          <Col md="4" className="text-right">
+            <div>
+              <h1 className="d-inline product-price">{product.price}&nbsp;</h1><h6 className="d-inline">AED/kg</h6>
+            </div>
+            <p className="m-0">{`${amount} in cart`}</p>
+              <a
+                href="#"
+                className="text-danger"
+                onClick={() => props.removeFromCart(cartKey)}
+              >
+                <small>Remove item</small>
+              </a>
+          </Col>
+          </Row>
+          
+
+        </Col>
+        <Col>
+        </Col>
+
+      </Row>
   );
 };
 

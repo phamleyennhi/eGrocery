@@ -2,19 +2,21 @@ import React from "react";
 import ProductItem from "./ProductItem";
 import withContext from "../withContext";
 
+import 'bootstrap/dist/css/bootstrap.min.css'; //bootstrap
+
+import { Container, Row, Col, Button } from 'reactstrap';
+
 const ProductList = props => {
   const { products } = props.context;
 
   return (
     <>
-      <div className="hero is-primary">
-        <div className="hero-body container">
-          <h4 className="title">Our Products</h4>
-        </div>
-      </div>
-      <br />
-      <div className="container">
-        <div className="column columns is-multiline">
+    <Container>
+      <Row className="mb-5">
+          <h1>Our Products</h1>
+      </Row>
+      <Row className="product-list-wrapper justify-content-center">
+        
           {products && products.length ? (
             products.map((product, index) => (
               <ProductItem
@@ -30,8 +32,10 @@ const ProductList = props => {
               </span>
             </div>
           )}
-        </div>
-      </div>
+
+      </Row>
+      
+      </Container>
     </>
   );
 };

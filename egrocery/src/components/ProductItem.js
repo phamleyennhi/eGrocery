@@ -1,32 +1,28 @@
 import React from "react";
+import 'bootstrap/dist/css/bootstrap.min.css'; //bootstrap
+
+import { Container, Row, Col, Button } from 'reactstrap';
 
 const ProductItem = props => {
   const { product } = props;
   return (
-    <div className=" column is-half">
-      <div className="box">
-        <div className="media">
-          <div className="media-left">
-            <figure className="image is-64x64">
-              <img
-                src={product.url} alt=""
-              />
-            </figure>
-          </div>
-          <div className="media-content">
-            <b style={{ textTransform: "capitalize" }}>
-              {product.name}{" "}
-              <span className="tag is-primary">{"AED " + product.price + "/kg"}</span>
-            </b>
-            <div>{product.shortDesc}</div>
-            {product.stock > 0 ? (
-              <small>{product.stock + " Available"}</small>
-            ) : (
-              <small className="has-text-danger">Out Of Stock</small>
-            )}
-            <div className="is-clearfix">
-              <button
-                className="button is-small is-outlined is-primary   is-pulled-right"
+  <Col md="3" className="mt-4 mb-4 ml-2 mr-2 product-item">
+    <Row className="mx-auto text-center align-items-center justify-content-center shadow-custom rounded">
+      <Col md="12" className="border-bottom p-0">
+        <img className="img-fluid mx-auto p-5" src={product.url} alt="" />
+      </Col>
+      <Col md="12" className="mt-3">
+        <h4 className="text-capitalize font-weight-bold mb-0">
+          {product.name}
+        </h4>
+        <h6 className="text-secondary">
+          {product.shortDesc}
+        </h6>
+        <div className=" mt-3">
+          <h1 className="d-inline product-price">{product.price}&nbsp;</h1><h6 className="d-inline">AED/kg</h6>
+        </div>
+        <Button
+                className="btn-main mt-4"
                 onClick={() =>
                   props.addToCart({
                     id: product.name,
@@ -35,13 +31,19 @@ const ProductItem = props => {
                   })
                 }
               >
-                Add to Cart
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+                ADD
+              </Button>
+
+        <p className="text-secondary">
+          {product.stock > 0 ? (
+              <small>{product.stock + " in stock"}</small>
+            ) : (
+              <small className="has-text-danger">Out Of Stock</small>
+            )}
+        </p>  
+      </Col>
+    </Row>
+  </Col>
   );
 };
 
