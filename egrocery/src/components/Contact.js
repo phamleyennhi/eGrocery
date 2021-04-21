@@ -75,7 +75,7 @@ class Contact extends Component {
                 </div>
                 <div className="form-group">
                 <Button 
-                  className="form-control bg-main">
+                  className="form-control btn-main">
                   SUBMIT
                 </Button>
           </div>
