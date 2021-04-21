@@ -30,6 +30,7 @@ import Contact from './components/Contact';
 import Context from "./Context";
 import ThankYou from "./components/ThankYou";
 import Checkout from "./components/Checkout";
+import Feedback from "./components/Feedback";
 
 export default class App extends Component {
   constructor(props) {
@@ -38,7 +39,8 @@ export default class App extends Component {
       user: null,
       quantity_in_cart: 0,
       cart: {},
-      products: []
+      products: [],
+      feedback_database: []
     };
     this.routerRef = React.createRef();
   }
@@ -53,12 +55,11 @@ export default class App extends Component {
     else quantity_in_cart = parseInt(quantity_in_cart);
 
     const products = await axios.get('https://se-egrocery.herokuapp.com/api/products');
+    const feedback_database = await axios.get('https://se-egrocery.herokuapp.com/api/products');
     user = user ? JSON.parse(user) : null;
     cart = cart? JSON.parse(cart) : {};
 
-    this.setState({ user,  products: products.data, cart, quantity_in_cart});
-    console.log(this.state.user);
-    console.log(quantity_in_cart)
+    this.setState({ user,  products: products.data, cart, quantity_in_cart, feedback_database: feedback_database.data});
   }
 
   login = async (email, password) => {
@@ -264,8 +265,26 @@ export default class App extends Component {
                 <NavLink className="text-secondary" href="/products">Products</NavLink>
               </NavItem>
 
+
+              {this.state.user && this.state.user.accessLevel < 1 && (
+                <>
+                <NavItem>
+                  <NavLink className="text-secondary" href="/add-product">
+                    Add Product
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink className="text-secondary" href="/feedback">
+                    Feedback
+                  </NavLink>
+                </NavItem>
+                </>
+              )}
+
               {(!this.state.user||(this.state.user && this.state.user.accessLevel > 0)) &&
-                (<NavItem>
+                (
+                <>
+                <NavItem>
                 <NavLink className="text-secondary" href="/cart">
                   Cart
                   <span
@@ -277,45 +296,34 @@ export default class App extends Component {
                   </small>
                   </span>
                 </NavLink>
-                </NavItem>)
-              }
-
-              {this.state.user && this.state.user.accessLevel < 1 && (
-                <NavItem>
-                  <NavLink className="text-secondary" href="/add-product">
-                    Add Product
-                  </NavLink>
                 </NavItem>
-              )}
-
-              {(!this.state.user||(this.state.user && this.state.user.accessLevel > 0)) &&
-                (
                 <NavItem>
                 <NavLink className="text-secondary" href="/contact">
                   Contact
                 </NavLink>
                 </NavItem>
+                </>
                 )
-                }
+              }
              
-                {!this.state.user ? (
-                  <NavItem>
-                  <NavLink className="text-secondary" href="/login">
-                  <Button className="btn-main">
-                    Login
-                  </Button>
-                    
-                  </NavLink>
-                  </NavItem>
-                ) : (
+              {!this.state.user ? (
                 <NavItem>
-                  <NavLink className="text-secondary" href="/" onClick={this.logout}>
-                    <Button className="btn-main">
-                    Logout
-                  </Button>
-                  </NavLink>
-                  </NavItem>
-                )}
+                <NavLink className="text-secondary" href="/login">
+                <Button className="btn-main">
+                  Login
+                </Button>
+                  
+                </NavLink>
+                </NavItem>
+              ) : (
+              <NavItem>
+                <NavLink className="text-secondary" href="/" onClick={this.logout}>
+                  <Button className="btn-main">
+                  Logout
+                </Button>
+                </NavLink>
+                </NavItem>
+              )}
 
             </Nav>
             </Container>
@@ -330,6 +338,7 @@ export default class App extends Component {
               <Route exact path="/products" component={ProductList} />
               <Route exact path="/contact" component={Contact} />
               <Route exact path="/thankyou" component={ThankYou} />
+              <Route exact path="/feedback" component={Feedback} />
             </Switch>
 
 

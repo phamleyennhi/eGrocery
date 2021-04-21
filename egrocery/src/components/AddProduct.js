@@ -8,7 +8,8 @@ const initState = {
   price: "",
   stock: "",
   shortDesc: "",
-  description: ""
+  description: "",
+  url: ""
 };
 
 class AddProduct extends Component {
@@ -19,13 +20,16 @@ class AddProduct extends Component {
 
   save = async (e) => {
     e.preventDefault();
-    const { name, price, stock, shortDesc, description } = this.state;
+    const { name, price, stock, shortDesc, description, url } = this.state;
 
     if (name && price) {
 
       await axios.post(
-        'http://localhost:3001/products',
-        { name, price, stock, shortDesc, description },
+        'https://se-egrocery.herokuapp.com/api/products/add',
+        { name, price, stock, shortDesc, description, url },
+        {headers: {
+          "x-access-token": this.props.context.user.token
+        }}
       )
 
       this.props.context.addProduct(
@@ -34,7 +38,8 @@ class AddProduct extends Component {
           price,
           shortDesc,
           description,
-          stock: stock || 0
+          stock: stock || 0,
+          url
         },
         () => this.setState(initState)
       );
@@ -55,9 +60,7 @@ class AddProduct extends Component {
     const { name, price, stock, shortDesc, description, url } = this.state;
     const { user } = this.props.context;
 
-    return !(user && user.accessLevel < 1) ? (
-      <Redirect to="/" />
-    ) : (
+    return(
       <>
         <div className="hero is-primary ">
           <div className="hero-body container">
