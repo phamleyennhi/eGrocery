@@ -48,7 +48,13 @@ const Cart = props => {
                 </button>{" "}
                 <button
                   className="btn-main mt-4"
-                  onClick={props.context.checkout}
+                  onClick={() => {
+                      if(!props.context.user){
+                        props.history.push("/login");
+                      }else{
+                        props.history.push("/checkout");
+                      }
+                    }}
                 >
                   Checkout
                 </button>

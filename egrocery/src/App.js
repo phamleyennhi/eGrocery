@@ -339,6 +339,7 @@ export default class App extends Component {
               <Route exact path="/contact" component={Contact} />
               <Route exact path="/thankyou" component={ThankYou} />
               <Route exact path="/feedback" component={Feedback} />
+              <Route exact path="/checkout" component={Checkout} />
             </Switch>
 
 
