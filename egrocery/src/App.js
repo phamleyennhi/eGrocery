@@ -29,6 +29,7 @@ import ProductList from './components/ProductList';
 import Contact from './components/Contact';
 import Context from "./Context";
 import ThankYou from "./components/ThankYou";
+import Checkout from "./components/Checkout";
 
 export default class App extends Component {
   constructor(props) {

@@ -21,6 +21,8 @@ const Cart = props => {
           <h1>Your Shopping Cart</h1>
         </Row>
 
+        {cartKeys.length ? (
+
         <Row>
 
           <Col lg={{ size: 4, order: 2}}>
@@ -57,7 +59,7 @@ const Cart = props => {
           </Col>
 
           <Col lg={{ size: 8, order: 1}}>
-            {cartKeys.length ? (
+
           <div className="column columns is-multiline">
             {cartKeys.map(key => (
               <CartItem
@@ -70,14 +72,17 @@ const Cart = props => {
             ))}
   
           </div>
-        ) : (
+        
+          </Col>
+          
+       
+        </Row>
+         ) : (
           <div className="column">
             <div className="title has-text-grey-light">No item in cart!</div>
           </div>
         )}
-          </Col>
-          
-        </Row>
+
       </Container>
       
     </>
