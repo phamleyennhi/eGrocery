@@ -68,6 +68,13 @@ nav ul li {
     background: white;
 }
 
+.radio-main:checked ~ .custom-control-label::before {
+    color: #fff;
+    border-color: #92CD28;
+    background-color: #92CD28;
+}
+
+
 a,
 a * {
     color: #de7a10;

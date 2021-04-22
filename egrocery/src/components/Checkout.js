@@ -30,10 +30,19 @@ class Checkout extends Component {
   	}
 
 
-  	handleChange = e => {this.setState({
-        [e.target.name]: e.target.value,
-        error: ""
-    })
+  	handleChange = e => {
+
+  		if(e.target.type == "radio"){
+  			this.setState({
+    		    [e.target.name]: e.target.id,
+        		error: ""
+    		})
+  		}else{
+  			this.setState({
+        		[e.target.name]: e.target.value,
+        		error: ""
+    		})
+  		}
 
     console.log(this.state)
   }
@@ -176,21 +185,25 @@ class Checkout extends Component {
 
         <div className="d-block my-3">
           <div className="custom-control custom-radio">
-            <input id="credit" name="paymentMethod" type="radio" className="custom-control-input" checked onChange={this.handleChange} required/>
+            <input id="credit" name="paymentMethod" type="radio" className="custom-control-input radio-main" value={this.state.paymentMethod == "credit"} onChange={this.handleChange} required/>
             <label className="custom-control-label" htmlFor="credit">Credit card</label>
           </div>
           <div className="custom-control custom-radio">
-            <input id="debit" name="paymentMethod" type="radio" className="custom-control-input" onChange={this.handleChange} required/>
+            <input id="debit" name="paymentMethod" type="radio" className="custom-control-input radio-main" value={this.state.paymentMethod == "debit"} onChange={this.handleChange} required/>
             <label className="custom-control-label" htmlFor="debit">Debit card</label>
           </div>
           <div className="custom-control custom-radio">
-            <input id="cash" name="paymentMethod" type="radio" className="custom-control-input" onChange={this.handleChange} required/>
+            <input id="cash" name="paymentMethod" type="radio" className="custom-control-input radio-main" value={this.state.paymentMethod == "cash"} onChange={this.handleChange} required/>
             <label className="custom-control-label" htmlFor="cash">Cash on delivery</label>
           </div>
         </div>
         </div>
 		</div>
 
+
+		{this.state.paymentMethod != "cash" ? (
+
+		<div>
         <div className="row">
           <div className="col-md-6 mb-3">
             <label htmlFor="cc-name">Name on card</label>
@@ -224,12 +237,15 @@ class Checkout extends Component {
             </div>
           </div>
         </div>
-
-
         <hr className="mb-4"/>
-        <Button className="btn-main mx-auto d-block w-100">
-							Continue to checkout
-							</Button>
+        </div>
+        ) : (
+        <hr className="mb-4"/>
+        ) }
+
+        	<Button className="btn-main mx-auto d-block w-100">
+				Continue to checkout
+			</Button>
       </form>
 
 
