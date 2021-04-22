@@ -13,7 +13,9 @@ class Checkout extends Component {
         this.state = {
             firstName: "",
             lastName: "",
-            paymentMethod: ""
+            paymentMethod: "",
+            sameAddress: true,
+            saveInfo: false
         };
 
         console.log(props);
@@ -37,6 +39,12 @@ class Checkout extends Component {
     		    [e.target.name]: e.target.id,
         		error: ""
     		})
+  		}else if (e.target.type == "checkbox") {
+  			this.setState({
+    		    [e.target.name]: e.target.checked,
+        		error: ""
+    		})
+
   		}else{
   			this.setState({
         		[e.target.name]: e.target.value,
@@ -166,12 +174,12 @@ class Checkout extends Component {
         <div className="row">
         <div className="col-md-12 mb-2">
         <div className="custom-control custom-checkbox">
-          <input type="checkbox" className="custom-control-input" name="same-address"/>
-          <label className="custom-control-label" htmlFor="same-address">Shipping address is the same as my billing address</label>
+          <input type="checkbox" className="custom-control-input radio-main" onChange={this.handleChange} checked={this.state.sameAddress ? 'checked': false} id="sameAddress" name="sameAddress"/>
+          <label className="custom-control-label" htmlFor="sameAddress">Shipping address is the same as my billing address</label>
         </div>
         <div className="custom-control custom-checkbox">
-          <input type="checkbox" className="custom-control-input" name="save-info"/>
-          <label className="custom-control-label" htmlFor="save-info">Save this information for next time</label>
+          <input type="checkbox" className="custom-control-input radio-main" onChange={this.handleChange} checked={this.state.saveInfo ? 'checked': false} id="saveInfo" name="saveInfo"/>
+          <label className="custom-control-label" htmlFor="saveInfo">Save this information for next time</label>
         </div>
         </div>
         </div>
