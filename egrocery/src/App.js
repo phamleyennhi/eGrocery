@@ -59,7 +59,7 @@ export default class App extends Component {
     cart = cart? JSON.parse(cart) : {};
     this.setState({ user,  products: products.data, cart, quantity_in_cart});
 
-    if (this.user !== null && this.state.user.accessLevel === 0){
+    if (this.state.user !== null && this.state.user.accessLevel === 0){
       console.log(user);
       const feedback_db = await axios.get('https://se-egrocery.herokuapp.com/api/admin/feedback',
                                           {headers: {"x-access-token": this.state.user.token}});
