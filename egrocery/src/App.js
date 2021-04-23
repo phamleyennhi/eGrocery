@@ -269,8 +269,8 @@ export default class App extends Component {
               </NavItem>
 
 
-              {this.state.user && this.state.user.accessLevel < 1 && (
-                <>
+              {(this.state.user && this.state.user.accessLevel === 0) ? 
+                (<>
                 <NavItem>
                   <NavLink className="text-secondary" href="/add-product">
                     Add Product
@@ -281,12 +281,9 @@ export default class App extends Component {
                     Feedback
                   </NavLink>
                 </NavItem>
-                </>
-              )}
-
-              {(!this.state.user||(this.state.user && this.state.user.accessLevel > 0)) &&
-                (
-                <>
+                </>)
+                :
+                (<>
                 <NavItem>
                 <NavLink className="text-secondary" href="/cart">
                   Cart
@@ -305,8 +302,7 @@ export default class App extends Component {
                   Contact
                 </NavLink>
                 </NavItem>
-                </>
-                )
+                </>)
               }
              
               {!this.state.user ? (
