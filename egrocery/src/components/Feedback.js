@@ -5,23 +5,23 @@ import withContext from "../withContext";
 import 'bootstrap/dist/css/bootstrap.min.css'; //bootstrap
 import { Container, Row, Col, Button } from 'reactstrap';
 
-class Feedback extends Component {
-    constructor(props) {
-    super(props);
-	    this.state = {
-	      name: "",
-	      email: "",
-	      message:""
-	    };
-	  }
-    render(){
-    	return(
-    		<div>
-    		Feedback will be printed here...!
-    		</div>
-    	)
-    }
-}
+const Feedback = props => {
+  const { feedback_db} = props.context;
+  console.log(feedback_db)
+  return (
+    <>
+    <Container>
+      {feedback_db.map((feedback, index) => (
+        <div key={index}>
+            <li> {feedback.name} </li>
+            <a> {feedback.email} </a>
+            <a> {feedback.message} </a>
+        </div>
+      ))}
+      </Container>
+    </>
+  );
+};
 
 export default withContext(Feedback);
 

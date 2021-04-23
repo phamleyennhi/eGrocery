@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Redirect, Link } from "react-router-dom";
+// import { Redirect, Link } from "react-router-dom";
 import withContext from "../withContext";
 
 import 'bootstrap/dist/css/bootstrap.min.css'; //bootstrap
@@ -34,12 +34,12 @@ class Checkout extends Component {
 
   	handleChange = e => {
 
-  		if(e.target.type == "radio"){
+  		if(e.target.type === "radio"){
   			this.setState({
     		    [e.target.name]: e.target.id,
         		error: ""
     		})
-  		}else if (e.target.type == "checkbox") {
+  		}else if (e.target.type === "checkbox") {
   			this.setState({
     		    [e.target.name]: e.target.checked,
         		error: ""
@@ -193,15 +193,15 @@ class Checkout extends Component {
 
         <div className="d-block my-3">
           <div className="custom-control custom-radio">
-            <input id="credit" name="paymentMethod" type="radio" className="custom-control-input radio-main" value={this.state.paymentMethod == "credit"} onChange={this.handleChange} required/>
+            <input id="credit" name="paymentMethod" type="radio" className="custom-control-input radio-main" value={this.state.paymentMethod === "credit"} onChange={this.handleChange} required/>
             <label className="custom-control-label" htmlFor="credit">Credit card</label>
           </div>
           <div className="custom-control custom-radio">
-            <input id="debit" name="paymentMethod" type="radio" className="custom-control-input radio-main" value={this.state.paymentMethod == "debit"} onChange={this.handleChange} required/>
+            <input id="debit" name="paymentMethod" type="radio" className="custom-control-input radio-main" value={this.state.paymentMethod === "debit"} onChange={this.handleChange} required/>
             <label className="custom-control-label" htmlFor="debit">Debit card</label>
           </div>
           <div className="custom-control custom-radio">
-            <input id="cash" name="paymentMethod" type="radio" className="custom-control-input radio-main" value={this.state.paymentMethod == "cash"} onChange={this.handleChange} required/>
+            <input id="cash" name="paymentMethod" type="radio" className="custom-control-input radio-main" value={this.state.paymentMethod === "cash"} onChange={this.handleChange} required/>
             <label className="custom-control-label" htmlFor="cash">Cash on delivery</label>
           </div>
         </div>
@@ -209,7 +209,7 @@ class Checkout extends Component {
 		</div>
 
 
-		{this.state.paymentMethod != "cash" ? (
+		{this.state.paymentMethod !== "cash" ? (
 
 		<div>
         <div className="row">

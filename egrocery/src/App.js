@@ -40,7 +40,7 @@ export default class App extends Component {
       quantity_in_cart: 0,
       cart: {},
       products: [],
-      feedback_database: []
+      feedback_db: []
     };
     this.routerRef = React.createRef();
   }
@@ -55,11 +55,17 @@ export default class App extends Component {
     else quantity_in_cart = parseInt(quantity_in_cart);
 
     const products = await axios.get('https://se-egrocery.herokuapp.com/api/products');
-    const feedback_database = await axios.get('https://se-egrocery.herokuapp.com/api/products');
     user = user ? JSON.parse(user) : null;
     cart = cart? JSON.parse(cart) : {};
+    this.setState({ user,  products: products.data, cart, quantity_in_cart});
 
-    this.setState({ user,  products: products.data, cart, quantity_in_cart, feedback_database: feedback_database.data});
+    if (this.user !== null && this.state.user.accessLevel === 0){
+      console.log(user);
+      const feedback_db = await axios.get('https://se-egrocery.herokuapp.com/api/admin/feedback',
+                                          {headers: {"x-access-token": this.state.user.token}});
+      this.setState({feedback_db: feedback_db.data});
+      console.log(this.state.feedback_db);
+    }
   }
 
   login = async (email, password) => {
@@ -220,9 +226,6 @@ export default class App extends Component {
       return false;
     }
   };
-
-
-
 
   // Navbar burger collapse button
   // const [isOpen, setIsOpen] = useState(false);
