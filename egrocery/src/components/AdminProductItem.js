@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'; //bootstrap
 
 import { Container, Row, Col, Button } from 'reactstrap';
 
-const ProductItem = props => {
+const AdminProductItem = props => {
   const { product} = props;
   return (
   <Col md="3" className="mt-4 mb-4 ml-2 mr-2 product-item">
@@ -22,18 +22,29 @@ const ProductItem = props => {
           <h1 className="d-inline product-price">{product.price}&nbsp;</h1><h6 className="d-inline">AED/kg</h6>
         </div>
         <Button
-                className="btn-main mt-4"
-                onClick={() =>
-                  props.addToCart({
-                    id: product.name,
-                    product,
-                    amount: 1
-                  })
-                }
-              >
-                ADD
-              </Button>
-
+          className="btn-main mt-4"
+          onClick={() =>
+            props.deleteProduct({
+              id: product.name,
+              product
+            })
+          }
+        >
+          REMOVE
+        </Button>
+        <div>
+        <Button
+          className="btn-main mt-4"
+          onClick={() =>
+            props.editProduct({
+              id: product.name,
+              product
+            })
+          }
+        >
+          EDIT
+        </Button>
+        </div>
         <p className="text-secondary">
           {product.stock > 0 ? (
               <small>{product.stock + " in stock"}</small>
@@ -47,4 +58,4 @@ const ProductItem = props => {
   );
 };
 
-export default ProductItem;
+export default AdminProductItem;

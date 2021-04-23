@@ -1,12 +1,12 @@
 import React from "react";
-import ProductItem from "./ProductItem";
+import AdminProductItem from "./AdminProductItem";
 import withContext from "../withContext";
 
 import 'bootstrap/dist/css/bootstrap.min.css'; //bootstrap
 
 import { Container, Row, Col, Button } from 'reactstrap';
 
-const ProductList = props => {
+const AdminProductList = props => {
   const { products, user} = props.context;
   return (
     <>
@@ -17,10 +17,11 @@ const ProductList = props => {
       <Row className="product-list-wrapper justify-content-center">
           {products && products.length ? (
             products.map((product, index) => (
-              <ProductItem
+              <AdminProductItem
                 product={product}
                 key={index}
-                addToCart={props.context.addToCart}
+                deleteProduct={props.context.deleteProduct}
+                editProduct={props.context.editProduct}
               /> 
             ))
           ) 
@@ -40,4 +41,4 @@ const ProductList = props => {
   );
 };
 
-export default withContext(ProductList);
+export default withContext(AdminProductList);
