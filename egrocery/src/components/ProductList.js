@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'; //bootstrap
 import { Container, Row, Col, Button } from 'reactstrap';
 
 const ProductList = props => {
-  const { products, user} = props.context;
+  const { products } = props.context;
   return (
     <>
     <Container>

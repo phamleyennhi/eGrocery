@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'; //bootstrap
 import { Container, Row, Col, Button } from 'reactstrap';
 
 const ProductItem = props => {
-  const { product} = props;
+  const { product } = props;
   return (
   <Col md="3" className="mt-4 mb-4 ml-2 mr-2 product-item">
     <Row className="mx-auto text-center align-items-center justify-content-center shadow-custom rounded">
