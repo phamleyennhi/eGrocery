@@ -34,11 +34,10 @@ const Cart = props => {
             <h4 className="text-capitalize font-weight-bold mb-0">
               Total: {total_price} AED
             </h4>
-              
-            <Link to="/products" className="mt-2 ">
+            <div> {total_price < 100 ? 
+             <Link to="/products" className="mt-2 ">
              <i>Add more products for free shipping on order over AED 100!</i>
-            </Link>
-
+            </Link> : <i> Your order qualifies for free shipping! </i>} </div>
             <Row className="mt-4">
                 <Button
                   className="btn-main btn-block mb-4"
