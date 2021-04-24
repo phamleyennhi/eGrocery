@@ -40,8 +40,7 @@ export default class App extends Component {
       user: null,
       quantity_in_cart: 0,
       cart: {},
-      products: [],
-      token: ""
+      products: []
     };
     this.routerRef = React.createRef();
   }
@@ -51,14 +50,12 @@ export default class App extends Component {
     user = user ? JSON.parse(user) : null;
     let cart = localStorage.getItem("cart");
     cart = cart? JSON.parse(cart) : {};
-    let token = localStorage.getItem("token");
-    token = token ? JSON.parse(token) : "";
     let quantity_in_cart = localStorage.getItem("quantity_in_cart");
     if (quantity_in_cart == null){
       quantity_in_cart = 0;
     }
     else quantity_in_cart = parseInt(quantity_in_cart);
-    this.setState({ user, quantity_in_cart, cart, token});
+    this.setState({ user, quantity_in_cart, cart });
   }
 
   login = async (email, password) => {
@@ -82,9 +79,7 @@ export default class App extends Component {
       }
 
       this.setState({ user });
-      this.setState({ token: res.data.accessToken });
       localStorage.setItem("user", JSON.stringify(user));
-      localStorage.setItem("token", JSON.stringify(res.data.accessToken));
       return true;
     } else {
       return false;
