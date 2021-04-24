@@ -1,16 +1,43 @@
-import React from "react";
+import React, { Component } from "react";
+import{ useParams } from "react-router-dom";
 import ProductItem from "./ProductItem";
 import withContext from "../withContext";
+import axios from 'axios';
+
 
 import 'bootstrap/dist/css/bootstrap.min.css'; //bootstrap
 
 import {  Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, Container, Row, Col, Button } from 'reactstrap';
 
-const ProductList = props => {
-  const { products } = props.context;
-  
+class ProductList extends Component {
 
-  
+
+  constructor(props) {
+        super(props);
+        this.state = {
+            products: {},
+            category: ""
+        };
+
+        console.log(this.props.context)
+        const { match: { params } } = this.props;
+
+        this.state.category = params.category;
+    }
+
+  async componentDidMount() {
+     if(this.state.category == null){
+            this.state.products = this.props.context;
+        }else{
+            const res = await axios.get('https://se-egrocery.herokuapp.com/api/products/'+this.state.category);
+            this.state.products = res.data
+            console.log(this.state.products)
+        }
+  }
+
+
+  render() {
+
   return (
     <>
 
@@ -67,16 +94,16 @@ const ProductList = props => {
     </Navbar>
 
     <Container>
-      <Row className="mb-5">
-          <h1>Our Products</h1>
+      <Row className="text-capitalize mb-5">
+          <h1>{this.state.category}</h1>
       </Row>
       <Row className="product-list-wrapper justify-content-center">
-          {products && products.length ? (
-            products.map((product, index) => (
+          {this.state.products && this.state.products.length ? (
+            this.state.products.map((product, index) => (
               <ProductItem
                 product={product}
                 key={index}
-                addToCart={props.context.addToCart}
+                addToCart={this.props.context.addToCart}
               /> 
             ))
           ) 
@@ -93,7 +120,7 @@ const ProductList = props => {
       
       </Container>
     </>
-  );
+  )};
 };
 
 export default withContext(ProductList);

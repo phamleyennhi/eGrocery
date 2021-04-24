@@ -301,7 +301,7 @@ export default class App extends Component {
                 :
                 (<>
                 <NavItem>
-                <NavLink className="text-secondary" href="/products">Products</NavLink>
+                <NavLink className="text-secondary" href="/products/">Products</NavLink>
                 </NavItem>
                 <NavItem>
                 <NavLink className="text-secondary" href="/cart">
@@ -355,7 +355,7 @@ export default class App extends Component {
               <Route exact path="/cart" component={Cart} />
               <Route exact path="/add-product" component={AddProduct} />
               <Route path="/products" component={ProductList} >
-                <Route path="/:category" component={ProductList} />
+                <Route exact path="/products/:category" component={ProductList} />
               </Route>
               <Route exact path="/contact" component={Contact} />
               <Route exact path="/thankyou" component={ThankYou} />
