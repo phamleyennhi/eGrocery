@@ -19,7 +19,6 @@ class ProductList extends Component {
             category: ""
         };
 
-        console.log(this.props.context)
         const { match: { params } } = this.props;
 
         this.state.category = params.category;
@@ -28,7 +27,9 @@ class ProductList extends Component {
   async componentDidMount() {
     if(this.state.category == null){
       // this.state.products = this.props.context;
-      this.setState({products: this.props.context});
+      const res = await axios.get('https://se-egrocery.herokuapp.com/api/products');
+
+      this.setState({products: res.data});
     }
     else{
       const res = await axios.get('https://se-egrocery.herokuapp.com/api/products/'+this.state.category);
@@ -114,7 +115,7 @@ class ProductList extends Component {
 
     <Container>
       <Row className="text-capitalize mb-5">
-          <h1>{this.state.category}</h1>
+          <h1>{this.state.category ? this.state.category : "Featured products" }</h1>
       </Row>
       <Row className="product-list-wrapper justify-content-center">
       { product_list }

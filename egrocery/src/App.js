@@ -55,11 +55,9 @@ export default class App extends Component {
     }
     else quantity_in_cart = parseInt(quantity_in_cart);
 
-    const products = await axios.get('https://se-egrocery.herokuapp.com/api/products');
     user = user ? JSON.parse(user) : null;
     cart = cart? JSON.parse(cart) : {};
-    this.setState({ user,  products: products.data, cart, quantity_in_cart});
-    console.log(user);
+    this.setState({ user, cart, quantity_in_cart});
     if (this.state.user !== null && this.state.user.accessLevel === 0){
       console.log(user);
       const feedback_db = await axios.get('https://se-egrocery.herokuapp.com/api/admin/feedback',
@@ -275,7 +273,7 @@ export default class App extends Component {
           >
           <Container>
             <NavbarBrand href="/" style={{height: "10vh"}}>
-              <img style={{height: "100%", width: "auto"}} src="eGROCERY.png" alt=""/>
+              <img style={{height: "100%", width: "auto"}} src="/eGROCERY.png" alt=""/>
             </NavbarBrand>
             
             <Nav navbar className={`flex-row ${
@@ -354,7 +352,8 @@ export default class App extends Component {
               <Route exact path="/register" component={Register} />
               <Route exact path="/cart" component={Cart} />
               <Route exact path="/add-product" component={AddProduct} />
-              <Route path="/products" component={ProductList} >
+              <Route path="/products" >
+                <Route exact path="/products" component={ProductList} />
                 <Route exact path="/products/:category" component={ProductList} />
               </Route>
               <Route exact path="/contact" component={Contact} />
