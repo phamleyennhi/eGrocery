@@ -146,14 +146,19 @@ export default class App extends Component {
     this.setState({ cart });
   };
 
-  deleteProduct = (productItem) =>{
-    console.log(productItem)
-    axios.delete(`https://se-egrocery.herokuapp.com/api/products/${productItem.product._id}`)  
-      .then(res => {  
-        console.log(res);  
-        console.log(res.data);  
-      })  
-    
+  async deleteProduct(productItem){
+    console.log(productItem);
+    // const category_dict = {"Bread & Bakery":"bakery", "Breakfast & Cereal":"breakfast", "Canned Goods & Soups":"soups", "Dairy, Eggs & Cheese":"dairy", "Grains, Pasta & Sides":"grains", "Fruit & Vegetables":"fruit", "Meat":"meat", "Cookies, Snacks & Candy":"snacks"};
+    // const url = `https://se-egrocery.herokuapp.com/api/products/${category_dict[productItem.product.category]}`;
+    // const res = await axios.get(url);
+    // const init_data = res.data;
+    // var new_data = []
+    // for (var item of res.data){
+    //   if (item.name !== productItem.id){
+    //     new_data.push(item);
+    //   }
+    // }
+    // axios.put(url, {data: new_data});
   }
 
   editProduct = (productItem) =>{
@@ -347,7 +352,10 @@ export default class App extends Component {
             </Navbar>
             <Switch>
               <Route exact path="/" component={ProductList} />
-              <Route exact path="/admin-products" component={AdminProductList} />
+              <Route path="/admin-products" >
+                <Route exact path="/admin-products" component={AdminProductList} />
+                <Route exact path="/admin-products/:category" component={AdminProductList} />
+              </Route>
               <Route exact path="/login" component={Login} />
               <Route exact path="/register" component={Register} />
               <Route exact path="/cart" component={Cart} />
