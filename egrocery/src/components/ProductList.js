@@ -20,7 +20,7 @@ class ProductList extends Component {
         };
 
         const { match: { params } } = this.props;
-
+        console.log(this.props);
         this.state.category = params.category;
     }
 

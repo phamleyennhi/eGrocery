@@ -16,6 +16,7 @@ class AdminProductList extends Component {
       };
 
       const { match: { params } } = this.props;
+      console.log(this.props);
       this.state.category = params.category;
   }
   async componentDidMount() {
@@ -27,8 +28,9 @@ class AdminProductList extends Component {
     else{
       const res = await axios.get('https://se-egrocery.herokuapp.com/api/products/'+this.state.category);
       this.setState({products: res.data});
-      }
-      console.log(this.state.products);
+    }
+    console.log(this.state.products);
+
   }
 
 render() {

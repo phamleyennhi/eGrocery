@@ -41,30 +41,24 @@ export default class App extends Component {
       quantity_in_cart: 0,
       cart: {},
       products: [],
-      feedback_db: []
+      token: ""
     };
     this.routerRef = React.createRef();
   }
 
   async componentDidMount() {
     let user = localStorage.getItem("user");
+    user = user ? JSON.parse(user) : null;
     let cart = localStorage.getItem("cart");
+    cart = cart? JSON.parse(cart) : {};
+    let token = localStorage.getItem("token");
+    token = token ? JSON.parse(token) : "";
     let quantity_in_cart = localStorage.getItem("quantity_in_cart");
     if (quantity_in_cart == null){
       quantity_in_cart = 0;
     }
     else quantity_in_cart = parseInt(quantity_in_cart);
-
-    user = user ? JSON.parse(user) : null;
-    cart = cart? JSON.parse(cart) : {};
-    this.setState({ user, cart, quantity_in_cart});
-    if (this.state.user !== null && this.state.user.accessLevel === 0){
-      console.log(user);
-      const feedback_db = await axios.get('https://se-egrocery.herokuapp.com/api/admin/feedback',
-                                          {headers: {"x-access-token": this.state.user.token}});
-      this.setState({feedback_db: feedback_db.data});
-      console.log(this.state.feedback_db);
-    }
+    this.setState({ user, quantity_in_cart, cart, token});
   }
 
   login = async (email, password) => {
@@ -88,7 +82,9 @@ export default class App extends Component {
       }
 
       this.setState({ user });
+      this.setState({ token: res.data.accessToken });
       localStorage.setItem("user", JSON.stringify(user));
+      localStorage.setItem("token", JSON.stringify(res.data.accessToken));
       return true;
     } else {
       return false;
@@ -250,6 +246,7 @@ export default class App extends Component {
   // const toggle = () => setIsOpen(!isOpen);
 
   render() {
+    const user = this.state.user;
     return (
       <Context.Provider
         value={{
@@ -285,7 +282,7 @@ export default class App extends Component {
                   this.state.showMenu ? "is-active" : ""
                 }`}>
 
-              {(this.state.user && this.state.user.accessLevel === 0) ? 
+              {(user && user.accessLevel === 0) ? 
                 (<>
                 <NavItem>
                 <NavLink className="text-secondary" href="/admin-products">Products</NavLink>
@@ -327,7 +324,7 @@ export default class App extends Component {
                 </>)
               }
              
-              {!this.state.user ? (
+              {!user ? (
                 <NavItem>
                 <NavLink className="text-secondary" href="/login">
                 <Button className="btn-main">
