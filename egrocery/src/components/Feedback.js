@@ -17,19 +17,26 @@ class Feedback extends Component {
       console.log(user);
   }
 
-  // async componentDidMount() {
-  //   // const token = null;
-  //   // const res = await axios.get('https://se-egrocery.herokuapp.com/api/admin/feedback',
-  //   //                                     {headers: {"x-access-token": token}});
-  //   // this.setState({feedback_db: res.data});
-  // }
+  async componentDidMount() {
+    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNmFmYjJmYjc5NWEyYzZiZjU1OWQ4YiIsImlhdCI6MTYxOTMwMzEzNiwiZXhwIjoxNjE5Mzg5NTM2fQ.LpVw0dWMI915r3_DBX7VpKHKpJ_OpHsIENHuWQAA6CA";
+    const res = await axios.get('https://se-egrocery.herokuapp.com/api/admin/feedback',
+                                        {headers: {"x-access-token": token}});
+    this.setState({feedback_db: res.data});
+    console.log(this.state.feedback_db);
+  }
 
   render(){
     return (
       <>
       <Container>
-       Feedback will be printed here!
-        </Container>
+      {this.state.feedback_db.map((feedback, index) => (
+        <div key={index}>
+            <li> {feedback.name} </li>
+            <a> {feedback.email} </a>
+            <a> {feedback.message} </a>
+        </div>
+      ))}
+      </Container>
       </>
     );
 }};
