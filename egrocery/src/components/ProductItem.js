@@ -7,7 +7,7 @@ const ProductItem = props => {
   const { product } = props;
   return (
   <Col sm="6" lg="4" xl="3" className="p-4 product-item">
-    <Row className="mx-auto text-center align-items-center justify-content-center shadow-custom rounded">
+    <Row className="mx-auto text-center align-items-center justify-content-center shadow-custom rounded" style={{"height": "100%"}}>
       <Col md="12" className="border-bottom p-0">
         <img className="img-fluid mx-auto p-2" src={product.url} alt="" />
       </Col>
