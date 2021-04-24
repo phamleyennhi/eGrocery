@@ -80,10 +80,10 @@ class Checkout extends Component {
 					{this.cartKeys.map(key => (
 		             <div className="d-flex justify-content-between align-items-center mb-2">
 		             	<span className="text-capitalize">{ this.props.context.cart[key].product.name }</span>
-						<span className="">
+						<span className="text-end">
 								<span className="text-muted"> { this.props.context.cart[key].amount } </span> 
 								x 
-								<span> { this.props.context.cart[key].product.price } AED/kg</span>
+								<span> { this.props.context.cart[key].product.price } AED</span>
 								<span className="font-weight-bold ml-2"> {this.props.context.cart[key].product.price*this.props.context.cart[key].amount} AED</span>
 								
 						</span>
