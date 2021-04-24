@@ -27,11 +27,13 @@ class ProductList extends Component {
 
   async componentDidMount() {
     if(this.state.category == null){
-      this.state.products = this.props.context;
+      // this.state.products = this.props.context;
+      this.setState({products: this.props.context});
     }
     else{
       const res = await axios.get('https://se-egrocery.herokuapp.com/api/products/'+this.state.category);
-      this.state.products = res.data
+      // this.state.products = res.data
+      this.setState({products: res.data});
       console.log(this.state.products)
       }
   }
