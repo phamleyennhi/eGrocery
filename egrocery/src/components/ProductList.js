@@ -26,18 +26,35 @@ class ProductList extends Component {
     }
 
   async componentDidMount() {
-     if(this.state.category == null){
-            this.state.products = this.props.context;
-        }else{
-            const res = await axios.get('https://se-egrocery.herokuapp.com/api/products/'+this.state.category);
-            this.state.products = res.data
-            console.log(this.state.products)
-        }
+    if(this.state.category == null){
+      this.state.products = this.props.context;
+    }
+    else{
+      const res = await axios.get('https://se-egrocery.herokuapp.com/api/products/'+this.state.category);
+      this.state.products = res.data
+      console.log(this.state.products)
+      }
   }
 
 
   render() {
-
+  const product_db = this.state.products;
+  console.log(product_db);
+  const product_list = product_db && product_db.length ? (
+            this.state.products.map((product, index) => (
+              <ProductItem
+                product={product}
+                key={index}
+                addToCart={this.props.context.addToCart}
+              /> 
+            ))
+          ) 
+          : 
+          (
+            <div className="column">
+              <span> Loading products ...</span>
+            </div>
+          )
   return (
     <>
 
@@ -98,24 +115,7 @@ class ProductList extends Component {
           <h1>{this.state.category}</h1>
       </Row>
       <Row className="product-list-wrapper justify-content-center">
-          {this.state.products && this.state.products.length ? (
-            this.state.products.map((product, index) => (
-              <ProductItem
-                product={product}
-                key={index}
-                addToCart={this.props.context.addToCart}
-              /> 
-            ))
-          ) 
-          : 
-          (
-            <div className="column">
-              <span className="title has-text-grey">
-                Display products here...
-              </span>
-            </div>
-          )}
-
+      { product_list }
       </Row>
       
       </Container>

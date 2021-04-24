@@ -19,7 +19,7 @@ const ProductItem = props => {
           {product.shortDesc}
         </h6>
         <div className=" mt-3">
-          <h1 className="d-inline product-price">{product.price}&nbsp;</h1><h6 className="d-inline">AED/kg</h6>
+          <h1 className="d-inline product-price">{product.price}&nbsp;</h1><h6 className="d-inline">AED</h6>
         </div>
         <Button
                 className="btn-main mt-4"
