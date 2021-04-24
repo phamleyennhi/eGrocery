@@ -36,8 +36,9 @@ p{
     margin: auto 0;
 }
 
-nav, .shadow-custom {
+.shadow-custom {
     box-shadow: 0px 0px 5px #aaa;
+    z-index: 5;
 }
 
 nav ul li {

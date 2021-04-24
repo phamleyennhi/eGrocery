@@ -268,7 +268,7 @@ export default class App extends Component {
         <div className="App">
         
           <Navbar
-            className="mb-5 bg-white"
+            className={ this.routerRef.current !== null && this.routerRef.current.history.location.pathname[1] == "p" ? "shadow-custom bg-white" : "shadow-custom mb-5 bg-white"}
             role="navigation"
             aria-label="main navigation"
 
@@ -354,7 +354,9 @@ export default class App extends Component {
               <Route exact path="/register" component={Register} />
               <Route exact path="/cart" component={Cart} />
               <Route exact path="/add-product" component={AddProduct} />
-              <Route exact path="/products" component={ProductList} />
+              <Route path="/products" component={ProductList} >
+                <Route path="/:category" component={ProductList} />
+              </Route>
               <Route exact path="/contact" component={Contact} />
               <Route exact path="/thankyou" component={ThankYou} />
               <Route exact path="/feedback" component={Feedback} />
