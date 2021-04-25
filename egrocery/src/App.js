@@ -281,7 +281,10 @@ export default class App extends Component {
               {(user && user.accessLevel === 0) ? 
                 (<>
                 <NavItem>
-                <NavLink className="text-secondary" href="/admin-products">Products</NavLink>
+                <NavLink className="text-secondary" href="/products">Catalog</NavLink>
+                </NavItem>
+                <NavItem>
+                <NavLink className="text-secondary" href="/admin-products">Edit Products</NavLink>
                 </NavItem>
                 <NavItem>
                   <NavLink className="text-secondary" href="/add-product">

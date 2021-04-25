@@ -20,10 +20,14 @@ class Feedback extends Component {
         if (this.props.context !== null && this.state.feedback_db.length == 0) {
 
             const { user } = this.props.context;
-            const res = await axios.get('https://se-egrocery.herokuapp.com/api/admin/feedback',
-                                                {headers: {"x-access-token": user.token}});
-            this.setState({feedback_db: res.data});
-
+            if (user !== null){
+              const res = await axios.get('https://se-egrocery.herokuapp.com/api/admin/feedback',
+                                                  {headers: {"x-access-token": user.token}});
+              this.setState({feedback_db: res.data});
+            }
+            else{
+              this.setState({feedback_db: [{name: "", email:"Error", message: "Oops! You don't have access to this page. Please go back to the homepage!"}]})
+            }
         }
 
   }
