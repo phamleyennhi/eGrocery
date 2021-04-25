@@ -30,10 +30,17 @@ class Feedback extends Component {
       <>
       <Container>
       {this.state.feedback_db.map((feedback, index) => (
-        <div key={index}>
-            <li> {feedback.name} </li>
-            <a> {feedback.email} </a>
-            <a> {feedback.message} </a>
+        <div className="row" key={index}>
+            <div className="col-12 mb-2">
+
+            <h4 className="text-end"> {feedback.name} <small className="text-secondary"> {"<"+feedback.email+">"} </small></h4>
+                            </div>
+            <div className="col-12">
+            <p style={{"white-space": "pre-line"}}> {feedback.message} </p>
+                        <hr className="mb-4"/>
+
+            </div>
+
         </div>
       ))}
       </Container>
