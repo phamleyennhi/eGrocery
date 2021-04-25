@@ -6,10 +6,10 @@ import { Container, Row, Col, Button } from 'reactstrap';
 const AdminProductItem = props => {
   const { product} = props;
   return (
-  <Col md="3" className="mt-4 mb-4 ml-2 mr-2 product-item">
-    <Row className="mx-auto text-center align-items-center justify-content-center shadow-custom rounded">
+  <Col sm="6" lg="4" xl="3" className="p-4 product-item">
+    <Row className="mx-auto text-center align-items-center justify-content-center shadow-custom rounded" style={{"height": "100%"}}>
       <Col md="12" className="border-bottom p-0">
-        <img className="img-fluid mx-auto p-5" src={product.url} alt="" />
+        <img className="img-fluid mx-auto p-2" src={product.url} alt="" />
       </Col>
       <Col md="12" className="mt-3">
         <h4 className="text-capitalize font-weight-bold mb-0">
@@ -19,7 +19,7 @@ const AdminProductItem = props => {
           {product.shortDesc}
         </h6>
         <div className=" mt-3">
-          <h1 className="d-inline product-price">{product.price}&nbsp;</h1><h6 className="d-inline">AED/kg</h6>
+          <h1 className="d-inline product-price">{product.price}</h1><h6 className="d-inline"> AED</h6>
         </div>
         <Button
           className="btn-main mt-4"

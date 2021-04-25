@@ -264,7 +264,7 @@ export default class App extends Component {
         <div className="App">
         
           <Navbar
-            className={ this.routerRef.current !== null && this.routerRef.current.history.location.pathname[1] == "p" ? "shadow-custom bg-white" : "shadow-custom mb-5 bg-white"}
+            className="shadow-custom mb-5 bg-white"
             role="navigation"
             aria-label="main navigation"
 

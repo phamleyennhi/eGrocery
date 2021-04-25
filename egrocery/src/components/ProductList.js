@@ -62,7 +62,7 @@ class ProductList extends Component {
     <>
 
     <Navbar
-            className="mb-5 bg-white small text-center"
+            className="mt-n5 mb-5 bg-white small text-center"
             role="navigation"
             aria-label="navigation"
 
@@ -114,7 +114,7 @@ class ProductList extends Component {
     </Navbar>
 
     <Container>
-      <Row className="text-capitalize mb-5">
+      <Row className="text-capitalize ml-4 mb-5">
           <h1>{this.state.category ? this.state.category : "Featured products" }</h1>
       </Row>
       <Row className="product-list-wrapper justify-content-center">

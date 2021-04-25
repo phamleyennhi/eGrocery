@@ -56,7 +56,7 @@ render() {
       <>
 
       <Navbar
-              className="mb-5 bg-white small text-center"
+              className="mt-n5 mb-5 bg-white small text-center"
               role="navigation"
               aria-label="navigation"
 
@@ -108,7 +108,7 @@ render() {
       </Navbar>
 
       <Container>
-        <Row className="text-capitalize mb-5">
+        <Row className="ml-4 text-capitalize mb-5">
             <h1>{this.state.category ? this.state.category : "Featured products" }</h1>
         </Row>
         <Row className="product-list-wrapper justify-content-center">
