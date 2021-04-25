@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import withContext from "../withContext";
-import { Redirect } from "react-router-dom";
 import axios from 'axios';
 
 const initState = {
@@ -58,7 +57,7 @@ class AddProduct extends Component {
 
   render() {
     const { name, price, stock, shortDesc, description, url } = this.state;
-    const { user } = this.props.context;
+    // const { user } = this.props.context;
 
     return(
       <>

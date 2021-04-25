@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import{ useParams } from "react-router-dom";
+// import{ useParams } from "react-router-dom";
 import ProductItem from "./ProductItem";
 import withContext from "../withContext";
 import axios from 'axios';
@@ -7,7 +7,7 @@ import axios from 'axios';
 
 import 'bootstrap/dist/css/bootstrap.min.css'; //bootstrap
 
-import {  Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, Container, Row, Col, Button } from 'reactstrap';
+import {  Navbar, Nav, NavItem, NavLink, Container, Row } from 'reactstrap';
 
 class ProductList extends Component {
 

@@ -32,6 +32,7 @@ import Context from "./Context";
 import ThankYou from "./components/ThankYou";
 import Checkout from "./components/Checkout";
 import Feedback from "./components/Feedback";
+import ViewItem from "./components/ViewItem";
 
 export default class App extends Component {
   constructor(props) {
@@ -364,6 +365,7 @@ export default class App extends Component {
               <Route exact path="/thankyou" component={ThankYou} />
               <Route exact path="/feedback" component={Feedback} />
               <Route exact path="/checkout" component={Checkout} />
+              <Route exact path="/view-item/:_id" component={ViewItem} />
             </Switch>
 
 

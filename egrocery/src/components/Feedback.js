@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import { Redirect, Link } from "react-router-dom";
 import withContext from "../withContext";
 import axios from 'axios';
 
 import 'bootstrap/dist/css/bootstrap.min.css'; //bootstrap
-import { Container, Row, Col, Button } from 'reactstrap';
+import { Container } from 'reactstrap';
 
 class Feedback extends Component {
   constructor(props) {
@@ -17,7 +16,7 @@ class Feedback extends Component {
 
   async componentDidUpdate() {
 
-        if (this.props.context !== null && this.state.feedback_db.length == 0) {
+        if (this.props.context !== null && this.state.feedback_db.length === 0) {
 
             const { user } = this.props.context;
             if (user !== null){

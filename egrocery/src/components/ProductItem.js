@@ -1,7 +1,8 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css'; //bootstrap
+import { Link } from "react-router-dom";
 
-import { Container, Row, Col, Button } from 'reactstrap';
+import { Row, Col, Button } from 'reactstrap';
 
 const ProductItem = props => {
   const { product } = props;
@@ -21,6 +22,9 @@ const ProductItem = props => {
         <div className=" mt-3">
           <h1 className="d-inline product-price">{product.price.toFixed(2)}</h1><h6 className="d-inline"> AED</h6>
         </div>
+        <div>
+        <Link to={`/view-item/${product._id}`}><i>View item</i></Link>
+        </div>
         <Button
                 className="btn-main mt-4"
                 onClick={() =>
@@ -32,7 +36,7 @@ const ProductItem = props => {
                 }
               >
                 ADD
-              </Button>
+        </Button>
 
         <p className="text-secondary">
           {product.stock > 0 ? (
