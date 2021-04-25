@@ -43,6 +43,8 @@ export default class App extends Component {
       products: []
     };
     this.routerRef = React.createRef();
+
+    const category_dict = {"Bread & Bakery":"bakery", "Breakfast & Cereal":"breakfast", "Canned Goods & Soups":"soups", "Dairy, Eggs & Cheese":"dairy", "Grains, Pasta & Sides":"grains", "Fruit & Vegetables":"fruit", "Meat":"meat", "Cookies, Snacks & Candy":"snacks"};
   }
 
   async componentDidMount() {
@@ -137,19 +139,17 @@ export default class App extends Component {
     this.setState({ cart });
   };
 
-  async deleteProduct(productItem){
-    console.log(productItem);
-    // const category_dict = {"Bread & Bakery":"bakery", "Breakfast & Cereal":"breakfast", "Canned Goods & Soups":"soups", "Dairy, Eggs & Cheese":"dairy", "Grains, Pasta & Sides":"grains", "Fruit & Vegetables":"fruit", "Meat":"meat", "Cookies, Snacks & Candy":"snacks"};
-    // const url = `https://se-egrocery.herokuapp.com/api/products/${category_dict[productItem.product.category]}`;
-    // const res = await axios.get(url);
-    // const init_data = res.data;
-    // var new_data = []
-    // for (var item of res.data){
-    //   if (item.name !== productItem.id){
-    //     new_data.push(item);
-    //   }
-    // }
-    // axios.put(url, {data: new_data});
+
+  deleteProduct = async (productItem) => {
+
+    const res = await axios.delete(`https://se-egrocery.herokuapp.com/api/product/${productItem.product._id}`,
+                                                  {headers: {"x-access-token": this.state.user.token}})
+    .catch((res) => {
+      return { status: 401, message: 'Unauthorized' }
+    });
+
+    return { status: 200, message: 'Item Deleted!' }
+
   }
 
   editProduct = (productItem) =>{

@@ -25,7 +25,7 @@ class AddProduct extends Component {
     if (name && price) {
 
       await axios.post(
-        'https://se-egrocery.herokuapp.com/api/products/add',
+        'https://se-egrocery.herokuapp.com/api/product/add',
         { name, price, stock, shortDesc, description, url },
         {headers: {
           "x-access-token": this.props.context.user.token
