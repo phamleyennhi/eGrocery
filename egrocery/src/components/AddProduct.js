@@ -62,21 +62,21 @@ class AddProduct extends Component {
 
     return(
       <>
-        <div className="hero is-primary ">
-          <div className="hero-body container">
-            <h4 className="title">Add Product</h4>
+        <div className="container">
+          <div className="row">
+            <h4 className="ml-2">Add Product</h4>
           </div>
         </div>
         <br />
         <br />
         <div className="container is-max-desktop">
         <form onSubmit={this.save}>
-          <div className="columns is-mobile is-centered">
-            <div className="column is-one-third">
+          <div className="row justify-content-center">
+            <div className="col-md-6 col-12">
               <div className="field">
                 <label className="label">Product Name: </label>
                 <input
-                  className="input"
+                  className="form-control"
                   type="text"
                   name="name"
                   value={name}
@@ -87,7 +87,7 @@ class AddProduct extends Component {
               <div className="field">
                 <label className="label">Price: </label>
                 <input
-                  className="input"
+                  className="form-control"
                   type="number"
                   name="price"
                   value={price}
@@ -98,7 +98,7 @@ class AddProduct extends Component {
               <div className="field">
                 <label className="label">Available in Stock: </label>
                 <input
-                  className="input"
+                  className="form-control"
                   type="number"
                   name="stock"
                   value={stock}
@@ -108,7 +108,7 @@ class AddProduct extends Component {
               <div className="field">
                 <label className="label">Country of Origin: </label>
                 <input
-                  className="input"
+                  className="form-control"
                   type="text"
                   name="shortDesc"
                   value={shortDesc}
@@ -118,8 +118,8 @@ class AddProduct extends Component {
               <div className="field">
                 <label className="label">Short Description: </label>
                 <textarea
-                  className="textarea"
-                  type="text"
+                  className="form-control"
+                  type="textarea"
                   rows="2"
                   style={{ resize: "none" }}
                   name="description"
@@ -130,7 +130,7 @@ class AddProduct extends Component {
               <div className="field">
                 <label className="label">Image URL: </label>
                 <input
-                  className="input"
+                  className="form-control"
                   type="text"
                   rows="2"
                   style={{ resize: "none" }}
@@ -144,9 +144,9 @@ class AddProduct extends Component {
                   {this.state.flash.msg}
                 </div>
               )}
-              <div className="field is-clearfix">
+              <div className="row justify-content-end">
                 <button
-                  className="button is-primary is-outlined is-pulled-right"
+                  className="btn btn-main text-end  mt-3 d-block"
                   type="submit"
                   onClick={this.save}
                 >
