@@ -30,7 +30,7 @@ const Cart = props => {
         <Row>
           
           <Col lg={{ size: 4, order: 2}} >
-          <div className="p-3 mb-5 align-items-left shadow-custom rounded sticky-top">
+          <div className="p-3 mb-5 align-items-left shadow-custom rounded sticky-top" style={{top: 25}}>
             <h4 className="text-capitalize font-weight-bold mb-0">
               Total: {total_price} AED
             </h4>
