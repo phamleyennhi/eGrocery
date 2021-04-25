@@ -32,7 +32,7 @@ const Cart = props => {
           <Col lg={{ size: 4, order: 2}} >
           <div className="p-3 mb-5 align-items-left shadow-custom rounded sticky-top" style={{top: 25}}>
             <h4 className="text-capitalize font-weight-bold mb-0">
-              Total: {total_price} AED
+              Total: {total_price.toFixed(2)} AED
             </h4>
             <div> {total_price < 100 ? 
              <Link to="/products" className="mt-2 ">

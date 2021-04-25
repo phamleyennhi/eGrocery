@@ -23,7 +23,7 @@ const CartItem = props => {
           </Col>
           <Col md="4" className="text-right">
             <div>
-              <h3 className="d-inline product-price">{product.price}</h3><h6 className="d-inline"> AED</h6>
+              <h3 className="d-inline product-price">{product.price.toFixed(2)}</h3><h6 className="d-inline"> AED</h6>
             </div>
             <div className="btn-group btn-group-toggle mt-2 mb-2" data-toggle="buttons">
               <button type="button" className="btn btn-main btn-sm" onClick={() => props.editCartQuantity(cartItem, cartKey, -1)}>-</button>

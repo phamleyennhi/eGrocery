@@ -19,7 +19,7 @@ const AdminProductItem = props => {
           {product.shortDesc}
         </h6>
         <div className=" mt-3">
-          <h1 className="d-inline product-price">{product.price}</h1><h6 className="d-inline"> AED</h6>
+          <h1 className="d-inline product-price">{product.price.toFixed(2)}</h1><h6 className="d-inline"> AED</h6>
         </div>
         <Button
           className="btn-main mt-4"
