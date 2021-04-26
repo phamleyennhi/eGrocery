@@ -113,6 +113,7 @@ export default class App extends Component {
     e.preventDefault();
     this.setState({ user: null });
     localStorage.removeItem("user");
+    this.clearCart();
   };
 
   addProduct = (product, callback) => {
