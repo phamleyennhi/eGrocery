@@ -19,6 +19,5 @@ Team members: Jakub N., Jakub P., Nhi, and Vince
 1. Clone repo
 2. Run `npm install`
 3. Install ReactStrap and Bootstrap: `npm install --save reactstrap react react-dom`
-4. Run `./node_modules/.bin/json-server-auth ./backend/db.json --port 3001` to start the backend server
-5. Run `npm start` to start the Create React App dev server 
-6. Visit [http://localhost:3000/](http://localhost:3000/)
+4. Run `npm start` to start the Create React App dev server 
+5. Visit [http://localhost:3000/](http://localhost:3000/)
