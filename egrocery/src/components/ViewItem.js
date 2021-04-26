@@ -23,7 +23,7 @@ class ViewItem extends Component {
     if(this.state._id !== null){
       // this.state.products = this.props.context;
       console.log("getting item from database");
-      const res = await axios.get('https://se-egrocery.herokuapp.com/api/products/' + this.state._id);
+      const res = await axios.get('https://se-egrocery.herokuapp.com/api/product/' + this.state._id);
       this.setState({product: res.data});
       console.log(res.data);
     }
