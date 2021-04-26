@@ -196,27 +196,19 @@ export default class App extends Component {
     this.setState({quantity_in_cart: 0});
   };
 
-  checkout = () => {
-    if (!this.state.user) {
-      this.routerRef.current.history.push("/login");
-      return;
-    }
+  checkout = async (req) => {
 
-    const cart = this.state.cart;
+    const res = await axios.post(
+      'https://se-egrocery.herokuapp.com/api/order', 
+      req, 
+      {headers: {"x-access-token": this.state.user.token}}
+    ).catch((res) => {
+      return { status: 401, message: 'Unauthorized' }
+    })
 
-    const products = this.state.products.map(p => {
-      if (cart[p.name]) {
-        p.stock = p.stock - cart[p.name].amount;
+    
 
-        axios.put(
-          `http://localhost:3001/products/${p.id}`,
-          { ...p },
-        )
-      }
-      return p;
-    });
-
-    this.setState({ products });
+    this.routerRef.current.history.push("/products");
     this.clearCart();
   };
 
