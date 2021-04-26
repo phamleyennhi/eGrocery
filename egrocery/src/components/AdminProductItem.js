@@ -2,6 +2,7 @@ import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css'; //bootstrap
 
 import { Row, Col, Button } from 'reactstrap';
+import { Link } from "react-router-dom";
 
 const AdminProductItem = props => {
   const { product} = props;
@@ -33,17 +34,7 @@ const AdminProductItem = props => {
           REMOVE
         </Button>
         <div>
-        <Button
-          className="btn-main mt-4"
-          onClick={() =>
-            props.editProduct({
-              id: product.name,
-              product
-            })
-          }
-        >
-          EDIT
-        </Button>
+        <Link to={"/edit-product/"+product._id} className="btn btn-dark btn-main mt-4">EDIT</Link>
         </div>
         <p className="text-secondary">
           {product.stock > 0 ? (

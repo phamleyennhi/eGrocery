@@ -22,6 +22,7 @@ import {
 } from 'reactstrap';
 
 import AddProduct from './components/AddProduct';
+import EditProduct from './components/EditProduct';
 import AdminProductList from './components/AdminProductList';
 import Cart from './components/Cart';
 import Login from './components/Login';
@@ -155,10 +156,6 @@ export default class App extends Component {
 
   }
 
-  editProduct = (productItem) =>{
-    console.log(productItem)
-  }
-
   editCartQuantity = (cartItem, cartItemId, change) => {
     let cart = this.state.cart;
     let quantity_in_cart = localStorage.getItem("quantity_in_cart");
@@ -260,7 +257,6 @@ export default class App extends Component {
           editCartQuantity: this.editCartQuantity,
           feedback: this.feedback,
           deleteProduct: this.deleteProduct,
-          editProduct: this.editProduct,
         }}
       >
         <Router ref={this.routerRef}>
@@ -370,6 +366,7 @@ export default class App extends Component {
               <Route exact path="/feedback" component={Feedback} />
               <Route exact path="/checkout" component={Checkout} />
               <Route exact path="/view-item/:_id" component={ViewItem} />
+              <Route exact path="/edit-product/:_id" component={EditProduct} />
             </Switch>
 
 
