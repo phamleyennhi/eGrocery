@@ -16,9 +16,15 @@ const ProductItem = props => {
         <h5 className="text-capitalize font-weight-bold mb-0 product-name">
           <Link to={`/view-item/${product._id}`}>{product.name}</Link>
         </h5>
+        {product.category == "Ugly" ? 
+          <h6 className="font-weight-bold text-secondary-custom mt-1">
+           {product.description}!
+          </h6> 
+        :         
         <h6 className="text-secondary">
           {product.shortDesc}
-        </h6>
+        </h6> 
+      }
         <div className=" mt-3">
           <h2 className="d-inline product-price">{product.price.toFixed(2)}</h2><h6 className="d-inline"> AED</h6>
         </div>

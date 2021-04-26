@@ -60,6 +60,9 @@ nav ul li {
     border: 2px solid #92CD28 !important;
 }
 
+.text-secondary-custom {
+    color: #de7a10;
+}
 
 .bg-secondary-custom{
     background: #de7a10;

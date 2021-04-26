@@ -114,6 +114,11 @@ class ProductList extends Component {
           Cookies, Snacks & Candy
         </NavLink>
       </NavItem>
+      <NavItem>
+        <NavLink className="font-weight-bold text-secondary-custom" href="/products/imperfect">
+          Special deals!
+        </NavLink>
+      </NavItem>
     </Nav>
     </Container>
     </Navbar>
