@@ -33,6 +33,7 @@ import ThankYou from "./components/ThankYou";
 import Checkout from "./components/Checkout";
 import Feedback from "./components/Feedback";
 import ViewItem from "./components/ViewItem";
+import Search from "./components/Search"
 
 export default class App extends Component {
   constructor(props) {
@@ -41,7 +42,8 @@ export default class App extends Component {
       user: null,
       quantity_in_cart: 0,
       cart: {},
-      products: []
+      products: [],
+      search_pattern:""
     };
     this.routerRef = React.createRef();
 
@@ -237,9 +239,9 @@ export default class App extends Component {
     }
   };
 
-  // Navbar burger collapse button
-  // const [isOpen, setIsOpen] = useState(false);
-  // const toggle = () => setIsOpen(!isOpen);
+  simpleSearch( pattern ) {
+    this.setState({search_pattern: pattern});
+  }
 
   render() {
     const user = this.state.user;
@@ -258,7 +260,7 @@ export default class App extends Component {
           editCartQuantity: this.editCartQuantity,
           feedback: this.feedback,
           deleteProduct: this.deleteProduct,
-          editProduct: this.editProduct
+          editProduct: this.editProduct,
         }}
       >
         <Router ref={this.routerRef}>
@@ -278,6 +280,8 @@ export default class App extends Component {
             <Nav navbar className={`flex-row ${
                   this.state.showMenu ? "is-active" : ""
                 }`}>
+
+              <Search placeholder="Search" onChange={(e) => {this.simpleSearch(e.target.value)}}/>
 
               {(user && user.accessLevel === 0) ? 
                 (<>
@@ -351,7 +355,7 @@ export default class App extends Component {
               <Route exact path="/" component={ProductList} />
               <Route path="/admin-products" >
                 <Route exact path="/admin-products" component={AdminProductList} />
-                <Route exact path="/admin-products/:category" component={AdminProductList} />
+                <Route exact path="/admin-products/:category/" component={AdminProductList} />
               </Route>
               <Route exact path="/login" component={Login} />
               <Route exact path="/register" component={Register} />

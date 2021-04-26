@@ -15,49 +15,54 @@ class ProductList extends Component {
   constructor(props) {
         super(props);
         this.state = {
-            products: {},
-            category: ""
+            products: null,
+            category: "",
+            search_pattern: ""
         };
 
         const { match: { params } } = this.props;
-        console.log(this.props);
         this.state.category = params.category;
     }
-
-  async componentDidMount() {
-    if(this.state.category == null){
-      // this.state.products = this.props.context;
-      const res = await axios.get('https://se-egrocery.herokuapp.com/api/products');
-
-      this.setState({products: res.data});
+  async componentDidMount(){
+        if(this.state.category == null){
+          const res = await axios.get('https://se-egrocery.herokuapp.com/api/products');
+          this.setState({products: res.data});
+        }
+        else{
+          const res = await axios.get('https://se-egrocery.herokuapp.com/api/products/'+this.state.category);
+          this.setState({products: res.data});
+          console.log(this.state.products)
+        }
+  }
+  async componentDidUpdate(previousProps, previousState) {
+    if (previousProps.phrase !== this.props.phrase) {
+        console.log("something has changed!");
     }
-    else{
-      const res = await axios.get('https://se-egrocery.herokuapp.com/api/products/'+this.state.category);
-      // this.state.products = res.data
-      this.setState({products: res.data});
-      console.log(this.state.products)
-      }
   }
 
-
   render() {
-  const product_db = this.state.products;
-  console.log(product_db);
-  const product_list = product_db && product_db.length ? (
-            this.state.products.map((product, index) => (
-              <ProductItem
-                product={product}
-                key={index}
-                addToCart={this.props.context.addToCart}
-              /> 
-            ))
-          ) 
-          : 
-          (
-            <div className="column">
-              <span> Loading products ...</span>
-            </div>
-          )
+      const search_pattern = this.props.context.search_pattern;
+      // search_pattern === "" ? (console.log("no search pattern")) : (console.log(search_pattern))
+      const product_db = this.state.products;
+      const product_list = product_db && product_db.length ?[
+                product_db.map((product, index) => (
+                  <>
+                  {product.name.toLowerCase().indexOf(search_pattern.toLowerCase()) !== -1 ?
+                  (<ProductItem
+                    product={product}
+                    key={index}
+                    addToCart={this.props.context.addToCart}
+                  />) : (console.log("product at index " + index + " " + product.name.toLowerCase() + " not contained " + search_pattern.toLowerCase()))
+                  }
+                  </>
+                ))
+              ]
+              : 
+              (
+                <div className="column">
+                  <span> Loading products ...</span>
+                </div>
+              )
   return (
     <>
 
