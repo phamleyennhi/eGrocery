@@ -4,6 +4,18 @@ import { Link } from "react-router-dom";
 
 import { Row, Col, Button } from 'reactstrap';
 
+var displayMsg = 0;
+var id = null;
+function displayMessage(_id){
+  displayMsg = 1;
+  id = _id;
+  // return alert("Product Added");
+}
+
+function hideMessage(){
+  displayMsg = 0;
+  // return alert("Product Added");
+}
 const ProductItem = props => {
   const { product } = props;
   return (
@@ -34,16 +46,17 @@ const ProductItem = props => {
         <Button
                 className="btn-main mt-4"
                 onClick={() =>
-                  props.addToCart({
+                  {props.addToCart({
                     id: product.name,
                     product,
-                    amount: 1
-                  })
+                    amount: 1,
+                  }); displayMessage(product.name)}
                 }
               >
                 ADD
         </Button>
-
+        {(displayMsg === 1 && id === product.name) ? (<> <div> <p className="text-secondary-custom"> Product added </p> </div> </>) : (<div> </div>) }
+        {(displayMsg === 1 && id === product.name) ? (hideMessage()) : (<div> </div>)}
         <p className="text-secondary">
           {product.stock > 0 ? (
               <small>{product.stock + " in stock"}</small>
