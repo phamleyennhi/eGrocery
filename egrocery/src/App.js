@@ -34,7 +34,8 @@ import ThankYou from "./components/ThankYou";
 import Checkout from "./components/Checkout";
 import Feedback from "./components/Feedback";
 import ViewItem from "./components/ViewItem";
-import Search from "./components/Search"
+import Orders from "./components/Orders";
+import Search from "./components/Search";
 
 export default class App extends Component {
   constructor(props) {
@@ -206,7 +207,7 @@ export default class App extends Component {
       return { status: 401, message: 'Unauthorized' }
     })
 
-    
+
 
     this.routerRef.current.history.push("/products");
     this.clearCart();
@@ -289,6 +290,11 @@ export default class App extends Component {
                     Feedback
                   </NavLink>
                 </NavItem>
+                <NavItem>
+                  <NavLink className="text-secondary" href="/orders">
+                    Orders
+                  </NavLink>
+                </NavItem>
                 </>)
                 :
                 (<>
@@ -356,6 +362,7 @@ export default class App extends Component {
               <Route exact path="/contact" component={Contact} />
               <Route exact path="/thankyou" component={ThankYou} />
               <Route exact path="/feedback" component={Feedback} />
+              <Route exact path="/orders" component={Orders} />
               <Route exact path="/checkout" component={Checkout} />
               <Route exact path="/view-item/:_id" component={ViewItem} />
               <Route exact path="/edit-product/:_id" component={EditProduct} />
