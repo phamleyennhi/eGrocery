@@ -6,8 +6,9 @@ Team members: Jakub N., Jakub P., Nhi, and Vince
 
 ### To be used in the project:
 1. React
-2. NodeJS
-3. MongoDB
+2. ReactStrap (Bootstrap for React)
+3. NodeJS
+4. MongoDB
 
 
 ### First Sprint:
