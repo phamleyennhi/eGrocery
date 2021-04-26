@@ -62,7 +62,7 @@ class ProductList extends Component {
     <>
 
     <Navbar
-            className="mt-n5 mb-5 bg-white small text-center"
+            className="border-bottom mt-n5 mb-5 bg-white small text-center"
             role="navigation"
             aria-label="navigation"
 
