@@ -37,14 +37,12 @@ class Feedback extends Component {
       <>
       <Container>
       {this.state.feedback_db.map((feedback, index) => (
-        <div className="row mb-5 mt-5 border-bottom" key={index}>
-            <div className="col-12 mb-2">
+        <div className="row mb-5 mt-5 " key={index}>
+            <div className="mx-auto col-lg-8 col-xl-8 col-md-12 col-sm-12 mb-2 border-bottom">
 
             <h3 className="text-end"> {feedback.name} <small className="text-secondary"> {"<"+feedback.email+">"} </small></h3>
-                            </div>
-            <div className="col-12">
-            <p> {feedback.message} </p>
 
+            <p> {feedback.message} </p>
             </div>
 
         </div>
