@@ -78,6 +78,22 @@ nav ul li {
     background-color: #92CD28;
 }
 
+.alert-container {
+    z-index: 5;
+    position: fixed;
+    bottom: 1em;
+}
+
+.alert-custom {
+    background: #de7a10;
+    border-color: #c86e0e;
+    color: #fff;
+}
+
+.show {
+    transition: opacity 150ms;
+}
+
 
 a,
 a * {

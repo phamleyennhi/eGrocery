@@ -52,6 +52,7 @@ class ProductList extends Component {
                     product={product}
                     key={index}
                     addToCart={this.props.context.addToCart}
+                    addAlert={this.props.context.addAlert}
                   />) : (console.log("product at index " + index + " " + product.name.toLowerCase() + " not contained " + search_pattern.toLowerCase()))
                   }
                   </>

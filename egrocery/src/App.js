@@ -45,7 +45,8 @@ export default class App extends Component {
       quantity_in_cart: 0,
       cart: {},
       products: [],
-      search_pattern:""
+      search_pattern:"",
+      alert: "",
     };
     this.routerRef = React.createRef();
 
@@ -230,6 +231,24 @@ export default class App extends Component {
     }
   };
 
+
+  addAlert = message => {
+    this.setState({alert: message});
+
+
+    if(this.alertTimeout){
+      clearTimeout(this.alertTimeout);
+    }
+
+    this.alertTimeout = setTimeout(() => {
+          this.setState({
+            alert: "",
+          });
+      }, 3000);
+  }
+
+
+
   simpleSearch( pattern ) {
     this.setState({search_pattern: pattern});
   }
@@ -251,6 +270,7 @@ export default class App extends Component {
           editCartQuantity: this.editCartQuantity,
           feedback: this.feedback,
           deleteProduct: this.deleteProduct,
+          addAlert: this.addAlert
         }}
       >
         <Router ref={this.routerRef}>
@@ -369,6 +389,19 @@ export default class App extends Component {
               <Route exact path="/edit-product/:_id" component={EditProduct} />
             </Switch>
 
+            
+                <Container fluid className="alert-container">
+                <Row className="justify-content-center">
+                    <div className="col-4">
+                    <div className={this.state.alert ? "alert alert-custom alert-dismissible fade show" : "alert alert-custom alert-dismissible fade" } role="alert">
+                      {this.state.alert}
+                        <button type="button" className="close text-light" onClick={() => {this.setState({alert: ""}); clearTimeout(this.alertTimeout);}  }>
+                          <span>&times;</span>
+                        </button>
+                    </div>
+                    </div>
+                </Row>
+                </Container>
 
             <footer className="mt-5">
               <Container fluid className="bg-dark text-light text-center">
