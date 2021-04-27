@@ -36,8 +36,17 @@ class Feedback extends Component {
     return (
       <>
       <Container>
+      <div className="row mb-5 mt-5">
+
+      <div className="mx-auto col-lg-8 col-xl-8 col-md-12 col-sm-12 mb-2 border-bottom">
+            <h1>Customer Feedback</h1>
+      </div>
+      </div>
+      
       {this.state.feedback_db.map((feedback, index) => (
+
         <div className="row mb-5 mt-5 " key={index}>
+
             <div className="mx-auto col-lg-8 col-xl-8 col-md-12 col-sm-12 mb-2 border-bottom">
 
             <h3 className="text-end"> {feedback.name} <small className="text-secondary"> {"<"+feedback.email+">"} </small></h3>
