@@ -84,6 +84,8 @@ export default class App extends Component {
       const user = {
         email: res.data.email,
         token: res.data.accessToken,
+        name: res.data.name,
+        phone_number: res.data.phone_number,
         accessLevel: isAdmin ? 0 : 1
       }
 
@@ -99,7 +101,7 @@ export default class App extends Component {
     console.log(name +", " + email + ", " + phone_number + ", " + password);
     const res = await axios.post(
       'https://se-egrocery.herokuapp.com/api/auth/signup',
-      { email, password, roles:["user"] },
+      { email, password, name, phone_number, roles:["user"] },
     ).catch((res) => {
       return { status: 401, message: 'Unauthorized' }
     })
