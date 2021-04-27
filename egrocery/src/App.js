@@ -295,9 +295,9 @@ export default class App extends Component {
             <Nav navbar className={`flex-row ${
                   this.state.showMenu ? "is-active" : ""
                 }`}>
-
+              <NavItem>
               <Search placeholder="Search" onChange={(e) => {this.simpleSearch(e.target.value)}}/>
-
+              </NavItem>
               {(user && user.accessLevel === 0) ? 
                 (<>
                 <NavItem>

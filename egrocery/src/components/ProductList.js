@@ -129,10 +129,22 @@ class ProductList extends Component {
       <Row className="text-capitalize ml-4 mb-5">
           <h1>{this.state.category ? this.state.category : "Featured products" }</h1>
       </Row>
-      <Row className="product-list-wrapper justify-content-center">
+      <Row className="product-list-wrapper justify-content-center mb-5">
       { product_list }
       </Row>
       
+      <section>
+      {this.state.category ? "" :
+      
+      <Row className="ml-4">
+        <h1>
+          About eGrocery
+        </h1>
+      </Row>
+
+      }
+      </section>
+
       </Container>
     </>
   )};
