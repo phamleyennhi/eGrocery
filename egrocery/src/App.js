@@ -5,7 +5,7 @@ import jwt_decode from 'jwt-decode';
 
 
 import 'bootstrap/dist/css/bootstrap.min.css'; //bootstrap
-import { Container, Row, Col, Button} from 'reactstrap';
+import {  Dropdown, Container, Row, Col, Button} from 'reactstrap';
 import {
   Collapse,
   Navbar,
@@ -36,6 +36,7 @@ import Feedback from "./components/Feedback";
 import ViewItem from "./components/ViewItem";
 import Orders from "./components/Orders";
 import Search from "./components/Search";
+import Profile from "./components/Profile"
 
 export default class App extends Component {
   constructor(props) {
@@ -358,10 +359,15 @@ export default class App extends Component {
                 </NavItem>
               ) : (
               <NavItem>
-                <NavLink className="text-secondary" href="/" onClick={this.logout}>
-                  <Button className="btn-main">
-                  Logout
-                </Button>
+              <Dropdown>
+              </Dropdown>
+              <NavLink className="text-secondary font-weight-bold" href="/">
+
+                    Hello, {this.state.user.email}!
+                    <ul>
+                    <a href= "/profile"><li> Profile </li> </a>
+                    <li onClick={this.logout}> Logout </li>
+                    </ul>
                 </NavLink>
                 </NavItem>
               )}
@@ -391,6 +397,7 @@ export default class App extends Component {
               <Route exact path="/checkout" component={Checkout} />
               <Route exact path="/view-item/:_id" component={ViewItem} />
               <Route exact path="/edit-product/:_id" component={EditProduct} />
+              <Route exact path="/profile" component={Profile} />
             </Switch>
 
             
