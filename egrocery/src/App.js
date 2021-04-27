@@ -94,7 +94,8 @@ export default class App extends Component {
     }
   }
 
-  register = async (email, password) => {
+  register = async (name, email, phone_number, password) => {
+    console.log(name +", " + email + ", " + phone_number + ", " + password);
     const res = await axios.post(
       'https://se-egrocery.herokuapp.com/api/auth/signup',
       { email, password, roles:["user"] },
@@ -103,6 +104,7 @@ export default class App extends Component {
     })
 
     if(res.status === 200) {
+      this.addAlert("Succesfully registered! Log in to your new account!");
       return true;
     } else {
       return false;

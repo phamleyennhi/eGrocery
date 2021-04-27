@@ -10,7 +10,9 @@ class Register extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      name:"",
       username: "",
+      phone: "",
       password: "",
       password2:"",
       registered: false
@@ -22,14 +24,42 @@ class Register extends Component {
   register = (e) => {
     console.log(this.state);
     e.preventDefault();
-
-    const { username, password, password2 } = this.state;
+    var specialChars = "<>@!#$%^&*()_+[]{}?:;|'\"\\,./~`-=";
+    var num = "0123456789";
+    var containSpecialChars = 0;
+    var containNum = 0;
+    console.log("containNum:" + containNum);
+    const { name, username, phone, password, password2 } = this.state;
     if (!username || !password) {
       return this.setState({ error: "Fill all fields!" });
     }
+    if (password.length < 8){
+      return this.setState({ error: "Password length must be greater than 8 characters!" });
+    }
+    else{
+      for (var c of password){
+        if (specialChars.indexOf(c) !== -1){
+          containSpecialChars = 1;
+        }
+        if (num.indexOf(c) !== -1){
+          containNum = 1;
+        }
+      }
+      if (containSpecialChars === 0 && containNum === 0){
+        return this.setState({ error: "Password must contain at least 1 special character and 1 number!" });
+      }
+      else if (containNum === 0){
+        return this.setState({error: "Password must contain at least 1 number!"})
+      }
+      else if (containSpecialChars === 0){
+        return this.setState({ error: "Password must contain at least 1 special character!" });
+      }
+
+    }
     if (password !== password2)
       return this.setState({error: "Password does not match!"});
-    this.props.context.register(username, password)
+    console.log(this.state.name +", " + this.state.username + ", " + this.state.phone + ", " + this.state.password);
+    this.props.context.register(name, username, phone, password)
       .then((registered) => {
         console.log(registered);
         if (!registered) {
@@ -54,6 +84,15 @@ class Register extends Component {
 
         <form onSubmit={this.register}>
           <div className="form-group"> 
+              <input
+                  className="form-control"
+                  type="name"
+                  name="name"
+                  placeholder="Name"
+                  onChange={this.handleChange}
+                />
+              </div>
+              <div className="form-group"> 
                 <input
                   className="form-control"
                   type="email"
@@ -77,7 +116,7 @@ class Register extends Component {
                   type="phone"
                   name="phone"
                   placeholder="Mobile phone (+971)"
-
+                  onChange={this.handleChange}
                 />
               </div>
               </div>

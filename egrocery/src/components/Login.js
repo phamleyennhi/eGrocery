@@ -22,11 +22,11 @@ class Login extends Component {
 
     login = (e) => {
         e.preventDefault();
-
         const { username, password } = this.state;
         if (!username || !password) {
             return this.setState({ error: "Fill all fields!" });
         }
+
         this.props.context.login(username, password)
             .then((loggedIn) => {
                 console.log(loggedIn);
