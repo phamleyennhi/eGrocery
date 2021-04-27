@@ -3,7 +3,7 @@ import withContext from "../withContext";
 import axios from 'axios';
 
 import 'bootstrap/dist/css/bootstrap.min.css'; //bootstrap
-import { Container, Col } from 'reactstrap';
+import { Button, Container, Col } from 'reactstrap';
 
 class ViewItem extends Component {
   constructor(props) {
@@ -16,6 +16,7 @@ class ViewItem extends Component {
       this.state._id = params._id;
       this.setState({_id: params._id});
       console.log(this.state._id);
+      console.log(props)
   }
 
   async componentDidMount() {
@@ -55,7 +56,18 @@ class ViewItem extends Component {
               <img className="img-fluid mx-auto p-2 product-image" src={this.state.product.url} alt="" />
             </Col>
             </div>
-
+          {(this.props.context.user && this.props.context.user.accessLevel === 0) ? <></> :
+          <Button
+                  className="btn-main mt-4"
+                  onClick={() =>
+                    {this.props.context.addToCart({
+                      id: this.state.product.name,
+                      product: this.state.product,
+                      amount: 1,
+                    }); this.props.context.addAlert(this.state.product.name+" added to cart!")}}
+                >
+                  ADD
+          </Button>}
         </div>)
       : (
       <Container>
