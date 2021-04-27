@@ -16,6 +16,7 @@ class ViewItem extends Component {
       this.state._id = params._id;
       this.setState({_id: params._id});
       console.log(this.state._id);
+      console.log(props)
   }
 
   async componentDidMount() {
@@ -54,7 +55,34 @@ class ViewItem extends Component {
 
             
           </Col>
-            
+          
+            <div className="col-12">
+            <p style={{"white-space": "pre-line"}}> {this.state.product.description} </p>
+                        <hr className="mb-4"/>
+            </div>
+            <div className="col-12">
+            <p style={{"white-space": "pre-line"}}> {this.state.product.shortDesc} </p>
+                        <hr className="mb-4"/>
+            <p style={{"white-space": "pre-line"}}> {this.state.product.price} AED </p>
+                        <hr className="mb-4"/>
+            <p style={{"white-space": "pre-line"}}> {this.state.product.stock} left in stock </p>
+                        <hr className="mb-4"/>
+            <Col md="12" className="border-bottom p-0 product-image-wrapper">
+              <img className="img-fluid mx-auto p-2 product-image" src={this.state.product.url} alt="" />
+            </Col>
+            </div>
+          {(this.props.context.user && this.props.context.user.accessLevel === 0) ? <></> :
+          <Button
+                  className="btn-main mt-4"
+                  onClick={() =>
+                    {this.props.context.addToCart({
+                      id: this.state.product.name,
+                      product: this.state.product,
+                      amount: 1,
+                    }); this.props.context.addAlert(this.state.product.name+" added to cart!")}}
+                >
+                  ADD
+          </Button>}
           </Row>
 
         </Container>)
