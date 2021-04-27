@@ -144,7 +144,7 @@ export default class App extends Component {
     }
     if (cart[cartItem.id].amount > cart[cartItem.id].product.stock) {
       cart[cartItem.id].amount = cart[cartItem.id].product.stock;
-      this.addAlert("No more " +cart[cartItem.id].product.name+ " left in stock!");
+      this.addAlert("You've added all the available " +cart[cartItem.id].product.name+ " in stock!");
     }
     else {
       this.state.quantity_in_cart += 1;
