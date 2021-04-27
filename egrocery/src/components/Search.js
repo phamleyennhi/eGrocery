@@ -7,13 +7,11 @@ import { Row, Col, Button } from 'reactstrap';
 
 const Search = ({onChange, placeholder}) => {
   return (
-    <div>
       <input
         type="text"
         onChange={onChange}
         placeholder={placeholder}
       />
-    </div>
   );
 };
 

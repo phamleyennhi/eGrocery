@@ -43,8 +43,8 @@ class ViewItem extends Component {
             <small className="text-secondary mb-3 d-block"> {"<"+this.state.product.category+"/" +this.state.product.subcategory+">"} </small>
             <h2 className="mb-3"> {this.state.product.name} </h2>
 
-            <p className="mb-0"> {this.state.product.description} </p>
-            <small>Size: {this.state.product.shortDesc} </small>
+            <p className="mb-0  text-secondary"> {this.state.product.description} </p>
+            <small className=" text-secondary">Size: {this.state.product.shortDesc} </small>
             <hr className="mb-4"/>
 
             <div className="mb-3 mt-3">
