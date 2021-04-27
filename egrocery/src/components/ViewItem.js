@@ -53,25 +53,7 @@ class ViewItem extends Component {
             </div>        
             <small className="d-block text-secondary"> {this.state.product.stock} left in stock </small>
 
-            
-          </Col>
-          
-            <div className="col-12">
-            <p style={{"white-space": "pre-line"}}> {this.state.product.description} </p>
-                        <hr className="mb-4"/>
-            </div>
-            <div className="col-12">
-            <p style={{"white-space": "pre-line"}}> {this.state.product.shortDesc} </p>
-                        <hr className="mb-4"/>
-            <p style={{"white-space": "pre-line"}}> {this.state.product.price} AED </p>
-                        <hr className="mb-4"/>
-            <p style={{"white-space": "pre-line"}}> {this.state.product.stock} left in stock </p>
-                        <hr className="mb-4"/>
-            <Col md="12" className="border-bottom p-0 product-image-wrapper">
-              <img className="img-fluid mx-auto p-2 product-image" src={this.state.product.url} alt="" />
-            </Col>
-            </div>
-          {(this.props.context.user && this.props.context.user.accessLevel === 0) ? <></> :
+            {(this.props.context.user && this.props.context.user.accessLevel === 0) ? <></> :
           <Button
                   className="btn-main mt-4"
                   onClick={() =>
@@ -81,8 +63,23 @@ class ViewItem extends Component {
                       amount: 1,
                     }); this.props.context.addAlert(this.state.product.name+" added to cart!")}}
                 >
-                  ADD
+                  ADD TO CART
           </Button>}
+
+            <p className="mt-3 text-secondary">
+              <ul className="pl-0" style={{listStyleType: "none"}}>
+                <li>- Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+                <li>- Sed ligula nunc, feugiat eget est eget, suscipit ornare libero</li>
+                <li>- Duis commodo consectetur dui, vel pulvinar arcu rutrum ac</li>
+                <li>- Sed vel pharetra elit</li>
+
+              </ul>
+
+            </p>
+            
+          </Col>
+          
+          
           </Row>
 
         </Container>)
