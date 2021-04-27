@@ -51,7 +51,7 @@ const ProductItem = props => {
                     id: product.name,
                     product,
                     amount: 1,
-                  }); props.addAlert(product.name+" added to cart!")}
+                  });}
                 }
               >
                 ADD

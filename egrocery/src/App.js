@@ -144,8 +144,12 @@ export default class App extends Component {
     }
     if (cart[cartItem.id].amount > cart[cartItem.id].product.stock) {
       cart[cartItem.id].amount = cart[cartItem.id].product.stock;
+      this.addAlert("No more " +cart[cartItem.id].product.name+ " left in stock!");
     }
-    else this.state.quantity_in_cart += 1;
+    else {
+      this.state.quantity_in_cart += 1;
+      this.addAlert(cart[cartItem.id].product.name+" added to cart!")
+    }
     console.log("cartItem.amount:", cartItem.amount);
     console.log("cartItem:", cartItem);
     localStorage.setItem("cart", JSON.stringify(cart));
@@ -170,10 +174,15 @@ export default class App extends Component {
   editCartQuantity = (cartItem, cartItemId, change) => {
     let cart = this.state.cart;
     let quantity_in_cart = localStorage.getItem("quantity_in_cart");
-
-    quantity_in_cart = parseInt(quantity_in_cart) + change;
-    cart[cartItem.id].amount += change;
-
+    quantity_in_cart = parseInt(quantity_in_cart);
+    if (cart[cartItem.id].amount >= cart[cartItem.id].product.stock) {
+      cart[cartItem.id].amount = cart[cartItem.id].product.stock;
+      this.addAlert("No more " +cart[cartItem.id].product.name+ " left in stock!");
+    }
+    else{
+      quantity_in_cart = parseInt(quantity_in_cart) + change;
+      cart[cartItem.id].amount += change;
+    }
     if(cart[cartItem.id].amount <= 0){
       this.removeFromCart(cartItemId);
     }
