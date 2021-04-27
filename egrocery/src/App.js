@@ -80,15 +80,18 @@ export default class App extends Component {
 
       const isAdmin = res.data.roles.includes("ROLE_ADMIN")
       console.log(isAdmin)
-
+      console.log(res.data);
       const user = {
         email: res.data.email,
         token: res.data.accessToken,
+        name: res.data.name,
+        phone_number: res.data.phone_number,
         accessLevel: isAdmin ? 0 : 1
       }
 
       this.setState({ user });
       localStorage.setItem("user", JSON.stringify(user));
+      console.log(user);
       return true;
     } else {
       return false;
@@ -99,7 +102,7 @@ export default class App extends Component {
     console.log(name +", " + email + ", " + phone_number + ", " + password);
     const res = await axios.post(
       'https://se-egrocery.herokuapp.com/api/auth/signup',
-      { email, password, roles:["user"] },
+      { email, password, name, phone_number, roles:["user"] },
     ).catch((res) => {
       return { status: 401, message: 'Unauthorized' }
     })
@@ -363,7 +366,7 @@ export default class App extends Component {
               </Dropdown>
               <NavLink className="text-secondary font-weight-bold" href="/">
 
-                    Hello, {this.state.user.email}!
+                    Hello, {this.state.user.name}!
                     <ul>
                     <a href= "/profile"><li> Profile </li> </a>
                     <li onClick={this.logout}> Logout </li>
