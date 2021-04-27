@@ -122,7 +122,7 @@ class AddProduct extends Component {
 
 
                   <div className="field mb-2">
-                    <label className="label"><b>Price </b></label>
+                    <label className="label"><b>Price (AED)</b></label>
                     <input
                       className="form-control"
                       type="number"

@@ -96,113 +96,116 @@ class EditProduct extends Component {
 
     return(
       <>
-        <div className="container">
-          <div className="row">
-            <h4 className="ml-2">Add Product</h4>
-          </div>
-        </div>
-        <br />
-        <br />
         <div className="container is-max-desktop">
         <form onSubmit={this.save}>
           <div className="row justify-content-center">
-            <div className="col-md-6 col-12">
-              <div className="field mb-2">
-                <label className="label">Product Name: </label>
-                <input
-                  className="form-control"
-                  type="text"
-                  name="name"
-                  value={name}
-                  onChange={this.handleChange}
-                  required
-                />
-              </div>
-              <div className="field mb-2">
-                <label className="label">Price: </label>
-                <input
-                  className="form-control"
-                  type="number"
-                  name="price"
-                  value={price}
-                  onChange={this.handleChange}
-                  required
-                />
-              </div>
-              <div className="field mb-2">
-                <label className="label">Available in Stock: </label>
-                <input
-                  className="form-control"
-                  type="number"
-                  name="stock"
-                  value={stock}
-                  onChange={this.handleChange}
-                />
-              </div>
-              <div className="field mb-2">
-                <label className="label">Country of Origin: </label>
-                <input
-                  className="form-control"
-                  type="text"
-                  name="shortDesc"
-                  value={shortDesc}
-                  onChange={this.handleChange}
-                />
-              </div>
-              <div className="field mb-2">
-                <label className="label">Short Description: </label>
-                <textarea
-                  className="form-control"
-                  type="textarea"
-                  rows="2"
-                  style={{ resize: "none" }}
-                  name="description"
-                  value={description}
-                  onChange={this.handleChange}
-                />
-              </div>
+            <div className="col-lg-6 rounded border p-4 shadow-custom">
+              <div className="row mx-auto pt-3 pb-3">
+                <div className="mx-auto col-lg-10">
+                <h1 className="mb-5">Edit Product</h1>
+                  <div className="field mb-2">
+                    <label className="label"><b>Product Name</b></label>
+                    <input
+                      className="form-control"
+                      type="text"
+                      name="name"
+                      value={name}
+                      onChange={this.handleChange}
+                      required
+                    />
+                  </div>
+                  <div className="field mb-5">
+                    <label htmlFor="category"><b>Category</b></label>
+                    <select className="custom-select d-block w-100" id="category" name="category" value={category} onChange={this.handleChange} required>
+                      <option value="">Choose...</option>
+                      <option value="Bread & Bakery">Bread & Bakery</option>
+                      <option value="Breakfast & Cereal">Breakfast & Cereal</option>
+                      <option value="Canned Goods & Soups">Canned Goods & Soups</option>
+                      <option value="Cookies, Snacks & Candy">Cookies, Snacks & Candy</option>
+                      <option value="Dairy, Eggs & Cheese">Dairy, Eggs & Cheese</option>
+                      <option value="Grains, Pasta & Sides">Grains, Pasta & Sides</option>
+                      <option value="Fruit & Vegetables">Fruit & Vegetables</option>
+                      <option value="Meat">Meat</option>
+                    </select>
+                  </div>
 
-               <div className="field mb-2">
-                <label htmlFor="category">Category</label>
-                <select className="custom-select d-block w-100" id="category" name="category" value={category} onChange={this.handleChange} required>
-                  <option value="">Choose...</option>
-                  <option value="Bread & Bakery">Bread & Bakery</option>
-                  <option value="Breakfast & Cereal">Breakfast & Cereal</option>
-                  <option value="Canned Goods & Soups">Canned Goods & Soups</option>
-                  <option value="Cookies, Snacks & Candy">Cookies, Snacks & Candy</option>
-                  <option value="Dairy, Eggs & Cheese">Dairy, Eggs & Cheese</option>
-                  <option value="Grains, Pasta & Sides">Grains, Pasta & Sides</option>
-                  <option value="Fruit & Vegetables">Fruit & Vegetables</option>
-                  <option value="Meat">Meat</option>
-                </select>
-              </div>
+                  <div className="field mb-2">
+                    <label className="label"><b>Image URL</b></label>
+                    <input
+                      className="form-control"
+                      type="text"
+                      rows="2"
+                      style={{ resize: "none" }}
+                      name="url"
+                      value={url}
+                      onChange={this.handleChange}
+                    />
+                  </div>
+                  <div className="field mb-5">
+                    <label className="label"><b>Country of Origin</b></label>
+                    <input
+                      className="form-control"
+                      type="text"
+                      name="shortDesc"
+                      value={shortDesc}
+                      onChange={this.handleChange}
+                    />
+                  </div>
+
+                  <div className="field mb-2">
+                    <label className="label"><b>Price (AED)</b></label>
+                    <input
+                      className="form-control"
+                      type="number"
+                      name="price"
+                      value={price}
+                      onChange={this.handleChange}
+                      required
+                    />
+                  </div>
+                  <div className="field mb-5">
+                    <label className="label"><b>Available in Stock</b></label>
+                    <input
+                      className="form-control"
+                      type="number"
+                      name="stock"
+                      value={stock}
+                      onChange={this.handleChange}
+                    />
+                  </div>
+                  
+                  <div className="field mb-5">
+                    <label className="label"><b>Short Description</b></label>
+                    <textarea
+                      className="form-control"
+                      type="textarea"
+                      rows="2"
+                      style={{ resize: "none" , minHeight:"20vh"}}
+                      name="description"
+                      value={description}
+                      onChange={this.handleChange}
+                    />
+                  </div>
+
+                   
 
 
-              <div className="field mb-2">
-                <label className="label">Image URL: </label>
-                <input
-                  className="form-control"
-                  type="text"
-                  rows="2"
-                  style={{ resize: "none" }}
-                  name="url"
-                  value={url}
-                  onChange={this.handleChange}
-                />
-              </div>
-              {this.state.flash && (
-                <div className={`notification ${this.state.flash.status}`}>
-                  {this.state.flash.msg}
-                </div>
-              )}
-              <div className="row justify-content-end">
-                <button
-                  className="btn btn-main text-end  mt-3 d-block"
-                  type="submit"
-                  onClick={this.save}
-                >
-                  Submit
-                </button>
+                  
+                  {this.state.flash && (
+                    <div className={`notification ${this.state.flash.status}`}>
+                      {this.state.flash.msg}
+                    </div>
+                  )}
+                  <div className="row justify-content-end">
+                    <button
+                      className="btn btn-main text-end  mt-3 d-block"
+                      type="submit"
+                      onClick={this.save}
+                    >
+                      Submit
+                    </button>
+                  </div>
+                  </div>
               </div>
             </div>
           </div>
