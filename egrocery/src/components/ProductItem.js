@@ -41,9 +41,10 @@ const ProductItem = props => {
           <h2 className="d-inline product-price">{product.price.toFixed(2)}</h2><h6 className="d-inline"> AED</h6>
         </div>
         <div>
-
         </div>
-        <Button
+
+        {(props.user && props.user.accessLevel === 0) ? <></> :
+          <Button
                 className="btn-main mt-4"
                 onClick={() =>
                   {props.addToCart({
@@ -55,6 +56,9 @@ const ProductItem = props => {
               >
                 ADD
         </Button>
+        }
+
+
         {(displayMsg === 1 && id === product.name) ? (<> <div> <p className="text-secondary-custom"> Product added </p> </div> </>) : (<div> </div>) }
         {(displayMsg === 1 && id === product.name) ? (hideMessage()) : (<div> </div>)}
         <p className="text-secondary">
