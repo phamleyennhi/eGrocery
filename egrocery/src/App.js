@@ -80,7 +80,7 @@ export default class App extends Component {
 
       const isAdmin = res.data.roles.includes("ROLE_ADMIN")
       console.log(isAdmin)
-
+      console.log(res.data);
       const user = {
         email: res.data.email,
         token: res.data.accessToken,
@@ -91,6 +91,7 @@ export default class App extends Component {
 
       this.setState({ user });
       localStorage.setItem("user", JSON.stringify(user));
+      console.log(user);
       return true;
     } else {
       return false;
@@ -365,7 +366,7 @@ export default class App extends Component {
               </Dropdown>
               <NavLink className="text-secondary font-weight-bold" href="/">
 
-                    Hello, {this.state.user.email}!
+                    Hello, {this.state.user.name}!
                     <ul>
                     <a href= "/profile"><li> Profile </li> </a>
                     <li onClick={this.logout}> Logout </li>

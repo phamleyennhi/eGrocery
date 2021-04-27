@@ -44,10 +44,10 @@ class Profile extends Component {
         <div className="row">
             <div className="col-12 mb-2">
 
-            <h4 className="text-end"> {this.state.user.email} <small className="text-secondary"> {"phone"} </small></h4>
+            <h4 className="text-end"> {this.state.user.name} <small className="text-secondary"> {this.state.user.phone_number} </small></h4>
                             </div>
             <div className="col-12">
-            <p style={{"white-space": "pre-line"}}> {"address"} </p>
+            <p style={{"white-space": "pre-line"}}> {this.state.user.email} </p>
                         <hr className="mb-4"/>
 
             </div>
