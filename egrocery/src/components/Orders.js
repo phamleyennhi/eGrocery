@@ -42,12 +42,12 @@ class Orders extends Component {
         <div className="row" key={index}>
             <div className="col-4 mb-2">
 
-            <h4 className=""> {order.customer.firstName + " " + order.customer.lastName}</h4>
+            <h3 className=""> {order.customer.firstName + " " + order.customer.lastName}</h3>
              <small className="text-secondary"> {"<"+order.customer.email+">"} </small>
-                <p> {order.address} </p>
-                <p> {order.address2} </p>
-                <p> {order.area}, {order.city} </p>
-                <p> {order.paymentMethod} </p>
+                <p className="mb-0"> {order.address} </p>
+                <p className="mb-0"> {order.address2} </p>
+                <p className="mb-0"> {order.area}, {order.city} </p>
+                <span className="mb-0 pl-3 pr-3 pb-1 rounded text-capitalize btn-main"><small> {order.paymentMethod} </small></span>
             </div>
             <div className="col-8">
                 

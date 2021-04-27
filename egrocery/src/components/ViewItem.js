@@ -3,7 +3,7 @@ import withContext from "../withContext";
 import axios from 'axios';
 
 import 'bootstrap/dist/css/bootstrap.min.css'; //bootstrap
-import { Button, Container, Col } from 'reactstrap';
+import { Container, Col, Row, Button } from 'reactstrap';
 
 class ViewItem extends Component {
   constructor(props) {
@@ -35,12 +35,27 @@ class ViewItem extends Component {
     return (
       <>
       {this.state.product !== null ?
-      (<div className="row">
-            <div className="col-12 mb-2">
+      (<Container>
+        <Row className="justify-content-center align-items-center">
+          <Col sm="12" md="6" lg="6" className="p-0">
+              <img className="img-fluid mx-auto p-2" src={this.state.product.url} alt="" />
+          </Col>
+          <Col sm="12" md="6" lg="6">
+            <small className="text-secondary mb-3 d-block"> {"<"+this.state.product.category+"/" +this.state.product.subcategory+">"} </small>
+            <h2 className="mb-3"> {this.state.product.name} </h2>
 
-            <h4 className="text-end"> {this.state.product.name} <small className="text-secondary"> {"<"+this.state.product.category+"/" +this.state.product.subcategory+">"} </small></h4>
-                            </div>
+            <p className="mb-0  text-secondary"> {this.state.product.description} </p>
+            <small className=" text-secondary">Size: {this.state.product.shortDesc} </small>
+            <hr className="mb-4"/>
+
+            <div className="mb-3 mt-3">
+              <h1 className="d-inline product-price ">{this.state.product.price.toFixed(2)}</h1><h6 className="d-inline"> AED</h6>
+            </div>        
+            <small className="d-block text-secondary"> {this.state.product.stock} left in stock </small>
+
             
+          </Col>
+          
             <div className="col-12">
             <p style={{"white-space": "pre-line"}}> {this.state.product.description} </p>
                         <hr className="mb-4"/>
@@ -68,7 +83,9 @@ class ViewItem extends Component {
                 >
                   ADD
           </Button>}
-        </div>)
+          </Row>
+
+        </Container>)
       : (
       <Container>
       Loading item
