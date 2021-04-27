@@ -113,8 +113,10 @@ export default class App extends Component {
   logout = e => {
     e.preventDefault();
     this.setState({ user: null });
+    this.addAlert("Succesfully logged out!");
     localStorage.removeItem("user");
     this.clearCart();
+    this.routerRef.current.history.push("/products");
   };
 
   addProduct = (product, callback) => {
