@@ -109,7 +109,7 @@ class AddProduct extends Component {
                   </div>
 
                   <div className="field mb-2">
-                    <label className="label"><b>Country of Origin </b></label>
+                    <label className="label"><b>Packaging information </b></label>
                     <input
                       className="form-control"
                       type="text"
