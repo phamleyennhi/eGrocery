@@ -44,12 +44,67 @@ class Profile extends Component {
         <Row className="justify-content-center">
           <Col xs="10" sm="8" md="6" lg="6" className="rounded border p-4 shadow-custom">
             <Row className=" mx-auto pt-3 pb-3">
-              <Col className="mx-auto text-center col-10">
-                <img className="img-fluid mx-auto mb-5" src="https://media-exp1.licdn.com/dms/image/C4D03AQEuaoT1xYTeSQ/profile-displayphoto-shrink_200_200/0/1539454747333?e=1623888000&v=beta&t=mfdoEqEzHgocsQFIHBcylxnSYycySL1f77lR_ExBAq8"/>
+              <Col className="mx-auto col-10">
+                <div className="text-center">
+
+                <img className="img-fluid mx-auto mb-2" src="https://media-exp1.licdn.com/dms/image/C4D03AQEuaoT1xYTeSQ/profile-displayphoto-shrink_200_200/0/1539454747333?e=1623888000&v=beta&t=mfdoEqEzHgocsQFIHBcylxnSYycySL1f77lR_ExBAq8"/>
 
                 <h1>{this.state.user.name} </h1>
-                <h6 className="text-secondary">Mobile Phone: {this.state.user.phone_number} </h6>
-                <h6 className="text-secondary">Email: {this.state.user.email} </h6>
+                <Button
+                          className="btn-main-two btn-sm mx-auto mb-5"
+                        >
+                          Edit Information
+                        </Button>
+                </div>
+
+
+                <form onSubmit={this.login}>
+                  <div className="field mb-2">
+                    <label className="label"><b>Name</b></label>
+                    <input
+                      className="form-control"
+                      type="text"
+                      name="name"
+                      value={this.state.user.name}
+                      onChange={this.handleChange}
+                      required
+                    />
+                  </div>
+                  <div className="field mb-2">
+                    <label className="label"><b>Email</b></label>
+                    <input
+                      className="form-control"
+                      type="text"
+                      name="email"
+                      value={this.state.user.email}
+                      onChange={this.handleChange}
+                      required
+                    />
+                  </div>
+                  <div className="field mb-2">
+                    <label className="label"><b>Mobile Phone</b></label>
+                    <input
+                      className="form-control"
+                      type="text"
+                      name="phone_number"
+                      value={this.state.user.phone_number}
+                      onChange={this.handleChange}
+                      required
+                    />
+                  </div>
+                
+                      
+                      
+                          
+                          <div className="form-group">
+                        <Button
+                          className="btn-main mx-auto d-block w-100"
+                        >
+                          UPDATE
+                        </Button>
+                      </div>
+
+                    </form>
             </Col>
             </Row>
           </Col>
