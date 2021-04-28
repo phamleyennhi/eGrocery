@@ -156,7 +156,9 @@ class ProductList extends Component {
             <h1 className="text-light">IMPERFECT PRODUCE™</h1>
             <p className="text-light-2 text-center d-block mb-5">eGrocery offers a wide array of produce that, while seems a bit <i>imperfect</i>, provides you with more affordable choices. We help produce that doesn't look perfect or about to expire to your basket, cutting off food waste. Imperfect Produce™ is the <b>perfect</b> solution for <b>you</b> and <b>the environment</b>. Together, let's make the world greener and kinder 💚</p>
             <Row className="mt-5">
+            <Col className="mx-auto text-center">
               <Search placeholder={this.state.category ? "Search "+ this.state.category : "Search featured products" } onChange={(e) => {this.setState({search_pattern: e.target.value})}}/>
+            </Col>
             </Row>
           </Col>
         </Row>
@@ -167,11 +169,14 @@ class ProductList extends Component {
       {this.state.category != "imperfect" &&
       <>
       <Container>
-        <Row className="text-capitalize mb-2 text-center">
-          <h1 className="text-center mx-auto m-0 p-0 text-uppercase">{this.state.category ? this.state.category : "Featured products" }</h1>
+        <Row className="text-capitalize text-center justify-content-between align-items-center mb-5">
+        <Col md="6" className="mx-auto mb-md-0 mb-2">
+          <h1 className="text-center text-md-left mx-auto text-uppercase">{this.state.category ? this.state.category : "Featured products" }</h1>
+        </Col>
+          <Search placeholder={this.state.category ? "Search "+ this.state.category : "Search featured products" } onChange={(e) => {this.setState({search_pattern: e.target.value})}}/>
+
         </Row>
         <Row>
-          <Search placeholder={this.state.category ? "Search "+ this.state.category : "Search featured products" } onChange={(e) => {this.setState({search_pattern: e.target.value})}}/>
         </Row>
       </Container>
       </>
@@ -231,6 +236,18 @@ class ProductList extends Component {
         </Col>
         <Col md={{ size: 6, order: 1}}>
             <img className="img-fluid" src='https://www.thenationalnews.com/image/policy:1.1066251:1597916962/RM_20200213_GRACIA30.jpg?f=16x9' alt=""/>
+        </Col>
+        
+      </Row>
+
+      <Row className="mb-5 justify-content-center align-items-center">
+        
+        <Col md="9" className="border p-4 text-center">
+
+          <h2>Have a suggestion or want to get in touch?</h2>
+          <Button className="btn-main-two mx-auto">
+            <a href="/contact">CONTACT US</a>
+          </Button>
         </Col>
         
       </Row>
