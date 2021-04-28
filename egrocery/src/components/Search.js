@@ -7,11 +7,17 @@ import { Row, Col, Button } from 'reactstrap';
 
 const Search = ({onChange, placeholder}) => {
   return (
-      <input
-        type="text"
-        onChange={onChange}
-        placeholder={placeholder}
-      />
+  	
+  		<Col  className="text-center mx-auto">
+
+	      <input
+	      className="p-3 rounded form-control mb-5 text-center"
+	        type="text"
+	        onChange={onChange}
+	        placeholder={placeholder}
+	      />
+      </Col>
+
   );
 };
 
