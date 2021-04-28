@@ -47,7 +47,7 @@ class Orders extends Component {
                 <p className="mb-0"> {order.address} </p>
                 <p className="mb-0"> {order.address2} </p>
                 <p className="mb-0"> {order.area}, {order.city} </p>
-                <span className="mb-0 pl-3 pr-3 pb-1 rounded text-capitalize btn-main"><small> {order.paymentMethod} </small></span>
+                <span className="mb-0 pl-3 pr-3 pb-1 rounded text-uppercase btn-main"><small> {order.paymentMethod} </small></span>
             </div>
             <div className="col-8">
                 
