@@ -46,13 +46,15 @@ nav ul li {
 }
 
 .btn-main {
-    background-color: #92CD28;
+    background-color: #92CD28 !important;
     color: white;
     border: none;
 }
 
 .btn-main:hover,
-.btn-main:focus {
+.btn-main:focus,
+.btn-main:active,
+.btn-main:focus-visible {
     background-color: #B6EE56 !important;
 }
 

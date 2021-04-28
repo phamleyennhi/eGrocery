@@ -48,10 +48,20 @@ export default class App extends Component {
       products: [],
       search_pattern:"",
       alert: "",
+      dropdownOpen: false,
     };
     this.routerRef = React.createRef();
 
     const category_dict = {"Bread & Bakery":"bakery", "Breakfast & Cereal":"breakfast", "Canned Goods & Soups":"soups", "Dairy, Eggs & Cheese":"dairy", "Grains, Pasta & Sides":"grains", "Fruit & Vegetables":"fruit", "Meat":"meat", "Cookies, Snacks & Candy":"snacks"};
+  
+    this.toggle = this.toggle.bind(this);
+  }
+
+  // Dropdown menu
+  toggle() {
+    this.setState(prevState => ({
+      dropdownOpen: !prevState.dropdownOpen
+    }));
   }
 
   async componentDidMount() {
@@ -270,6 +280,7 @@ export default class App extends Component {
     this.setState({search_pattern: pattern});
   }
 
+
   render() {
     const user = this.state.user;
     console.log(user);
@@ -310,6 +321,7 @@ export default class App extends Component {
               <NavItem>
               <Search placeholder="Search product" onChange={(e) => {this.simpleSearch(e.target.value)}}/>
               </NavItem>
+              
               {(user && user.accessLevel === 0) ? 
                 (<>
                 <NavItem>
@@ -371,16 +383,16 @@ export default class App extends Component {
                 </NavItem>
               ) : (
               <NavItem>
-              <Dropdown>
+              <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+                <DropdownToggle caret className="btn-main">
+                  Hi {this.state.user.name}!
+                </DropdownToggle>
+                <DropdownMenu>
+                  <DropdownItem header><Link to="/profile">Profile</Link></DropdownItem>
+                  <DropdownItem divider />
+                  <DropdownItem onClick={this.logout}><small>Logout</small></DropdownItem>
+                </DropdownMenu>
               </Dropdown>
-              <NavLink className="text-secondary font-weight-bold" href="/">
-
-                    Hello, {this.state.user.name}!
-                    <ul>
-                    <a href= "/profile"><li> Profile </li> </a>
-                    <li onClick={this.logout}> Logout </li>
-                    </ul>
-                </NavLink>
                 </NavItem>
               )}
 
