@@ -26,18 +26,13 @@ h2,h3 {
     font-family: 'Open Sans', sans-serif;
 }
 
-{}
-
-p{
-
-}
 
 .row {
     margin: auto 0;
 }
 
 .shadow-custom {
-    box-shadow: 0px 0px 5px #ccc;
+    box-shadow: 0px 0px 5px #ddd;
     z-index: 5;
 }
 
@@ -50,12 +45,39 @@ nav ul li {
     color: white;
     border: none;
 }
+.btn-main-two{
+    
+    background-color: #de7a10 !important;
+    color: white;
+    border: none;
+}
+.btn-main-two * {
+    color:white;
+    background: none;
+}
 
 .btn-main:hover,
 .btn-main:focus,
 .btn-main:active,
 .btn-main:focus-visible {
     background-color: #B6EE56 !important;
+}
+
+.btn-main-two:hover,
+.btn-main-two:focus,
+.btn-main-two:active,
+.btn-main-two:focus-visible {
+    
+
+    background-color: #ffab52 !important;
+}
+.btn-main-two *:hover,
+.btn-main-two *:focus,
+.btn-main-two *:active,
+.btn-main-two *:focus-visible{
+    color:white;
+        text-decoration: unset;
+    background-color: none;
 }
 
 .btn-outline-main {
@@ -144,10 +166,31 @@ a *:hover, .product-name a:hover {
     }
 }
 
+
+/*Main hero*/
+.main-hero{
+    min-height: 80vh;
+    background-color: #888;
+    background-image: url('https://d2d8wwwkmhfcva.cloudfront.net/2880x/d2guulkeunn7d8.cloudfront.net/assets/homepage/homepage_background_compressed-f86db4915ed64a3bdeab5e635ec9d995d63952f1d5e6b17031b49acd2c0f250e.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: cover;
+    background-blend-mode: multiply;
+}
+
+.big{
+    font-size: 10em;
+}
+
+
 /* Small devices */
 
 @media (max-width: 576px) {
     .navbar .container{
         justify-content: center !important;
+    }
+    .big{
+    font-size: 5em;
     }
 }

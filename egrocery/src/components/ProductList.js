@@ -7,7 +7,7 @@ import Search from "./Search";
 
 import 'bootstrap/dist/css/bootstrap.min.css'; //bootstrap
 
-import {  Navbar, Nav, NavItem, NavLink, Container, Row } from 'reactstrap';
+import {  Navbar, Nav, NavItem, NavLink, Container, Row, Col, Button } from 'reactstrap';
 
 class ProductList extends Component {
 
@@ -118,17 +118,45 @@ class ProductList extends Component {
       </NavItem>
       <NavItem>
         <NavLink className="font-weight-bold text-secondary-custom" href="/products/imperfect">
-          Imperfect Product<span class="badge badge-danger loading">SALE!</span>
+          Imperfect Produce<span class="badge badge-danger loading">SALE!</span>
         </NavLink>
       </NavItem>
     </Nav>
     </Container>
     </Navbar>
 
+
+    {this.state.category ? "" :
+      
+          <div class="main-hero jumbotron jumbotron-fluid mt-n5 mb-5 justify-content-center align-items-center d-flex">
+            <div class="container">
+            <Row >
+              <Col xs="12" sm="12" md="8" lg="8" className="mx-auto text-center">
+                <img className="img-fluid" src="eGROCERY.png" alt=""/>
+                <h2 class="text-light" style={{fontWeight:"300"}}>Shop freshly. Shop freely. Shop responsibly.</h2>
+                <Button
+                        className="btn-main-two mx-auto pl-5 pr-5 mt-5"
+                      >
+                        <a href="#about-us">OUR STORY</a>
+                      </Button>
+              </Col>
+            </Row>
+            </div>
+          </div>
+        
+    }
+
     <Container>
-      <Row className="text-capitalize mb-2 text-center">
-          <h1 className="text-center mx-auto">{this.state.category ? this.state.category : "Featured products" }</h1>
+      <Row className="text-capitalize mb-3 text-center">
+          <h1 className="text-center mx-auto m-0 p-0 text-uppercase">{this.state.category ? this.state.category : "Featured products" }{this.state.category == "imperfect" && " produce" }</h1>
       </Row>
+      {this.state.category == "imperfect" &&
+      <Row className="mb-3 text-center">
+        <Col xs="12" sm="12" md="8" lg="8" className="mx-auto text-center">
+        <small className="text-secondary text-center">eGrocery offers a wide array of produce that, while seems a bit <i>imperfect</i>, provides you with more affordable choices. We help produce that doesn't look perfect or about to expire to your basket, cutting off food waste. Imperfect Produce™ is the <b>perfect</b> solution for <b>you</b> and <b>the environment</b>. Together, let's make the world greener and kinder 💚</small>
+        </Col>
+      </Row>
+      }
       <Row>
         <Search placeholder={this.state.category ? "Search "+ this.state.category : "Search featured products" } onChange={(e) => {this.setState({search_pattern: e.target.value})}}/>
 
@@ -140,7 +168,7 @@ class ProductList extends Component {
       <section>
       {this.state.category ? "" :
       
-      <Row className="ml-4">
+      <Row className="mt-5 ml-4" id="about-us">
         <h1>
           About eGrocery
         </h1>
