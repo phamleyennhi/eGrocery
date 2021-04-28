@@ -147,7 +147,7 @@ class ProductList extends Component {
     }
 
     <Container>
-      <Row className="text-capitalize mb-5 text-center">
+      <Row className="text-capitalize mb-2 text-center">
           <h1 className="text-center mx-auto m-0 p-0 text-uppercase">{this.state.category ? this.state.category : "Featured products" }{this.state.category == "imperfect" && " produce" }</h1>
       </Row>
       {this.state.category == "imperfect" &&
@@ -173,11 +173,11 @@ class ProductList extends Component {
         <Row >
           <Col xs="12" sm="12" md="8" lg="8" className="mx-auto text-center">
             <h1 className="text-light">Special Offers</h1>
-            <h3 class="text-light" style={{fontWeight:"300"}}>Shop Imperfect Produce™ for a fraction of the price to reduce food waste and save our planet!</h3>
+            <h4 class="text-light" style={{fontWeight:"300"}}>Shop Imperfect Produce™ for a fraction of the price to reduce food waste and save our planet!</h4>
             <Button
                     className="btn-main-two mx-auto pl-5 pr-5 mt-5"
                   >
-                    <a href="#about-us">SHOP IMPERFECT PRODUCE™</a>
+                    <a href="/products/imperfect">SHOP IMPERFECT PRODUCE™</a>
                   </Button>
           </Col>
         </Row>
