@@ -40,22 +40,22 @@ class Profile extends Component {
       <>
       {this.state.user !== null ? 
 
-      (<Container fluid className="p-0 mt-n5 mb-5">
-        <div className="row">
-            <div className="col-12 mb-2">
+      (<Container className="p-0 mb-5">
+        <Row className="justify-content-center">
+          <Col xs="10" sm="8" md="6" lg="6" className="rounded border p-4 shadow-custom">
+            <Row className=" mx-auto pt-3 pb-3">
+              <Col className="mx-auto text-center col-10">
+                <img className="img-fluid mx-auto mb-5" src="https://media-exp1.licdn.com/dms/image/C4D03AQEuaoT1xYTeSQ/profile-displayphoto-shrink_200_200/0/1539454747333?e=1623888000&v=beta&t=mfdoEqEzHgocsQFIHBcylxnSYycySL1f77lR_ExBAq8"/>
 
-            <h4 className="text-end"> {this.state.user.name} <small className="text-secondary"> {this.state.user.phone_number} </small></h4>
-                            </div>
-            <div className="col-12">
-            <p style={{"white-space": "pre-line"}}> {this.state.user.email} </p>
-                        <hr className="mb-4"/>
-
-            </div>
-
-        </div>
-
+                <h1>{this.state.user.name} </h1>
+                <h6 className="text-secondary">Mobile Phone: {this.state.user.phone_number} </h6>
+                <h6 className="text-secondary">Email: {this.state.user.email} </h6>
+            </Col>
+            </Row>
+          </Col>
+        </Row>
         </Container>)
-        : (<div> Loading user profile... </div>)
+        : (<Container><p className="loading">Loading user profile...</p></Container>)
       }
       </>
     )

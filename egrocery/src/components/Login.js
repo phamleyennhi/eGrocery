@@ -43,9 +43,9 @@ class Login extends Component {
             >
             <Container>
             <Row>
-            <Col lg="6" className="mx-auto shadow-custom rounded p-4">
+            <Col xs="12" sm="8" md="8" lg="6" className="mx-auto shadow-custom rounded p-4">
             <Row className="mx-auto pt-3 pb-3">
-              <Col lg="10" className="mx-auto">
+              <Col className="mx-auto col-10">
                 <h1 className="mb-4">Login</h1>
               <form onSubmit={this.login}>
                 <div className="form-group">
