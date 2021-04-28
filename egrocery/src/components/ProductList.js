@@ -128,26 +128,26 @@ class ProductList extends Component {
 
     {this.state.category ? "" :
       
-          <div class="main-hero jumbotron jumbotron-fluid mt-n5 mb-5 justify-content-center align-items-center d-flex">
-            <div class="container">
-            <Row >
-              <Col xs="12" sm="12" md="8" lg="8" className="mx-auto text-center">
-                <img className="img-fluid" src="eGROCERY.png" alt=""/>
-                <h2 class="text-light" style={{fontWeight:"300"}}>Shop freshly. Shop freely. Shop responsibly.</h2>
-                <Button
-                        className="btn-main-two mx-auto pl-5 pr-5 mt-5"
-                      >
-                        <a href="#about-us">OUR STORY</a>
-                      </Button>
-              </Col>
-            </Row>
-            </div>
-          </div>
+      <div class="main-hero jumbotron jumbotron-fluid mt-n5 mb-5 justify-content-center align-items-center d-flex">
+        <div class="container">
+        <Row >
+          <Col xs="12" sm="12" md="8" lg="8" className="mx-auto text-center">
+            <img className="img-fluid" src="eGROCERY.png" alt=""/>
+            <h2 class="text-light" style={{fontWeight:"300"}}>Shop freshly. Shop freely. Shop responsibly.</h2>
+            <Button
+                    className="btn-main-two mx-auto pl-5 pr-5 mt-5"
+                  >
+                    <a href="#about-us">OUR STORY</a>
+                  </Button>
+          </Col>
+        </Row>
+        </div>
+      </div>
         
     }
 
     <Container>
-      <Row className="text-capitalize mb-3 text-center">
+      <Row className="text-capitalize mb-5 text-center">
           <h1 className="text-center mx-auto m-0 p-0 text-uppercase">{this.state.category ? this.state.category : "Featured products" }{this.state.category == "imperfect" && " produce" }</h1>
       </Row>
       {this.state.category == "imperfect" &&
@@ -164,20 +164,37 @@ class ProductList extends Component {
       <Row className="product-list-wrapper justify-content-center mb-5">
       { product_list }
       </Row>
-      
-      <section>
+            </Container>
+
       {this.state.category ? "" :
-      
+      <>
+      <div class="secondary-hero jumbotron jumbotron-fluid mt-n5 mb-5 justify-content-center align-items-center d-flex">
+        <div class="container">
+        <Row >
+          <Col xs="12" sm="12" md="8" lg="8" className="mx-auto text-center">
+            <h1 className="text-light">Special Offers</h1>
+            <h3 class="text-light" style={{fontWeight:"300"}}>Shop Imperfect Produce™ for a fraction of the price to reduce food waste and save our planet!</h3>
+            <Button
+                    className="btn-main-two mx-auto pl-5 pr-5 mt-5"
+                  >
+                    <a href="#about-us">SHOP IMPERFECT PRODUCE™</a>
+                  </Button>
+          </Col>
+        </Row>
+        </div>
+      </div>
+
+      <Container>
       <Row className="mt-5 ml-4" id="about-us">
         <h1>
           About eGrocery
         </h1>
       </Row>
-
-      }
-      </section>
-
       </Container>
+      </>
+      }
+
+
     </>
   )};
 };

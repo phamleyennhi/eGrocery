@@ -170,8 +170,12 @@ a *:hover, .product-name a:hover {
 /*Main hero*/
 .main-hero{
     min-height: 80vh;
-    background-color: #888;
     background-image: url('https://d2d8wwwkmhfcva.cloudfront.net/2880x/d2guulkeunn7d8.cloudfront.net/assets/homepage/homepage_background_compressed-f86db4915ed64a3bdeab5e635ec9d995d63952f1d5e6b17031b49acd2c0f250e.jpg');
+
+}
+.secondary-hero{
+    
+    background-color: #888;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center center;
@@ -181,6 +185,11 @@ a *:hover, .product-name a:hover {
 
 .big{
     font-size: 10em;
+}
+
+.secondary-hero{
+    min-height: 30vh;
+    background-image: url('https://www.greenqueen.com.hk/wp-content/uploads/2021/03/%E2%80%98Ugly-Produce-Pioneers-Imperfect-Foods-Pledges-To-Reach-Net-Zero-By-2030.jpeg');
 }
 
 
