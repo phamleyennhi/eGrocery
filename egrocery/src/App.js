@@ -35,7 +35,6 @@ import Checkout from "./components/Checkout";
 import Feedback from "./components/Feedback";
 import ViewItem from "./components/ViewItem";
 import Orders from "./components/Orders";
-import Search from "./components/Search";
 import Profile from "./components/Profile"
 
 export default class App extends Component {
@@ -274,13 +273,6 @@ export default class App extends Component {
       }, 3000);
   }
 
-
-
-  simpleSearch( pattern ) {
-    this.setState({search_pattern: pattern});
-  }
-
-
   render() {
     const user = this.state.user;
     console.log(user);
@@ -318,9 +310,6 @@ export default class App extends Component {
             <Nav navbar className={`flex-row ${
                   this.state.showMenu ? "is-active" : ""
                 }`}>
-              <NavItem>
-              <Search placeholder="Search product" onChange={(e) => {this.simpleSearch(e.target.value)}}/>
-              </NavItem>
               
               {(user && user.accessLevel === 0) ? 
                 (<>

@@ -40,12 +40,8 @@ class ProductList extends Component {
     }
   }
 
-
-    simpleSearch( pattern ) {
-    this.setState({search_pattern: pattern});
-  }
   render() {
-      const search_pattern = this.props.context.search_pattern;
+      const search_pattern = this.state.search_pattern;
       // search_pattern === "" ? (console.log("no search pattern")) : (console.log(search_pattern))
       const product_db = this.state.products;
       const product_list = product_db && product_db.length ?[
@@ -134,7 +130,7 @@ class ProductList extends Component {
           <h1 className="text-center mx-auto">{this.state.category ? this.state.category : "Featured products" }</h1>
       </Row>
       <Row>
-        <Search placeholder={this.state.category ? "Search "+ this.state.category : "Search featured products" } onChange={(e) => {this.simpleSearch(e.target.value)}}/>
+        <Search placeholder={this.state.category ? "Search "+ this.state.category : "Search featured products" } onChange={(e) => {this.setState({search_pattern: e.target.value})}}/>
 
       </Row>
       <Row className="product-list-wrapper justify-content-center mb-5">
