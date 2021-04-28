@@ -9,7 +9,6 @@ const Search = ({onChange, placeholder}) => {
   return (
   	
   		<Col  className="text-center mx-auto">
-
 	      <input
 	      className="p-3 rounded form-control mb-5 text-center shadow-custom"
 	        type="text"

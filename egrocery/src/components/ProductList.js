@@ -146,25 +146,42 @@ class ProductList extends Component {
         
     }
 
-    <Container>
-      <Row className="text-capitalize mb-2 text-center">
-          <h1 className="text-center mx-auto m-0 p-0 text-uppercase">{this.state.category ? this.state.category : "Featured products" }{this.state.category == "imperfect" && " produce" }</h1>
-      </Row>
+    
       {this.state.category == "imperfect" &&
-      <Row className="mb-3 text-center">
-        <Col xs="12" sm="12" md="8" lg="8" className="mx-auto text-center">
-        <small className="text-secondary text-center">eGrocery offers a wide array of produce that, while seems a bit <i>imperfect</i>, provides you with more affordable choices. We help produce that doesn't look perfect or about to expire to your basket, cutting off food waste. Imperfect Produce™ is the <b>perfect</b> solution for <b>you</b> and <b>the environment</b>. Together, let's make the world greener and kinder 💚</small>
-        </Col>
-      </Row>
+      <>
+        <div class="secondary-hero jumbotron jumbotron-fluid mt-n5 mb-5 justify-content-center align-items-center d-flex">
+        <div class="container">
+        <Row >
+          <Col xs="12" sm="12" md="8" lg="8" className="mx-auto text-center">
+            <h1 className="text-light">IMPERFECT PRODUCE™</h1>
+            <p className="text-light-2 text-center d-block mb-5">eGrocery offers a wide array of produce that, while seems a bit <i>imperfect</i>, provides you with more affordable choices. We help produce that doesn't look perfect or about to expire to your basket, cutting off food waste. Imperfect Produce™ is the <b>perfect</b> solution for <b>you</b> and <b>the environment</b>. Together, let's make the world greener and kinder 💚</p>
+            <Row className="mt-5">
+              <Search placeholder={this.state.category ? "Search "+ this.state.category : "Search featured products" } onChange={(e) => {this.setState({search_pattern: e.target.value})}}/>
+            </Row>
+          </Col>
+        </Row>
+        </div>
+      </div>
+      </>
       }
-      <Row>
-        <Search placeholder={this.state.category ? "Search "+ this.state.category : "Search featured products" } onChange={(e) => {this.setState({search_pattern: e.target.value})}}/>
-
-      </Row>
-      <Row className="product-list-wrapper justify-content-center mb-5">
-      { product_list }
-      </Row>
-            </Container>
+      {this.state.category != "imperfect" &&
+      <>
+      <Container>
+        <Row className="text-capitalize mb-2 text-center">
+          <h1 className="text-center mx-auto m-0 p-0 text-uppercase">{this.state.category ? this.state.category : "Featured products" }</h1>
+        </Row>
+        <Row>
+          <Search placeholder={this.state.category ? "Search "+ this.state.category : "Search featured products" } onChange={(e) => {this.setState({search_pattern: e.target.value})}}/>
+        </Row>
+      </Container>
+      </>
+      }
+      
+      <Container>
+        <Row className="product-list-wrapper justify-content-center mb-5">
+        { product_list }
+        </Row>
+      </Container>
 
       {this.state.category ? "" :
       <>
@@ -172,8 +189,8 @@ class ProductList extends Component {
         <div class="container">
         <Row >
           <Col xs="12" sm="12" md="8" lg="8" className="mx-auto text-center">
-            <h1 className="text-light">Special Offers</h1>
-            <h4 class="text-light" style={{fontWeight:"300"}}>Shop Imperfect Produce™ for a fraction of the price to reduce food waste and save our planet!</h4>
+            <h1 className="text-light">SPECIAL OFFERS</h1>
+            <h4 class="text-light-2" style={{fontWeight:"300"}}>Shop Imperfect Produce™ for a fraction of the price to reduce food waste and save our planet!</h4>
             <Button
                     className="btn-main-two mx-auto pl-5 pr-5 mt-5"
                   >
@@ -185,10 +202,37 @@ class ProductList extends Component {
       </div>
 
       <Container>
-      <Row className="mt-5 ml-4" id="about-us">
-        <h1>
-          About eGrocery
-        </h1>
+      <Row className="mt-5 mb-5" id="about-us">
+        <Col md="12">
+          <h1 className="text-center mx-auto mb-5">
+            ABOUT US
+          </h1>
+        </Col>
+      </Row>
+      <Row className="mb-5 justify-content-center align-items-center">
+        <Col md="6">
+          <h3 className="text-start mx-auto">
+              Our Mission
+            </h3>
+          <p>eGROCERY is an emerging online grocery platform launched in 2021, offering vast range of premium quality food products to the citizens of Abu Dhabi.</p>
+          <p>Our service launch was preceded by years of careful analysis on market trends in food sector. Inefficient grocery stock management and rising need for quick distribution of time-sensitive edible items made us come up with a vision. We used our observations to take shopping experience to a new level where efficiency and user-friendliness are top priorities.</p>
+        </Col>
+        <Col md="6">
+          <img className="img-fluid" src={process.env.PUBLIC_URL + '/warehouse.jpg'} alt=""/>
+        </Col>
+      </Row>
+      <Row className="mb-5 justify-content-center align-items-center">
+        
+        <Col md={{ size: 6, order: 2}}>
+          <h3 className="text-start mx-auto">
+              Our Vision
+            </h3>
+          <p>eGROCERY vision is to be on the forefront of development in terms of customers’ needs as well as global and local trends. Our strategic partnering with international producers sets us on the path to become the most reliable supplier of fresh groceries in the city, with plans of national expansion in the future. <b><i>At the same time, we cultivate partnerships with Emirati farmers and food suppliers to promote local cooperation.</i></b></p>
+        </Col>
+        <Col md={{ size: 6, order: 1}}>
+            <img className="img-fluid" src='https://www.thenationalnews.com/image/policy:1.1066251:1597916962/RM_20200213_GRACIA30.jpg?f=16x9' alt=""/>
+        </Col>
+        
       </Row>
       </Container>
       </>

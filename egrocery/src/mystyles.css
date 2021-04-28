@@ -192,6 +192,9 @@ a *:hover, .product-name a:hover {
     background-image: url('https://www.greenqueen.com.hk/wp-content/uploads/2021/03/%E2%80%98Ugly-Produce-Pioneers-Imperfect-Foods-Pledges-To-Reach-Net-Zero-By-2030.jpeg');
 }
 
+.text-light-2{
+    color: #ddd;
+}
 
 /* Small devices */
 
