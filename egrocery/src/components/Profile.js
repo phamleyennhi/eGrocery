@@ -55,7 +55,7 @@ class Profile extends Component {
           </Col>
         </Row>
         </Container>)
-        : (<Container><p className="loading">Loading user profile...</p></Container>)
+        : (<Container><p className="loading text-center">Loading user profile...</p></Container>)
       }
       </>
     )
