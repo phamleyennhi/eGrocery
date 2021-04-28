@@ -9,6 +9,7 @@ const initState = {
   shortDesc: "",
   description: "",
   category: "",
+  featured: 0,
   url: ""
 };
 
@@ -23,6 +24,7 @@ class EditProduct extends Component {
         shortDesc: "",
         description: "",
         category: "",
+        featured: 0,
         url: ""
       }
       const { match: { params } } = this.props;
@@ -44,6 +46,7 @@ class EditProduct extends Component {
         shortDesc: res.data[0].shortDesc,
         description: res.data[0].description,
         category: res.data[0].category,
+        featured: res.data[0].featured,
         url: res.data[0].url
       });
       console.log(res.data);
@@ -53,13 +56,13 @@ class EditProduct extends Component {
 
   save = async (e) => {
     e.preventDefault();
-    const { name, price, stock, shortDesc, category, description, url } = this.state;
+    const { name, price, stock, shortDesc, category, featured, description, url } = this.state;
 
     if (name && price) {
 
       await axios.post(
         'https://se-egrocery.herokuapp.com/api/product/' + this.state._id,
-        { name, price, stock, shortDesc, category, description, url },
+        { name, price, stock, shortDesc, category, featured, description, url },
         {headers: {
           "x-access-token": this.props.context.user.token
         }}
@@ -72,6 +75,7 @@ class EditProduct extends Component {
           shortDesc,
           description,
           category,
+          featured,
           stock: stock || 0,
           url
         },
@@ -88,10 +92,19 @@ class EditProduct extends Component {
     }
   };
 
-  handleChange = e => {this.setState({ [e.target.name]: e.target.value, error: "" }); console.log(this.state)}
+  handleChange = e => {
+
+    if(e.target.type === "checkbox"){
+      this.setState({[e.target.name]: (e.target.checked  ? 1 : 0), error: ""})
+    }else{
+      this.setState({ [e.target.name]: e.target.value, error: "" }); 
+    }
+    console.log(this.state);
+  }
+
 
   render() {
-    const { name, price, stock, shortDesc, category, description, url } = this.state;
+    const { name, price, stock, shortDesc, category, featured, description, url } = this.state;
     // const { user } = this.props.context;
 
     return(
@@ -163,7 +176,7 @@ class EditProduct extends Component {
                       required
                     />
                   </div>
-                  <div className="field mb-5">
+                  <div className="field mb-3">
                     <label className="label"><b>Available in Stock</b></label>
                     <input
                       className="form-control"
@@ -172,6 +185,15 @@ class EditProduct extends Component {
                       value={stock}
                       onChange={this.handleChange}
                     />
+                  </div>
+                   <div className="field mb-5">
+                    <div className="custom-control custom-checkbox">
+                      <input type="checkbox" className="custom-control-input radio-main"
+                           onChange={this.handleChange} 
+                           checked={featured ? true : false} 
+                           id="featured" name="featured"/>
+                            <label className="label custom-control-label" htmlFor="featured"><b>Featured</b></label>
+                      </div>     
                   </div>
                   
                   <div className="field mb-5">
