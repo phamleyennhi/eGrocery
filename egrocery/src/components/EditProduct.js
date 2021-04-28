@@ -155,7 +155,7 @@ class EditProduct extends Component {
                     />
                   </div>
                   <div className="field mb-5">
-                    <label className="label"><b>Country of Origin</b></label>
+                    <label className="label"><b>Packaging information</b></label>
                     <input
                       className="form-control"
                       type="text"

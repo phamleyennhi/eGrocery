@@ -184,13 +184,19 @@ export default class App extends Component {
     let cart = this.state.cart;
     let quantity_in_cart = localStorage.getItem("quantity_in_cart");
     quantity_in_cart = parseInt(quantity_in_cart);
-    if (cart[cartItem.id].amount >= cart[cartItem.id].product.stock) {
-      cart[cartItem.id].amount = cart[cartItem.id].product.stock;
-      this.addAlert("You've added all the available " +cart[cartItem.id].product.name+ " in stock!");
+    if (change === 1){
+        if (cart[cartItem.id].amount >= cart[cartItem.id].product.stock) {
+          cart[cartItem.id].amount = cart[cartItem.id].product.stock;
+          this.addAlert("You've added all the available " +cart[cartItem.id].product.name+ " in stock!");
+        }
+        else{
+          quantity_in_cart = parseInt(quantity_in_cart) + change;
+          cart[cartItem.id].amount += change;
+        }
     }
     else{
-      quantity_in_cart = parseInt(quantity_in_cart) + change;
-      cart[cartItem.id].amount += change;
+        quantity_in_cart = parseInt(quantity_in_cart) + change;
+        cart[cartItem.id].amount += change;
     }
     if(cart[cartItem.id].amount <= 0){
       this.removeFromCart(cartItemId);
