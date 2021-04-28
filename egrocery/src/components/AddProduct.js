@@ -49,6 +49,7 @@ class AddProduct extends Component {
       this.setState(
         { flash: { status: 'is-success', msg: 'Product created successfully' }}
       );
+      this.props.context.addAlert("Succesfully added the product!");
 
     } else {
       this.setState(

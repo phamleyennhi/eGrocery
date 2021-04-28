@@ -176,6 +176,7 @@ export default class App extends Component {
       return { status: 401, message: 'Unauthorized' }
     });
 
+    this.addAlert("Succesfully remove product!");
     return { status: 200, message: 'Item Deleted!' }
 
   }
@@ -245,6 +246,7 @@ export default class App extends Component {
 
     this.routerRef.current.history.push("/products");
     this.clearCart();
+    this.addAlert("Succesfully checked out!");
   };
 
 
@@ -323,7 +325,7 @@ export default class App extends Component {
                 <NavLink className="text-secondary" href="/products">Catalog</NavLink>
                 </NavItem>
                 <NavItem>
-                <NavLink className="text-secondary" href="/admin-products">Edit Products</NavLink>
+                <NavLink className="text-secondary" href="/admin-products">Edit Product</NavLink>
                 </NavItem>
                 <NavItem>
                   <NavLink className="text-secondary" href="/add-product">

@@ -84,6 +84,7 @@ class EditProduct extends Component {
       this.setState(
         { flash: { status: 'is-success', msg: 'Product created successfully' }}
       );
+      this.props.context.addAlert("Succesfully updated the product!");
 
     } else {
       this.setState(
