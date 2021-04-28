@@ -59,7 +59,9 @@ nav ul li {
 .btn-main:hover,
 .btn-main:focus,
 .btn-main:active,
-.btn-main:focus-visible {
+.btn-main:focus-visible,
+.btn-main:disabled
+ {
     background-color: #B6EE56 !important;
 }
 
@@ -196,6 +198,10 @@ a *:hover, .product-name a:hover {
     color: #ddd;
 }
 
+
+.overflow-x{
+    overflow-x: auto;
+}
 /* Small devices */
 
 @media (max-width: 576px) {

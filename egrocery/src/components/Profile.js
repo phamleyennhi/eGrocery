@@ -14,6 +14,10 @@ class Profile extends Component {
     console.log(this.props);
   }
 
+  editInfo = e => {
+
+  }
+
   async componentDidUpdate() {
 
         if (this.props.context !== null && this.state.user === null) {
@@ -47,12 +51,17 @@ class Profile extends Component {
               <Col className="mx-auto col-10">
                 <div className="text-center">
 
+                {this.state.user.name == "Jakub" && 
                 <img className="img-fluid mx-auto mb-2" src="https://media-exp1.licdn.com/dms/image/C4D03AQEuaoT1xYTeSQ/profile-displayphoto-shrink_200_200/0/1539454747333?e=1623888000&v=beta&t=mfdoEqEzHgocsQFIHBcylxnSYycySL1f77lR_ExBAq8"/>
-
+                }
+                {this.state.user.name != "Jakub" && 
+                <img className="img-fluid mx-auto mb-2" src="https://www.worldfuturecouncil.org/wp-content/uploads/2020/06/blank-profile-picture-973460_1280-1.png"/>
+                }
                 <h1>{this.state.user.name} </h1>
                 <Button
-                          className="btn-main-two btn-sm mx-auto mb-5"
-                        >
+                  className="btn-main-two btn-sm mx-auto mb-5"
+                  onClick="editInfo"
+                  >
                           Edit Information
                         </Button>
                 </div>
@@ -68,6 +77,7 @@ class Profile extends Component {
                       value={this.state.user.name}
                       onChange={this.handleChange}
                       required
+                      disabled
                     />
                   </div>
                   <div className="field mb-2">
@@ -79,6 +89,7 @@ class Profile extends Component {
                       value={this.state.user.email}
                       onChange={this.handleChange}
                       required
+                      disabled
                     />
                   </div>
                   <div className="field mb-2">
@@ -90,6 +101,7 @@ class Profile extends Component {
                       value={this.state.user.phone_number}
                       onChange={this.handleChange}
                       required
+                      disabled
                     />
                   </div>
                 
@@ -99,6 +111,7 @@ class Profile extends Component {
                           <div className="form-group">
                         <Button
                           className="btn-main mx-auto d-block w-100"
+                          disabled
                         >
                           UPDATE
                         </Button>

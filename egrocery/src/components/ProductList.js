@@ -69,13 +69,13 @@ class ProductList extends Component {
     <>
 
     <Navbar
-            className="border-bottom mt-n5 mb-5 bg-white small text-center"
+            className="border-bottom mt-n5 mb-5 bg-white small text-center overflow-x"
             role="navigation"
             aria-label="navigation"
 
           >
           <Container>
-    <Nav navbar className={'flex-row  is-active'}>
+    <Nav navbar className={'flex-row  is-active overflow-x'}>
       <NavItem>
         <NavLink className="text-secondary" href="/products/bakery">
           Bread & Bakery
