@@ -10,12 +10,16 @@ class Profile extends Component {
     super(props);
     this.state = {
       user: null,
+      disabled: true,
     };
     console.log(this.props);
+    this.editInfo = this.editInfo.bind(this);
   }
 
-  editInfo = e => {
-
+  editInfo() {
+    this.setState(prevState => ({
+      disabled: !prevState.disabled
+    }));
   }
 
   async componentDidUpdate() {
@@ -60,7 +64,7 @@ class Profile extends Component {
                 <h1>{this.state.user.name} </h1>
                 <Button
                   className="btn-main-two btn-sm mx-auto mb-5"
-                  onClick="editInfo"
+                  onClick={this.editInfo}
                   >
                           Edit Information
                         </Button>
@@ -77,7 +81,7 @@ class Profile extends Component {
                       value={this.state.user.name}
                       onChange={this.handleChange}
                       required
-                      disabled
+                      disabled={this.state.disabled}
                     />
                   </div>
                   <div className="field mb-2">
@@ -89,7 +93,7 @@ class Profile extends Component {
                       value={this.state.user.email}
                       onChange={this.handleChange}
                       required
-                      disabled
+                      disabled={this.state.disabled}
                     />
                   </div>
                   <div className="field mb-2">
@@ -101,7 +105,7 @@ class Profile extends Component {
                       value={this.state.user.phone_number}
                       onChange={this.handleChange}
                       required
-                      disabled
+                      disabled={this.state.disabled}
                     />
                   </div>
                 
@@ -111,7 +115,7 @@ class Profile extends Component {
                           <div className="form-group">
                         <Button
                           className="btn-main mx-auto d-block w-100"
-                          disabled
+                          disabled={this.state.disabled}
                         >
                           UPDATE
                         </Button>
