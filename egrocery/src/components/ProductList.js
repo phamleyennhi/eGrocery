@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import ProductItem from "./ProductItem";
 import withContext from "../withContext";
 import axios from 'axios';
-
+import Search from "./Search";
 
 import 'bootstrap/dist/css/bootstrap.min.css'; //bootstrap
 
@@ -40,6 +40,10 @@ class ProductList extends Component {
     }
   }
 
+
+    simpleSearch( pattern ) {
+    this.setState({search_pattern: pattern});
+  }
   render() {
       const search_pattern = this.props.context.search_pattern;
       // search_pattern === "" ? (console.log("no search pattern")) : (console.log(search_pattern))
@@ -61,8 +65,8 @@ class ProductList extends Component {
               ]
               : 
               (
-                <div className="column">
-                  <span> Loading products ...</span>
+                <div className="column text-center">
+                  <p className="loading "> Loading products ...</p>
                 </div>
               )
   return (
@@ -118,7 +122,7 @@ class ProductList extends Component {
       </NavItem>
       <NavItem>
         <NavLink className="font-weight-bold text-secondary-custom" href="/products/imperfect">
-          Special deals!
+          Imperfect Product<span class="badge badge-danger loading">SALE!</span>
         </NavLink>
       </NavItem>
     </Nav>
@@ -126,8 +130,12 @@ class ProductList extends Component {
     </Navbar>
 
     <Container>
-      <Row className="text-capitalize ml-4 mb-5">
-          <h1>{this.state.category ? this.state.category : "Featured products" }</h1>
+      <Row className="text-capitalize mb-2 text-center">
+          <h1 className="text-center mx-auto">{this.state.category ? this.state.category : "Featured products" }</h1>
+      </Row>
+      <Row>
+        <Search placeholder={this.state.category ? "Search "+ this.state.category : "Search featured products" } onChange={(e) => {this.simpleSearch(e.target.value)}}/>
+
       </Row>
       <Row className="product-list-wrapper justify-content-center mb-5">
       { product_list }
