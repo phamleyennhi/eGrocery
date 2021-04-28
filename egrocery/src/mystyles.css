@@ -173,7 +173,7 @@ a *:hover, .product-name a:hover {
     background-image: url('https://d2d8wwwkmhfcva.cloudfront.net/2880x/d2guulkeunn7d8.cloudfront.net/assets/homepage/homepage_background_compressed-f86db4915ed64a3bdeab5e635ec9d995d63952f1d5e6b17031b49acd2c0f250e.jpg');
 
 }
-.secondary-hero{
+.main-hero,.secondary-hero{
     
     background-color: #888;
     background-repeat: no-repeat;
