@@ -430,14 +430,16 @@ export default class App extends Component {
             
                 <Container fluid className="alert-container">
                 <Row className="justify-content-center">
+  
                     <div className="col-lg-4 mx-auto">
-                    <div className={this.state.alert ? "alert alert-custom alert-dismissible fade show" : "alert alert-custom alert-dismissible fade" } role="alert">
+                    <small>
+                    <div className={this.state.alert ? "text-center alert alert-custom alert-dismissible fade show p-2" : "alert alert-custom alert-dismissible fade" } role="alert">
                       {this.state.alert}
-                        <button type="button" className="close text-light" onClick={() => {this.setState({alert: ""}); clearTimeout(this.alertTimeout);}  }>
-                          <span>&times;</span>
-                        </button>
+                        
                     </div>
+                    </small>
                     </div>
+                  
                 </Row>
                 </Container>
 
