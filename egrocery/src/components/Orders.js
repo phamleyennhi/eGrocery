@@ -22,6 +22,9 @@ class Orders extends Component {
             if (user !== null){
               const res = await axios.get('https://se-egrocery.herokuapp.com/api/admin/orders',
                                                   {headers: {"x-access-token": user.token}});
+
+              res.data.reverse();
+
               this.setState({orders_db: res.data});
 
               console.log(res.data)
@@ -42,11 +45,11 @@ class Orders extends Component {
         <div className="row" key={index}>
             <div className="col-4 mb-2">
 
-            <h3 className=""> {order.customer.firstName + " " + order.customer.lastName}</h3>
+            <h3 className="mb-0"> {order.customer.firstName + " " + order.customer.lastName}</h3>
              <small className="text-secondary"> {"<"+order.customer.email+">"} </small>
-                <p className="mb-0"> {order.address} </p>
+                <p className="mt-3 mb-0"> {order.address} </p>
                 <p className="mb-0"> {order.address2} </p>
-                <p className="mb-0"> {order.area}, {order.city} </p>
+                <p className="mb-2"> {order.area} {order.city} </p>
                 <span className="mb-0 pl-3 pr-3 pb-1 rounded text-uppercase btn-main"><small> {order.paymentMethod} </small></span>
             </div>
             <div className="col-8">
@@ -54,22 +57,26 @@ class Orders extends Component {
                 {order.order.map((item, index) => ( 
 
                               <Row className="mb-3 mx-auto align-items-center shadow-custom rounded">
-                                  <Col md="3" className="border-right p-0">
-                                    <img className="img-fluid mx-auto p-2" src={item.product.url} alt="" />
+                                  <Col md="2" className="border-right p-0">
+                                    <img className="img-fluid mx-auto p-0" src={item.product.url} alt="" />
                                   </Col>
-                                  <Col md="9">
+                                  <Col md="10">
                                     <Row>
                                       <Col md="8">
-                                      <h4 className="text-capitalize font-weight-bold mb-0">
+                                      <h5 className="text-capitalize font-weight-bold mb-0">
                                         {item.product.name}
-                                      </h4>
+                                      </h5>
                                       <h6 className="text-secondary">
                                         {item.product.shortDesc}
                                       </h6>
                                     </Col>
                                     <Col md="4" className="text-right">
                                       <div>
-                                        <h3 className="d-inline product-price">{item.product.price.toFixed(2)}</h3><h6 className="d-inline"> AED</h6>
+                                        <h5 className="d-inline product-price font-weight-bold">{item.product.price.toFixed(2)}</h5><h6 className="d-inline"> AED</h6>
+                                        
+                                      </div>
+                                      <div>
+                                      <small className="text-secondary">Amount: {item.amount} </small>
                                       </div>
                                     </Col>
                                     </Row>
