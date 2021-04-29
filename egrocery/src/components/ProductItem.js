@@ -30,7 +30,7 @@ const ProductItem = props => {
         </h5>
         {product.category == "Ugly" ? 
           <h6 className="font-weight-bold text-secondary-custom mt-1">
-           {product.description}!
+           {product.description}<br/>{(25+Math.random()*25).toFixed(0)+"% OFF"} 
           </h6> 
         :         
         <h6 className="text-secondary">
