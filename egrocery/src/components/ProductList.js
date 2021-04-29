@@ -76,6 +76,11 @@ class ProductList extends Component {
           >
           <Container>
     <Nav navbar className={'flex-row  is-active overflow-x'}>
+    <NavItem>
+        <NavLink className="font-weight-bold text-secondary-custom" href="/products/imperfect">
+          Imperfect Produce<span class="badge badge-danger loading">SALE!</span>
+        </NavLink>
+      </NavItem>
       <NavItem>
         <NavLink className="text-secondary" href="/products/bakery">
           Bread & Bakery
@@ -116,11 +121,7 @@ class ProductList extends Component {
           Cookies, Snacks & Candy
         </NavLink>
       </NavItem>
-      <NavItem>
-        <NavLink className="font-weight-bold text-secondary-custom" href="/products/imperfect">
-          Imperfect Produce<span class="badge badge-danger loading">SALE!</span>
-        </NavLink>
-      </NavItem>
+      
     </Nav>
     </Container>
     </Navbar>
@@ -197,7 +198,7 @@ class ProductList extends Component {
             <h1 className="text-light">SPECIAL OFFERS</h1>
             <h4 class="text-light-2" style={{fontWeight:"300"}}>Shop Imperfect Produce™ for a fraction of the price to reduce food waste and save our planet!</h4>
             <Button
-                    className="btn-main-two mx-auto pl-5 pr-5 mt-5"
+                    className="btn-main-two mx-auto pl-md-5 pr-md-5 mt-5"
                   >
                     <a href="/products/imperfect">SHOP IMPERFECT PRODUCE™</a>
                   </Button>

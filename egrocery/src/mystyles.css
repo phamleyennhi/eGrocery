@@ -211,4 +211,7 @@ a *:hover, .product-name a:hover {
     .big{
     font-size: 5em;
     }
+    nav ul li {
+    margin: auto 0.5rem;
+}
 }
