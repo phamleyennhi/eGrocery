@@ -22,7 +22,7 @@ class AdminProductList extends Component {
       console.log(this.props);
       this.state.category = params.category;
   }
-  async componentDidMount() {
+  async componentDidUpdate() {
     if(this.state.category == null){
       // this.state.products = this.props.context;
       const res = await axios.get('https://se-egrocery.herokuapp.com/api/products');
