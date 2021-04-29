@@ -125,6 +125,32 @@ export default class App extends Component {
   }
 
 
+   saveProfile = async (name, email, phone_number) => {
+
+      const {user} = this.state
+
+
+      if (name && phone_number) {
+
+        await axios.post(
+          'https://se-egrocery.herokuapp.com/api/profile/edit',
+          { name, email, phone_number},
+          {headers: {
+            "x-access-token": this.state.user.token
+          }}
+        );
+
+        user.name = name;
+        user.phone_number = phone_number;
+
+        this.setState({user});
+        localStorage.setItem("user", JSON.stringify(user));
+        this.addAlert("Profile updated!");
+      }
+    };
+
+
+
   logout = e => {
     e.preventDefault();
     this.setState({ user: null });
@@ -298,7 +324,8 @@ export default class App extends Component {
           editCartQuantity: this.editCartQuantity,
           feedback: this.feedback,
           deleteProduct: this.deleteProduct,
-          addAlert: this.addAlert
+          addAlert: this.addAlert,
+          saveProfile: this.saveProfile
         }}
       >
         <Router ref={this.routerRef}>

@@ -46,19 +46,15 @@ class Profile extends Component {
         }
 
   }
+
   save = async (e) => {
     e.preventDefault();
     const { name, email, phone_number } = this.state;
 
     if (name && phone_number) {
 
-      await axios.post(
-        'https://se-egrocery.herokuapp.com/api/product/' + this.state._id,
-        { name, email, phone_number},
-        {headers: {
-          "x-access-token": this.props.context.user.token
-        }}
-      )
+      this.props.context.saveProfile(name, email, phone_number);
+
     }
   };
 
