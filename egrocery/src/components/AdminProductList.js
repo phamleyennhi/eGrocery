@@ -65,7 +65,7 @@ render() {
       <>
 
       <Navbar
-              className="mt-n5 mb-5 bg-white small text-center"
+              className="mt-n5 mb-5 bg-white small text-center border-bottom"
               role="navigation"
               aria-label="navigation"
 
@@ -73,7 +73,7 @@ render() {
             <Container>
       <Nav navbar className={'flex-row  is-active'}>
         <NavItem>
-        <NavLink className="font-weight-bold text-secondary-custom" href="/products/imperfect">
+        <NavLink className="font-weight-bold text-secondary-custom" href="/admin-products/imperfect">
           Imperfect Produce<span class="badge badge-danger loading">SALE!</span>
         </NavLink>
       </NavItem>
