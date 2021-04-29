@@ -24,10 +24,20 @@ class Orders extends Component {
                                                   {headers: {"x-access-token": user.token}});
 
               res.data.reverse();
-
+              for (var orderItem of res.data){
+                var order = orderItem.order;
+                var total_price = 0;
+                for (var o of order){
+                  var amount = o.amount;
+                  var price = o.product.price;
+                  total_price += amount*price;
+               }
+               if (total_price<100) total_price+=10;
+               order.total_price = total_price.toFixed(2);
+              }
+              
               this.setState({orders_db: res.data});
-
-              console.log(res.data)
+                            console.log(res.data)
             }
             else{
               this.setState({orders_db: [{name: "", email:"Error", message: "Oops! You don't have access to this page. Please go back to the homepage!"}]})
@@ -44,13 +54,14 @@ class Orders extends Component {
       {this.state.orders_db.map((order, index) => (
         <div className="row" key={index}>
             <div className="col-4 mb-2">
-
+            <small className="text-secondary"> {order.date} </small>
             <h3 className="mb-0"> {order.customer.firstName + " " + order.customer.lastName}</h3>
              <small className="text-secondary"> {"<"+order.customer.email+">"} </small>
                 <p className="mt-3 mb-0"> {order.address} </p>
                 <p className="mb-0"> {order.address2} </p>
-                <p className="mb-2"> {order.area} {order.city} </p>
-                <span className="mb-0 pl-3 pr-3 pb-1 rounded text-uppercase btn-main"><small> {order.paymentMethod} </small></span>
+                <p className="mb-3"> {order.area} {order.city} </p>
+                <h2 className="mt-2">{order.order.total_price +" AED"}</h2>
+                <span className="pl-3 pr-3 pb-1 rounded text-uppercase btn-main"><small> {order.paymentMethod} </small></span>
             </div>
             <div className="col-8">
                 

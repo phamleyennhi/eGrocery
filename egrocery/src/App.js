@@ -332,6 +332,7 @@ export default class App extends Component {
         <div className="App">
         
           <Navbar
+          style={{zIndex:"200"}}
             className="shadow-custom mb-5 bg-white"
             role="navigation"
             aria-label="main navigation"
@@ -407,7 +408,7 @@ export default class App extends Component {
                 </NavItem>
               ) : (
               <NavItem>
-              <Dropdown style={{zIndex:"200"}}isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+              <Dropdown  isOpen={this.state.dropdownOpen} toggle={this.toggle}>
                 <DropdownToggle caret className="btn-main">
                 <span className="mr-2">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
