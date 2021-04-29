@@ -49,6 +49,7 @@ render() {
                     key={index}
                     addToCart={this.props.context.addToCart}
                     addAlert={this.props.context.addAlert}
+                    deleteProduct={this.props.context.deleteProduct}
                     user={this.props.context.user}
                   />) : (console.log("product at index " + index + " " + product.name.toLowerCase() + " not contained " + search_pattern.toLowerCase()))
                   }

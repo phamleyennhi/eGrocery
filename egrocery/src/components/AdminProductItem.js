@@ -24,11 +24,13 @@ const AdminProductItem = props => {
         </div>
         <Button
           className="btn-main mt-4"
-          onClick={() =>
+          onClick={() => {
             props.deleteProduct({
               id: product.name,
               product
-            })
+            });
+            props.addAlert("Product deleted from the store!")
+          }
           }
         >
           REMOVE
