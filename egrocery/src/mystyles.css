@@ -49,7 +49,7 @@ nav ul li {
     color: white;
     border: none;
 }
-.btn-main-two{
+.btn-main-two, .badge-main{
     
     background-color: #de7a10 !important;
     color: white;
