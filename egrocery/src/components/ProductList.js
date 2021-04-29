@@ -133,7 +133,7 @@ class ProductList extends Component {
         <div class="container">
         <Row >
           <Col xs="12" sm="12" md="8" lg="8" className="mx-auto text-center">
-            <img className="img-fluid" src="eGROCERY.png" alt=""/>
+            <img className="img-fluid" src="/eGROCERY.png" alt=""/>
             <h2 class="text-light" style={{fontWeight:"300"}}>Shop freshly. Shop freely. Shop responsibly.</h2>
             <Button
                     className="btn-main-two mx-auto pl-5 pr-5 mt-5"
