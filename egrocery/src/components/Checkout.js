@@ -10,6 +10,7 @@ class Checkout extends Component {
     constructor(props) {
         super(props);
 
+        this.shipping_fee = 10;
         this.total_price = 0;
         const { cart } = props.context;
         this.cartKeys = Object.keys(cart || {});
@@ -20,6 +21,7 @@ class Checkout extends Component {
           var price = cart[item]["product"]["price"];
           this.total_price += amount*price;
           order.push(cart[item]);
+          if (this.total_price >= 100) this.shipping_fee = 0;
         }
 
         this.state = {
@@ -189,37 +191,46 @@ class Checkout extends Component {
         return (
 
 		<Container>
-			<Row className="mb-5">
+			<Row className="mb-2">
 				<h1>Checkout</h1>
 			</Row>
+
+      <Row className="mb-5 ">
+        <a className="d-md-block d-none" href="/cart">↩ Return to cart</a>
+      </Row>
 
 			<Row>
 				<Col lg={{ size: 4, order: 2}}>
 					<div className="p-3 mb-5 align-items-left shadow-custom rounded">
-					<h4 className="d-flex justify-content-between align-items-center mb-3">
-						<span className="text-capitalize font-weight-bold">Your cart</span>
-						<span className="badge bg-secondary-custom text-white rouded">{ this.props.context.quantity_in_cart }</span>
-					</h4>
+					<h3 className="mb-2">
+						Order Summary
+					</h3>
+          <small><a href="/cart">↩ Return to cart</a></small>
 
-					{this.cartKeys.map(key => (
-		             <div className="d-flex justify-content-between align-items-center mb-2">
-		             	<span className="text-capitalize">{ this.props.context.cart[key].product.name }</span>
-						<span className="text-end">
-								<span className="text-muted"> { this.props.context.cart[key].amount } </span> 
-								x 
-								<span> { this.props.context.cart[key].product.price } AED</span>
-								<span className="font-weight-bold ml-2"> {this.props.context.cart[key].product.price*this.props.context.cart[key].amount} AED</span>
-								
-						</span>
-		             </div>
-		            ))}
-
-					<hr/>
-
-					<h6 className="d-flex justify-content-between align-items-center mt-3 mb-3">
-						<span className="text-capitalize font-weight-bold">Total</span>
-						<span className="font-weight-bold">{ this.total_price } AED</span>
-					</h6>
+					
+          <table class="table table-borderless mt-3">
+            <tbody>
+              <tr>
+                <th scope="row">Items <small className="badge bg-secondary-custom text-white rouded">{ this.props.context.quantity_in_cart }</small>
+</th>
+                <td className="text-right" >{ Math.round(this.total_price * 100) / 100 } AED</td>
+                
+              </tr>
+              <tr className="pb-4">
+                <th className="pb-4" scope="row">Shipping Fee</th>
+                <td className="pb-4 text-right">{this.shipping_fee == 0 ? <span class="badge badge-main">FREE</span> : this.shipping_fee + " AED"}</td>
+                
+              </tr>
+              
+            </tbody>
+            <tfoot className="border-top">
+              <tr className="pt-4">
+                <th className="pt-4" scope="col">Total</th>
+                <th className="pt-4 text-right" scope="col">{ Math.round(this.total_price * 100) / 100 +  this.shipping_fee} AED</th>
+                
+              </tr>
+            </tfoot>
+          </table>
 
 					</div>
 				</Col>
@@ -431,3 +442,17 @@ class Checkout extends Component {
 }
 export default withContext(Checkout);
 
+
+
+// {this.cartKeys.map(key => (
+//                  <div className="d-flex justify-content-between align-items-center mb-2">
+//                   <span className="text-capitalize">{ this.props.context.cart[key].product.name }</span>
+//             <span className="text-end">
+//                 <span className="text-muted"> { this.props.context.cart[key].amount } </span> 
+//                 x 
+//                 <span> { this.props.context.cart[key].product.price } AED</span>
+//                 <span className="font-weight-bold ml-2"> {this.props.context.cart[key].product.price*this.props.context.cart[key].amount} AED</span>
+                
+//             </span>
+//                  </div>
+//                 ))}
