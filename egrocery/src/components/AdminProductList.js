@@ -39,7 +39,7 @@ class AdminProductList extends Component {
 render() {
   const search_pattern = this.state.search_pattern;
   const product_db = this.state.products;
-  console.log(product_db);
+  const category_dict = {"bakery":"Bread & Bakery", "breakfast":"Breakfast & Cereal", "soups":"Canned Goods & Soups", "dairy":"Dairy, Eggs & Cheese", "grains":"Grains, Pasta & Sides", "fruit":"Fruit & Vegetables", "meat":"Meat", "snacks":"Cookies, Snacks & Candy"};
   const product_list = product_db && product_db.length ?[
                 product_db.map((product, index) => (
                   <>
@@ -72,6 +72,11 @@ render() {
             >
             <Container>
       <Nav navbar className={'flex-row  is-active'}>
+        <NavItem>
+        <NavLink className="font-weight-bold text-secondary-custom" href="/products/imperfect">
+          Imperfect Produce<span class="badge badge-danger loading">SALE!</span>
+        </NavLink>
+      </NavItem>
         <NavItem>
           <NavLink className="text-secondary" href="/admin-products/bakery">
             Bread & Bakery
@@ -139,7 +144,7 @@ render() {
       <Container>
         <Row className="text-capitalize text-center justify-content-between align-items-center mb-5">
         <Col md="6" className="mx-auto mb-md-0 mb-2">
-          <h1 className="text-center text-md-left mx-auto text-uppercase">{this.state.category ? this.state.category : "Featured products" }</h1>
+          <h1 className="text-center text-md-left mx-auto text-uppercase">{this.state.category ? category_dict[this.state.category] : "Featured products" }</h1>
         </Col>
           <Search placeholder={this.state.category ? "Search "+ this.state.category : "Search featured products" } onChange={(e) => {this.setState({search_pattern: e.target.value})}}/>
 
