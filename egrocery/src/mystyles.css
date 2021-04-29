@@ -40,6 +40,10 @@ nav ul li {
     margin: auto 1rem;
 }
 
+.alert{
+    opacity :0.9;
+}
+
 .btn-main {
     background-color: #92CD28 !important;
     color: white;
