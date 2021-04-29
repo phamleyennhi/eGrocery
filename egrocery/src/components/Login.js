@@ -31,7 +31,7 @@ class Login extends Component {
             .then((loggedIn) => {
                 console.log(loggedIn);
                 if (!loggedIn) {
-                    this.setState({ error: "Invalid Credentails" });
+                    this.setState({ error: "Invalid Credentials" });
                 } else {
                     this.setState({ error: "Valid Credentails...Keep waiting!" });
                 }
